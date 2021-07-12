@@ -1,8 +1,8 @@
-﻿using Entities.Dtos.UserDtos;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Entities.Dtos.UserDtos;
 
-namespace Bussines.Abstarct
+namespace Business.Abstract
 {
     public interface IUserService
     {

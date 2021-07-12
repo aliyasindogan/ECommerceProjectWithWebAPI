@@ -1,13 +1,13 @@
-﻿using System;
-using Bussines.Abstarct;
+﻿using Business.Abstract;
 using DataAccess.Abstract;
+using Entities.Concrete;
 using Entities.Dtos.UserDtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Entities.Concrete;
 
-namespace Bussines.Concrete
+namespace Business.Concrete
 
 {
     public class UserService : IUserService
