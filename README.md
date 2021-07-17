@@ -2,4 +2,4 @@
 .NET 5.0 Web API İle E-Ticaret Sitesi Yapımı 
 
 ## Basic Windows Form And Core Mvc Crud Operations
-Temel Windows Form ve Core Mvc Crud (Listele,Ekle,Düzenle ve Sil) İşlemleri 
+basic branch'i temel Windows Form ve Core Mvc Crud (Listele,Ekle,Düzenle ve Sil) işlemleri  içermektedir.
