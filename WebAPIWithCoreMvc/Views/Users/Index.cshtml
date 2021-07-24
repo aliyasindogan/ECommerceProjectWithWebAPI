@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Entities.Dtos.UserDtos.UserDetailDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kullanıcılar</h1>
+<a class="btn btn-primary mb-3" asp-action="Add">Kullanıcı Ekle</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Kullanıcı Adı</td>
+            <td>Adı</td>
+            <td>Soyadı</td>
+            <td>Cinsiyeti</td>
+            <td>Doğum Tarihi</td>
+            <td>Email</td>
+            <td>Adres</td>
+            <td>İşlemler</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.UserName</td>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.Gender</td>
+                <td>@item.DateOfBirth.ToString("dd/MM/yyyy")</td>
+                <td>@item.Email</td>
+                <td>@item.Address</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.Id" class="badge badge-info">Düzenle</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="badge badge-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
