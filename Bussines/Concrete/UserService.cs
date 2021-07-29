@@ -54,7 +54,8 @@ namespace Business.Concrete
                     Gender = user.Gender,
                     Id = user.Id,
                     LastName = user.LastName,
-                    UserName = user.UserName
+                    UserName = user.UserName,
+                    Password = user.Password
                 };
                 return userDto;
             }
