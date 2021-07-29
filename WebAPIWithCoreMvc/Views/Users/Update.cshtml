@@ -1,0 +1,57 @@
+﻿@model WebAPIWithCoreMvc.ViewModels.UserUpdateViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+<h1>Kullanıcı Düzenle</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
+            <div class="form-group">
+                <label asp-for="UserName">Kullanıcı Adı:</label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName">Adı:</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName">Soyadı:</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Şifre:</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenderID">Cinsiyet:</label>
+                <select class="form-control" asp-for="GenderID" asp-items="@(new SelectList(@ViewBag.GenderList,"Id","GenderName"))"></select>
+                <span asp-validation-for="GenderID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth">Doğum Tarihi:</label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">Email:</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address">Adres:</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Düzenle" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Listeye geri dön</a>
+            </div>
+        </form>
+    </div>
+</div>
