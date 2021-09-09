@@ -1,4 +1,4 @@
-﻿namespace Entities.Enums
+﻿namespace Entities.Abstract.Enums
 {
     public enum Genders
     {

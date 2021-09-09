@@ -1,5 +1,5 @@
-﻿using System;
-using Entities.Abstract;
+﻿using Core.Entity.Abstract;
+using System;
 
 namespace Entities.Dtos.UserDtos
 {
