@@ -1,4 +1,4 @@
-﻿namespace Core.Helpers.JWT
+﻿namespace Core.Utilities.Security.Token
 {
     public class AppSettings
     {

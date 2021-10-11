@@ -9,7 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Core.Helpers.JWT;
+using Core.Utilities.Security.Token;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

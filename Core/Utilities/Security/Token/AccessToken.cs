@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Core.Helpers.JWT
+namespace Core.Utilities.Security.Token
 {
     public class AccessToken
     {

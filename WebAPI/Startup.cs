@@ -1,7 +1,8 @@
 using System.Text;
 using Business.Abstract;
 using Business.Concrete;
-using Core.Helpers.JWT;
+using Core.Utilities.Security.Token;
+using Core.Utilities.Security.Token.Jwt;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Contexts;
 using DataAccess.Concrete.EntityFramework;
@@ -89,8 +90,13 @@ namespace WebAPI
 
             #endregion JWT
 
+            #region DI
+
             services.AddTransient<IUserDal, EfUserDal>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITokenService, JwtTokenService>();
+
+            #endregion DI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
