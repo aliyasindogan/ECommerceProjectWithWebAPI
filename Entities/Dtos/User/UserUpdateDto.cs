@@ -1,14 +1,15 @@
-﻿using Core.Entity.Abstract;
-using System;
+﻿using System;
+using Core.Entity.Abstract;
 
-namespace Entities.Dtos.UserDtos
+namespace Entities.Dtos.User
 {
-    public class UserDto : IDto
+    public class UserUpdateDto : IDto
     {
         public int Id { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Password { get; set; }
         public bool Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Email { get; set; }
@@ -16,5 +17,7 @@ namespace Entities.Dtos.UserDtos
         public string PhoneNumber { get; set; }
         public string Token { get; set; }
         public DateTime? TokenExpireDate { get; set; }
+        public int UpdatedUserId { get; set; }
+        public DateTime UpdatedDate { get; set; } = DateTime.Now;
     }
 }

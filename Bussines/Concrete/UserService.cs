@@ -5,12 +5,12 @@ using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.Dtos.UserDtos;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Entities.Dtos.User;
 
 namespace Business.Concrete
 

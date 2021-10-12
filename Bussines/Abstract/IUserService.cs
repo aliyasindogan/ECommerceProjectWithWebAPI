@@ -1,10 +1,10 @@
 ﻿using Core.Utilities.Responses;
 using Entities.Concrete;
-using Entities.Dtos.UserDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Entities.Dtos.User;
 
 namespace Business.Abstract
 {

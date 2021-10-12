@@ -1,6 +1,7 @@
 ﻿using Core.Utilities.Responses;
-using Entities.Dtos.UserDtos;
 using System.Threading.Tasks;
+using Entities.Dtos.Auth;
+using Entities.Dtos.User;
 
 namespace Business.Abstract
 {

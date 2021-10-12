@@ -1,7 +1,7 @@
-﻿using Core.Entity.Abstract;
-using System;
+﻿using System;
+using Core.Entity.Abstract;
 
-namespace Entities.Dtos.UserDtos
+namespace Entities.Dtos.User
 {
     public class UserDetailDto : IDto
     {

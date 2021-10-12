@@ -1,7 +1,7 @@
 ﻿using Business.Abstract;
-using Entities.Dtos.UserDtos;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Entities.Dtos.User;
 using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers

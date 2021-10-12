@@ -1,4 +1,4 @@
-﻿namespace Entities.Dtos.UserDtos
+﻿namespace Entities.Dtos.Auth
 {
     public class LoginDto
     {
