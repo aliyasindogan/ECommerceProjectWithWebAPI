@@ -1,6 +1,8 @@
 using System.Text;
+using AutoMapper;
 using Business.Abstract;
 using Business.Concrete;
+using Business.Mappings;
 using Core.Utilities.Security.Token;
 using Core.Utilities.Security.Token.Jwt;
 using DataAccess.Abstract;
@@ -89,6 +91,17 @@ namespace WebAPI
             });
 
             #endregion JWT
+
+            #region AutoMapper
+
+            var mapperConfig = new MapperConfiguration(mc =>
+              {
+                  mc.AddProfile(new MappingProfile());
+              });
+            var mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
+            #endregion AutoMapper
 
             #region DI
 
