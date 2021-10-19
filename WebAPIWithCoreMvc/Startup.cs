@@ -44,6 +44,13 @@ namespace WebAPIWithCoreMvc
 
             app.UseEndpoints(endpoints =>
             {
+                //Admin/Home/Index
+                endpoints.MapAreaControllerRoute(
+                    areaName: "Admin",
+                    name: "Admin",
+                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
+                );
+                //Home/Index
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
