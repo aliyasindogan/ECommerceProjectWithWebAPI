@@ -1,2 +1,41 @@
 ﻿@model List<Entities.Dtos.User.UserDetailDto>
-    <h1>User Page</h1>
+<div class="col-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">Fixed Header Table</h3>
+            <div class="card-tools">
+                <button type="submit" class="btn btn-default btn-xs float-right">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>UserName</th>
+                        @*<th>Date</th>
+                            <th>Status</th>
+                            <th>Reason</th>*@
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.UserName</td>
+                            @*<td>11-7-2014</td>
+                                <td><span class="tag tag-danger">Denied</span></td>
+                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
