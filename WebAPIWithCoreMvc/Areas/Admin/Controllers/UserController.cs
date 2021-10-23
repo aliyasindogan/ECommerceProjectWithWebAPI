@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 
 namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
@@ -11,12 +10,10 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
     public class UserController : Controller
     {
         private IUserApiService _userApiService;
-        private IHttpContextAccessor _httpContextAccessor;
 
-        public UserController(IUserApiService userApiService, IHttpContextAccessor httpContextAccessor)
+        public UserController(IUserApiService userApiService)
         {
             _userApiService = userApiService;
-            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
