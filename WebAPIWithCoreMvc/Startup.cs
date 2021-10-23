@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebAPIWithCoreMvc.ApiServices;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
+using WebAPIWithCoreMvc.Handler;
 
 namespace WebAPIWithCoreMvc
 {
@@ -25,6 +26,7 @@ namespace WebAPIWithCoreMvc
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddSession();
+            services.AddScoped<AuthTokenHandler>();
 
             #region HttpClient
 
@@ -35,7 +37,7 @@ namespace WebAPIWithCoreMvc
             services.AddHttpClient<IUserApiService, UserApiService>(opt =>
             {
                 opt.BaseAddress = new Uri("http://localhost:63545/api/");
-            });
+            }).AddHttpMessageHandler<AuthTokenHandler>();
 
             #endregion HttpClient
 
