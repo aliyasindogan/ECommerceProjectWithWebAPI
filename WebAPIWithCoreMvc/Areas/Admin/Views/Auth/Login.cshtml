@@ -27,7 +27,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">&nbsp;</p>
-
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                 <form asp-controller="Auth" asp-action="Login" method="post">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="UserName" value="aliyasin">
