@@ -2,7 +2,7 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 *text=auto
-wwwroot/ linguist-language=Csharp
+wwwroot/ linguist-language=csharp
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
@@ -11,9 +11,6 @@ wwwroot/ linguist-language=Csharp
 # Note: This is only used by command line
 ###############################################################################
 #*.cs     diff=csharp
-#*.js linguist-detectable=false
-#*.css linguist-detectable=false
-#*.html linguist-detectable=false
 ###############################################################################
 # Set the merge driver for project and solution files
 #
