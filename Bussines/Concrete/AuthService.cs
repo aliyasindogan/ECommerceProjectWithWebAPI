@@ -5,8 +5,10 @@ using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using System;
 using System.Threading.Tasks;
+using Business.Validations.FluentValidation;
 using Entities.Dtos.Auth;
 using Entities.Dtos.User;
+using Core.Aspects;
 
 namespace Business.Concrete
 {
@@ -23,6 +25,7 @@ namespace Business.Concrete
             _mapper = mapper;
         }
 
+        [ValidationAspect(typeof(LoginDtoValidator))]
         public async Task<ApiDataResponse<UserDto>> LoginAsync(LoginDto loginDto)
         {
             var user = await _userService.GetAsync(x => x.UserName == loginDto.UserName && x.Password == loginDto.Password);
