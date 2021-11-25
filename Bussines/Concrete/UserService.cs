@@ -86,6 +86,7 @@ namespace Business.Concrete
             var getUser = await _userDal.GetAsync(x => x.Id == userUpdateDto.Id);
             var user = _mapper.Map<User>(userUpdateDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
+            user.Password=getUser.Password;
             user.CreatedDate = getUser.CreatedDate;
             user.CreatedUserId = getUser.CreatedUserId;
             user.UpdatedDate = DateTime.Now;
