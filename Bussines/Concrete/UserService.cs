@@ -87,6 +87,7 @@ namespace Business.Concrete
             var user = _mapper.Map<User>(userUpdateDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
             user.CreatedDate = getUser.CreatedDate;
+            user.Password= getUser.Password;    
             user.CreatedUserId = getUser.CreatedUserId;
             user.UpdatedDate = DateTime.Now;
             user.UpdatedUserId = 1;
