@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Core.Aspects.Transaction;
 using Entities.Dtos.User;
 
 namespace Business.Concrete
@@ -69,7 +70,7 @@ namespace Business.Concrete
             }
             return new ErrorApiDataResponse<UserDto>(null, Messages.NotListed);
         }
-
+        [TransactionScopeAsync]
         public async Task<ApiDataResponse<UserDto>> AddAsync(UserAddDto userAddDto)
         {
             var user = _mapper.Map<User>(userAddDto);
