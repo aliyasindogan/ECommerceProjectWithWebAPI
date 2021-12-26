@@ -9,6 +9,7 @@ using Business.Validations.FluentValidation;
 using Entities.Dtos.Auth;
 using Entities.Dtos.User;
 using Core.Aspects;
+using Core.Aspects.Autofac;
 
 namespace Business.Concrete
 {
