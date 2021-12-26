@@ -1,5 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using System;
+using System.Threading.Tasks;
 
 namespace Core.Utilities.Interceptors
 {
@@ -39,7 +40,16 @@ namespace Core.Utilities.Interceptors
             OnBefore(invocation);
             try
             {
-                invocation.Proceed(); //metodu çalıştır.
+                invocation.Proceed();
+                if (invocation.ReturnValue is Task returnValueTask)
+                {
+                    returnValueTask.GetAwaiter().GetResult();
+                }
+
+                if (invocation.ReturnValue is Task task && task.Exception != null)
+                {
+                    throw task.Exception;
+                }
             }
             catch (Exception e)
             {
