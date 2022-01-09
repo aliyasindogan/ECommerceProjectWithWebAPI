@@ -33,6 +33,7 @@ namespace WebAPI
             IServiceCollection serviceCollections = services.AddDbContext<ECommerceProjectWithWebAPIContext>(opts => opts.UseSqlServer("Data Source =DESKTOP-CDM97OQ\\SQLEXPRESS01; Initial Catalog = ECommerceProjectWithWebAPIDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
 
             services.AddControllers();
+            services.AddMemoryCache();
             services.AddCustomSwagger();
             services.AddCustomJwtToken(Configuration);
             services.AddCustomHttpContextAccessor();
