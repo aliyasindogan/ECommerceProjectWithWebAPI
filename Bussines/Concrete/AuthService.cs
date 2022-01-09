@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
 using Business.Abstract;
 using Business.Constants;
+using Business.Validations.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
-using System;
-using System.Threading.Tasks;
-using Business.Validations.FluentValidation;
 using Entities.Dtos.Auth;
 using Entities.Dtos.User;
-using Core.Aspects;
-using Core.Aspects.Autofac;
+using System;
+using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
