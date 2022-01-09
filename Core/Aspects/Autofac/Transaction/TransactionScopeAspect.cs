@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Castle.DynamicProxy;
+using Core.Utilities.Interceptors;
+using System;
 using System.Threading.Tasks;
 using System.Transactions;
-using Castle.DynamicProxy;
-using Core.Utilities.Interceptors;
 
-namespace Core.Aspects.Transaction
+namespace Core.Aspects.Autofac.Transaction
 {
-  public  class TransactionScopeAsync:MethodInterception
+    public class TransactionScopeAspect : MethodInterception
     {
         public override void Intercept(IInvocation invocation)
         {
-            using (TransactionScope transactionScope=new TransactionScope())
+            using (TransactionScope transactionScope = new TransactionScope())
             {
                 try
                 {
@@ -23,7 +20,7 @@ namespace Core.Aspects.Transaction
                         returnValueTask.GetAwaiter().GetResult();
                     }
 
-                    if (invocation.ReturnValue is Task task &&  task.Exception!=null)
+                    if (invocation.ReturnValue is Task task && task.Exception != null)
                     {
                         throw task.Exception;
                     }
@@ -32,10 +29,9 @@ namespace Core.Aspects.Transaction
                 catch (Exception)
                 {
                     transactionScope.Dispose();
-                    throw ;
+                    throw;
                 }
             }
-            base.Intercept(invocation);
         }
     }
 }
