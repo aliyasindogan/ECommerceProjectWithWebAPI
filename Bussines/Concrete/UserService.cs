@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 
@@ -32,21 +33,14 @@ namespace Business.Concrete
         }
 
         #endregion DI
-
-        public async Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync(Expression<Func<User, bool>> filter = null)
+        [CacheAspect(10)]
+        public async Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync()
         {
-            if (filter == null)
-            {
-                var response = await _userDal.GetListAsync();
-                var userDetailDtos = _mapper.Map<IEnumerable<UserDetailDto>>(response);
-                return new SuccessApiDataResponse<IEnumerable<UserDetailDto>>(userDetailDtos, Messages.Listed);
-            }
-            else
-            {
-                var response = await _userDal.GetListAsync(filter);
-                var userDetailDtos = _mapper.Map<IEnumerable<UserDetailDto>>(response);
-                return new SuccessApiDataResponse<IEnumerable<UserDetailDto>>(userDetailDtos, Messages.Listed);
-            }
+
+            var response = await _userDal.GetListAsync();
+            var userDetailDtos = _mapper.Map<IEnumerable<UserDetailDto>>(response);
+            return new SuccessApiDataResponse<IEnumerable<UserDetailDto>>(userDetailDtos, Messages.Listed);
+
         }
 
         public async Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<User, bool>> filter)
@@ -71,6 +65,7 @@ namespace Business.Concrete
             return new ErrorApiDataResponse<UserDto>(null, Messages.NotListed);
         }
         [TransactionScopeAspect]
+        [CacheRemoveAspect("IUserService.GetListAsync")]
         public async Task<ApiDataResponse<UserDto>> AddAsync(UserAddDto userAddDto)
         {
             var user = _mapper.Map<User>(userAddDto);
@@ -87,7 +82,7 @@ namespace Business.Concrete
             var getUser = await _userDal.GetAsync(x => x.Id == userUpdateDto.Id);
             var user = _mapper.Map<User>(userUpdateDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
-            user.Password=getUser.Password;
+            user.Password = getUser.Password;
             user.CreatedDate = getUser.CreatedDate;
             user.CreatedUserId = getUser.CreatedUserId;
             user.UpdatedDate = DateTime.Now;
