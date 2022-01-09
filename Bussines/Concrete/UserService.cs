@@ -1,17 +1,17 @@
 ﻿using AutoMapper;
 using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Transaction;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos.User;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Core.Aspects.Transaction;
-using Entities.Dtos.User;
 
 namespace Business.Concrete
 
@@ -70,7 +70,7 @@ namespace Business.Concrete
             }
             return new ErrorApiDataResponse<UserDto>(null, Messages.NotListed);
         }
-        [TransactionScopeAsync]
+        [TransactionScopeAspect]
         public async Task<ApiDataResponse<UserDto>> AddAsync(UserAddDto userAddDto)
         {
             var user = _mapper.Map<User>(userAddDto);
