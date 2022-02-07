@@ -8,17 +8,17 @@ namespace Business.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<User, UserDetailDto>();
-            CreateMap<UserDetailDto, User>();
+            CreateMap<AppUser, UserDetailDto>();
+            CreateMap<UserDetailDto, AppUser>();
 
-            CreateMap<User, UserDto>();
-            CreateMap<UserDto, User>();
+            CreateMap<AppUser, UserDto>();
+            CreateMap<UserDto, AppUser>();
 
-            CreateMap<User, UserAddDto>();
-            CreateMap<UserAddDto, User>();
+            CreateMap<AppUser, UserAddDto>();
+            CreateMap<UserAddDto, AppUser>();
 
-            CreateMap<User, UserUpdateDto>();
-            CreateMap<UserUpdateDto, User>();
+            CreateMap<AppUser, UserUpdateDto>();
+            CreateMap<UserUpdateDto, AppUser>();
 
             CreateMap<UserDto, UserUpdateDto>();
             CreateMap<UserUpdateDto, UserDto>();
