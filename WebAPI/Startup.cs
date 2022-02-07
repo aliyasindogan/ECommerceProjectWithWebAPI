@@ -30,7 +30,7 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            IServiceCollection serviceCollections = services.AddDbContext<ECommerceProjectWithWebAPIContext>(opts => opts.UseSqlServer("Data Source =DESKTOP-CDM97OQ\\SQLEXPRESS01; Initial Catalog = ECommerceProjectWithWebAPIDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
+            IServiceCollection serviceCollections = services.AddDbContext<ECommerceContext>(opts => opts.UseSqlServer("Data Source =DESKTOP-CDM97OQ\\SQLEXPRESS01; Initial Catalog = ECommerceDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
 
             services.AddControllers();
             services.AddMemoryCache();
