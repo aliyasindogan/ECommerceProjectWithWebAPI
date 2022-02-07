@@ -21,11 +21,11 @@ namespace Business.Concrete
     {
         #region DI
 
-        private readonly IUserDal _userDal;
+        private readonly IAppUserDal _userDal;
         private readonly AppSettings _appSettings;
         private IMapper _mapper;
 
-        public UserService(IUserDal userDal, IOptions<AppSettings> appSettings, IMapper mapper)
+        public UserService(IAppUserDal userDal, IOptions<AppSettings> appSettings, IMapper mapper)
         {
             _userDal = userDal;
             _mapper = mapper;
@@ -43,7 +43,7 @@ namespace Business.Concrete
 
         }
 
-        public async Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<User, bool>> filter)
+        public async Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<AppUser, bool>> filter)
         {
             var user = await _userDal.GetAsync(filter);
             if (user != null)
@@ -68,7 +68,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IUserService.GetListAsync")]
         public async Task<ApiDataResponse<UserDto>> AddAsync(UserAddDto userAddDto)
         {
-            var user = _mapper.Map<User>(userAddDto);
+            var user = _mapper.Map<AppUser>(userAddDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
             user.CreatedDate = DateTime.Now;
             user.CreatedUserId = 1;
@@ -80,7 +80,7 @@ namespace Business.Concrete
         public async Task<ApiDataResponse<UserUpdateDto>> UpdateAsync(UserUpdateDto userUpdateDto)
         {
             var getUser = await _userDal.GetAsync(x => x.Id == userUpdateDto.Id);
-            var user = _mapper.Map<User>(userUpdateDto);
+            var user = _mapper.Map<AppUser>(userUpdateDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
             user.Password = getUser.Password;
             user.CreatedDate = getUser.CreatedDate;

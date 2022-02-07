@@ -12,7 +12,7 @@ namespace Business.Abstract
     {
         Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync();
 
-        Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<User, bool>> filter);
+        Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<AppUser, bool>> filter);
 
         Task<ApiDataResponse<UserDto>> GetByIdAsync(int id);
 
