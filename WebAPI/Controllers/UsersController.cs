@@ -11,9 +11,9 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IUserService _userService;
+        private readonly IAppUserService _userService;
 
-        public UsersController(IUserService userService)
+        public UsersController(IAppUserService userService)
         {
             _userService = userService;
         }
