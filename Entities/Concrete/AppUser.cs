@@ -8,9 +8,9 @@ namespace Entities.Concrete
     {
         public AppUser()
         {
-            AppUserAppOperationClaims = new HashSet<AppUserAppOperationClaim>();
+            AppUserTypeAppOperationClaims = new HashSet<AppUserTypeAppOperationClaim>();
         }
         public Guid RefreshToken { get; set; }
-        public virtual ICollection<AppUserAppOperationClaim> AppUserAppOperationClaims { get; set; }
+        public virtual ICollection<AppUserTypeAppOperationClaim> AppUserTypeAppOperationClaims { get; set; }
     }
 }
