@@ -18,13 +18,13 @@ namespace WebAPIWithCoreMvc.ApiServices
             _httpClient = httpClient;
         }
 
-        public async Task<ApiDataResponse<UserDto>> LoginAsync(LoginDto loginDto)
+        public async Task<ApiDataResponse<AppUserDto>> LoginAsync(LoginDto loginDto)
         {
             HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync("Auths/Login", loginDto);
             if (httpResponseMessage.IsSuccessStatusCode)
             {
                 var data = await httpResponseMessage.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<ApiDataResponse<UserDto>>(data);
+                var result = JsonConvert.DeserializeObject<ApiDataResponse<AppUserDto>>(data);
                 return await Task.FromResult(result);
             }
             return null;
