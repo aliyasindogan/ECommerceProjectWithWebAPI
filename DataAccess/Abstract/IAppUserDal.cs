@@ -1,9 +1,9 @@
 ﻿using Core.DataAccess;
-using Core.Entities.Concrete;
+using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-    public interface IAppUserDal : IBaseRepository<User>
+    public interface IAppUserDal : IBaseRepository<AppUser>
     {
     }
 }
