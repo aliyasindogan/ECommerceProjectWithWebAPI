@@ -1,11 +1,11 @@
 ﻿using Core.DataAccess.EntityFramework;
+using Core.Entities.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Contexts;
-using Entities.Concrete;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfUserDal : EfBaseRepository<User, ECommerceProjectWithWebAPIContext>, IUserDal
+    public class EfAppUserDal : EfBaseRepository<User, ECommerceDbContext>, IAppUserDal
     {
     }
 }
