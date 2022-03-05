@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using Core.Entities.Dtos;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Core.Utilities.Security.Token
 {
     public interface ITokenService
     {
-        AccessToken CreateToken(int userId, string userName);
+        AccessToken CreateToken(User user, List<OperationClaimDto> roles);
     }
 }
