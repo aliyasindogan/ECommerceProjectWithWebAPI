@@ -7,8 +7,8 @@ namespace Entities.Concrete
     {
         public AppOperationClaim()
         {
-            AppUserAppOperationClaims = new HashSet<AppUserAppOperationClaim>();
+            AppUserTypeAppOperationClaims = new HashSet<AppUserTypeAppOperationClaim>();
         }
-        public virtual ICollection<AppUserAppOperationClaim> AppUserAppOperationClaims { get; set; }
+        public virtual ICollection<AppUserTypeAppOperationClaim> AppUserTypeAppOperationClaims { get; set; }
     }
 }
