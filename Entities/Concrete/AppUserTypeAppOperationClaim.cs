@@ -3,7 +3,7 @@ using Core.Entities.Concrete;
 
 namespace Entities.Concrete
 {
-    public class AppUserTypeAppOperationClaim : UserOperationClaim
+    public class AppUserTypeAppOperationClaim : UserTypeOperationClaim
     {
         public string Status { get; set; }
 
