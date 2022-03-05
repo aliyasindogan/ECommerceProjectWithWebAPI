@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Core.Aspects.Autofac.Caching;
+using Core.Entities.Concrete;
 
 namespace Business.Concrete
 
@@ -33,6 +34,7 @@ namespace Business.Concrete
         }
 
         #endregion DI
+
         [CacheAspect(10)]
         public async Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync()
         {
@@ -43,7 +45,7 @@ namespace Business.Concrete
 
         }
 
-        public async Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<AppUser, bool>> filter)
+        public async Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<User, bool>> filter)
         {
             var user = await _userDal.GetAsync(filter);
             if (user != null)
@@ -82,13 +84,13 @@ namespace Business.Concrete
             var getUser = await _userDal.GetAsync(x => x.Id == userUpdateDto.Id);
             var user = _mapper.Map<AppUser>(userUpdateDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
-            user.Password = getUser.Password;
+           // user.Password = getUser.Password;
             user.CreatedDate = getUser.CreatedDate;
             user.CreatedUserId = getUser.CreatedUserId;
             user.UpdatedDate = DateTime.Now;
             user.UpdatedUserId = 1;
-            user.Token = userUpdateDto.Token;
-            user.TokenExpireDate = userUpdateDto.TokenExpireDate;
+          //  user.Token = userUpdateDto.Token;
+           // user.TokenExpireDate = userUpdateDto.TokenExpireDate;
             var resultUpdate = await _userDal.UpdateAsync(user);
             var userUpdataMap = _mapper.Map<UserUpdateDto>(resultUpdate);
 
@@ -99,33 +101,5 @@ namespace Business.Concrete
         {
             return new SuccessApiDataResponse<bool>(await _userDal.DeleteAsync(id), Messages.Deleted);
         }
-
-        //public async Task<ApiDataResponse<AccessToken>> Authenticate(UserForLoginDto userForLoginDto)
-        //{
-        //    var user = await _userDal.GetAsync(x => x.UserName == userForLoginDto.UserName && x.Password == userForLoginDto.Password);
-        //    if (user == null)
-        //        return null;
-        //    var tokenHandler = new JwtSecurityTokenHandler();
-        //    var key = Encoding.ASCII.GetBytes(_appSettings.SecurityKey);
-        //    var tokenDescriptor = new SecurityTokenDescriptor()
-        //    {
-        //        Subject = new ClaimsIdentity(new[]
-        //        {
-        //            new Claim(ClaimTypes.Name,user.Id.ToString())
-        //        }),
-        //        Expires = DateTime.UtcNow.AddDays(7),
-        //        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        //    };
-
-        //    var token = tokenHandler.CreateToken(tokenDescriptor);
-        //    AccessToken accessToken = new AccessToken()
-        //    {
-        //        Token = tokenHandler.WriteToken(token),
-        //        Expiration = (DateTime)tokenDescriptor.Expires,
-        //        UserName = user.UserName,
-        //        UserID = user.Id
-        //    };
-        //    return await Task.Run(() => accessToken);
-        //}
     }
 }

@@ -28,7 +28,7 @@ namespace Business.Concrete
         [ValidationAspect(typeof(LoginDtoValidator))]
         public async Task<ApiDataResponse<UserDto>> LoginAsync(LoginDto loginDto)
         {
-            var user = await _userService.GetAsync(x => x.UserName == loginDto.UserName && x.Password == loginDto.Password);
+            var user = await _userService.GetAsync(x => x.UserName == loginDto.UserName /*&& x.Password == loginDto.Password*/);
             if (user.Data == null)
             {
                 return new ErrorApiDataResponse<UserDto>(null, Messages.UserNotFound);

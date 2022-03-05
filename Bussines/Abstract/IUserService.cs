@@ -1,10 +1,10 @@
-﻿using Core.Utilities.Responses;
-using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Core.Utilities.Responses;
+using Entities.Dtos.User;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Entities.Dtos.User;
 
 namespace Business.Abstract
 {
@@ -12,7 +12,7 @@ namespace Business.Abstract
     {
         Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync();
 
-        Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<AppUser, bool>> filter);
+        Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<User, bool>> filter);
 
         Task<ApiDataResponse<UserDto>> GetByIdAsync(int id);
 
