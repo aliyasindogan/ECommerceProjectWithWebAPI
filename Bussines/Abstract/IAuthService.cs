@@ -1,12 +1,12 @@
 ﻿using Core.Utilities.Responses;
-using System.Threading.Tasks;
+using Core.Utilities.Security.Token;
 using Entities.Dtos.Auth;
-using Entities.Dtos.User;
+using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
     public interface IAuthService
     {
-        Task<ApiDataResponse<UserDto>> LoginAsync(LoginDto loginDto);
+        Task<ApiDataResponse<AccessToken>> LoginAsync(LoginDto loginDto);
     }
 }
