@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Responses;
+using Entities.Concrete;
 using Entities.Dtos.User;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Business.Abstract
     {
         Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync();
 
-        Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<User, bool>> filter);
+        Task<ApiDataResponse<UserDto>> GetAsync(Expression<Func<AppUser, bool>> filter);
 
         Task<ApiDataResponse<UserDto>> GetByIdAsync(int id);
 
