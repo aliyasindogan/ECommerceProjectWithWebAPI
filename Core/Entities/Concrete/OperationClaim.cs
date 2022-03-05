@@ -2,8 +2,8 @@
 
 namespace Core.Entities.Concrete
 {
-    public class Role:BaseEntity
+    public class OperationClaim:BaseEntity
     {
-        public string RoleName { get; set; }
+        public string Name { get; set; }
     }
 }
