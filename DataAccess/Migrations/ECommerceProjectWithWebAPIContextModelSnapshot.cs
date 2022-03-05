@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(ECommerceProjectWithWebAPIContext))]
+    [DbContext(typeof(ECommerceDbContext))]
     partial class ECommerceProjectWithWebAPIContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

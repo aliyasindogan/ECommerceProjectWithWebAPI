@@ -1,13 +1,7 @@
 using AutoMapper;
-using Business.Abstract;
-using Business.Concrete;
 using Business.Mappings;
 using Core.Extensions;
-using Core.Utilities.Security.Token;
-using Core.Utilities.Security.Token.Jwt;
-using DataAccess.Abstract;
 using DataAccess.Concrete.Contexts;
-using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +24,7 @@ namespace WebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            IServiceCollection serviceCollections = services.AddDbContext<ECommerceContext>(opts => opts.UseSqlServer("Data Source =DESKTOP-CDM97OQ\\SQLEXPRESS01; Initial Catalog = ECommerceDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
+            IServiceCollection serviceCollections = services.AddDbContext<ECommerceDbContext>(opts => opts.UseSqlServer("Data Source =DESKTOP-CDM97OQ\\SQLEXPRESS01; Initial Catalog = ECommerceDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
 
             services.AddControllers();
             services.AddMemoryCache();

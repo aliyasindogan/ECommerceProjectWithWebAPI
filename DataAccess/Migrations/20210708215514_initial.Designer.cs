@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(ECommerceProjectWithWebAPIContext))]
+    [DbContext(typeof(ECommerceDbContext))]
     [Migration("20210708215514_initial")]
     partial class initial
     {
