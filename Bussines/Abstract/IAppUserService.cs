@@ -2,8 +2,7 @@
 using Core.Entities.Dtos;
 using Core.Utilities.Responses;
 using Entities.Concrete;
-using Entities.Dtos.AppOperationClaim;
-using Entities.Dtos.User;
+using Entities.Dtos.AppUser;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -13,15 +12,15 @@ namespace Business.Abstract
 {
     public interface IAppUserService
     {
-        Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync();
+        Task<ApiDataResponse<IEnumerable<AppUserDetailDto>>> GetListAsync();
 
         Task<ApiDataResponse<AppUserDto>> GetAsync(Expression<Func<AppUser, bool>> filter);
 
         Task<ApiDataResponse<AppUserDto>> GetByIdAsync(int id);
 
-        Task<ApiDataResponse<AppUserDto>> AddAsync(UserAddDto userAddDto);
+        Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto);
 
-        Task<ApiDataResponse<UserUpdateDto>> UpdateAsync(UserUpdateDto userUpdateDto);
+        Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto userUpdateDto);
 
         Task<ApiDataResponse<bool>> DeleteAsync(int id);
 
