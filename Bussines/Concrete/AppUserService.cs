@@ -1,21 +1,20 @@
 ﻿using AutoMapper;
 using Business.Abstract;
 using Business.Constants;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Transaction;
+using Core.Entities.Concrete;
+using Core.Entities.Dtos;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
 using Entities.Concrete;
-using Entities.Dtos.User;
+using Entities.Dtos.AppUser;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using Core.Aspects.Autofac.Caching;
-using Core.Entities.Concrete;
-using Entities.Dtos.AppOperationClaim;
-using Core.Entities.Dtos;
 
 namespace Business.Concrete
 
@@ -38,12 +37,12 @@ namespace Business.Concrete
         #endregion DI
 
         [CacheAspect(10)]
-        public async Task<ApiDataResponse<IEnumerable<UserDetailDto>>> GetListAsync()
+        public async Task<ApiDataResponse<IEnumerable<AppUserDetailDto>>> GetListAsync()
         {
 
             var response = await _appUserDal.GetListAsync();
-            var userDetailDtos = _mapper.Map<IEnumerable<UserDetailDto>>(response);
-            return new SuccessApiDataResponse<IEnumerable<UserDetailDto>>(userDetailDtos, Messages.Listed);
+            var userDetailDtos = _mapper.Map<IEnumerable<AppUserDetailDto>>(response);
+            return new SuccessApiDataResponse<IEnumerable<AppUserDetailDto>>(userDetailDtos, Messages.Listed);
 
         }
 
@@ -70,7 +69,7 @@ namespace Business.Concrete
         }
         [TransactionScopeAspect]
         [CacheRemoveAspect("IUserService.GetListAsync")]
-        public async Task<ApiDataResponse<AppUserDto>> AddAsync(UserAddDto userAddDto)
+        public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
         {
             var user = _mapper.Map<AppUser>(userAddDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
@@ -81,7 +80,7 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<AppUserDto>(userDto, Messages.Added);
         }
 
-        public async Task<ApiDataResponse<UserUpdateDto>> UpdateAsync(UserUpdateDto userUpdateDto)
+        public async Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto userUpdateDto)
         {
             var getUser = await _appUserDal.GetAsync(x => x.Id == userUpdateDto.Id);
             var user = _mapper.Map<AppUser>(userUpdateDto);
@@ -94,9 +93,9 @@ namespace Business.Concrete
           //  user.Token = userUpdateDto.Token;
            // user.TokenExpireDate = userUpdateDto.TokenExpireDate;
             var resultUpdate = await _appUserDal.UpdateAsync(user);
-            var userUpdataMap = _mapper.Map<UserUpdateDto>(resultUpdate);
+            var userUpdataMap = _mapper.Map<AppUserUpdateDto>(resultUpdate);
 
-            return new SuccessApiDataResponse<UserUpdateDto>(userUpdataMap, Messages.Updated);
+            return new SuccessApiDataResponse<AppUserUpdateDto>(userUpdataMap, Messages.Updated);
         }
 
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
