@@ -1,7 +1,7 @@
 ﻿using Core.Utilities.Responses;
-using Entities.Dtos.User;
-using System.Threading.Tasks;
+using Entities.Dtos.AppUser;
 using Entities.Dtos.Auth;
+using System.Threading.Tasks;
 
 namespace WebAPIWithCoreMvc.ApiServices.Interfaces
 {

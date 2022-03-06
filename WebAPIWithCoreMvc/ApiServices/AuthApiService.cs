@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Responses;
+using Entities.Dtos.AppUser;
 using Entities.Dtos.Auth;
-using Entities.Dtos.User;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Net.Http.Json;
