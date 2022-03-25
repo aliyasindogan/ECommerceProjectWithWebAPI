@@ -64,7 +64,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
 
             byte[] passwordHash, passwordSalt;
             Sha512Helper.CreatePasswordHash("12345", out passwordHash, out passwordSalt);
-            builder.HasData(new User
+            builder.HasData(new AppUser
             {
                 Id = 1,
                 FirstName = "Ali Yasin",
@@ -78,6 +78,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 GsmNumber = String.Empty,
                 ProfileImageUrl = String.Empty,
                 UserTypeId = (int)AppUserTypes.SystemAdmin,
+                RefreshToken = Guid.NewGuid(),
             });
         }
     }
