@@ -1,18 +1,17 @@
-﻿using System.Threading.Tasks;
-using Business.Abstract;
+﻿using Business.Abstract;
 using Entities.Dtos.Auth;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthsController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private IAuthService _authService;
 
-        public AuthsController(IAuthService authService)
+        public AuthController(IAuthService authService)
         {
             _authService = authService;
         }
