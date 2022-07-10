@@ -17,6 +17,7 @@ namespace DataAccess.Concrete.Contexts
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connString =  "Data Source =DESKTOP-CGF47Q4\\ALIYASIN; Initial Catalog = ECommerceDb; Integrated Security = True";
+
             optionsBuilder.UseSqlServer(connString);
         }
 
