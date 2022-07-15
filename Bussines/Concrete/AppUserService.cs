@@ -46,15 +46,14 @@ namespace Business.Concrete
 
         }
 
-        public async Task<ApiDataResponse<AppUserDto>> GetAsync(Expression<Func<AppUser, bool>> filter)
+        public async Task<ApiDataResponse<AppUser>> GetAsync(Expression<Func<AppUser, bool>> filter)
         {
             var user = await _appUserDal.GetAsync(filter);
             if (user != null)
             {
-                var userDto = _mapper.Map<AppUserDto>(user);
-                return new SuccessApiDataResponse<AppUserDto>(userDto, Messages.Listed);
+                return new SuccessApiDataResponse<AppUser>(user, Messages.Listed);
             }
-            return new ErrorApiDataResponse<AppUserDto>(null, Messages.NotListed);
+            return new ErrorApiDataResponse<AppUser>(null, Messages.NotListed);
         }
 
         public async Task<ApiDataResponse<AppUserDto>> GetByIdAsync(int id)

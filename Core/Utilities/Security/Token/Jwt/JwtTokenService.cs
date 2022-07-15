@@ -1,5 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Entities.Dtos;
+using Core.Utilities.Messages;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -23,13 +24,22 @@ namespace Core.Utilities.Security.Token.Jwt
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.SecurityKey);
-            var tokenDescriptor = new SecurityTokenDescriptor()
-            {
-                Subject = new ClaimsIdentity(new[]
+
+            ClaimsIdentity identity = null;
+            identity = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
-                    new Claim(ClaimTypes.Name,user.UserName)
-                }),
+                    new Claim(ClaimTypes.Name,user.FirstName + " " +user.LastName),
+                    new Claim(ClaimTypes.Email,user.Email),
+                });
+            foreach (var item in roles)
+            {
+                identity.AddClaim(new Claim(ClaimTypes.Role, item.Name));
+            }
+
+            var tokenDescriptor = new SecurityTokenDescriptor()
+            {
+                Subject = identity,
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -40,8 +50,13 @@ namespace Core.Utilities.Security.Token.Jwt
                 Token = tokenHandler.WriteToken(token),
                 Expiration = (DateTime)tokenDescriptor.Expires,
                 UserName = user.UserName,
-                UserID = user.Id
+                UserID = user.Id,
+                FullName = user.FirstName + " " + user.LastName,
+                ImageUrl = user.ProfileImageUrl,
+                UserTypeID = user.UserTypeId,
+                UserTypeName = user.UserTypeId == 1 ? Constants.SystemAdmin : Constants.Admin,
             };
         }
+
     }
 }

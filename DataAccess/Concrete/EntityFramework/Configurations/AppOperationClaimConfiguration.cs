@@ -1,10 +1,6 @@
-﻿using Core.Entities.Concrete;
-using Core.Entities.Enums;
-using Core.Utilities.Security.Hash.Sha512;
-using Entities.Concrete;
+﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace DataAccess.Concrete.EntityFramework.Configurations
 {
@@ -22,7 +18,9 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 .IsRequired();
 
             builder.HasData(
-                new AppOperationClaim() { Id=1,Name="AppUser"}
+                new AppOperationClaim() { Id = 1, Name = "AppUser" },
+                new AppOperationClaim() { Id = 2, Name = "AppUserTypeAppOperationClaim" },//Test
+                new AppOperationClaim() { Id = 3, Name = "AppUserType" }//Test
                 );
         }
     }
