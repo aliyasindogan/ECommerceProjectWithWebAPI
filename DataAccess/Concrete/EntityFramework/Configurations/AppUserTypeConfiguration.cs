@@ -18,8 +18,8 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 .IsRequired();
 
             builder.HasData(
-                new AppUserType() { Id=1, UserTypeName = "System Admin"},
-                new AppUserType() { Id=2, UserTypeName = "Admin"}
+                new AppUserType() { Id=-1, UserTypeName = "System Admin"},
+                new AppUserType() { Id=-2, UserTypeName = "Admin"}
                 );
         }
     }

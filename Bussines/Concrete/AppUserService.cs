@@ -2,6 +2,7 @@
 using Business.Abstract;
 using Business.Constants;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.SecuredOperation;
 using Core.Aspects.Autofac.Transaction;
 using Core.Entities.Concrete;
 using Core.Entities.Dtos;
@@ -36,7 +37,8 @@ namespace Business.Concrete
 
         #endregion DI
 
-        [CacheAspect(10)]
+        //[CacheAspect(10)]
+        [SecuredOperationAspect("AppUser.List")]
         public async Task<ApiDataResponse<IEnumerable<AppUserDetailDto>>> GetListAsync()
         {
 

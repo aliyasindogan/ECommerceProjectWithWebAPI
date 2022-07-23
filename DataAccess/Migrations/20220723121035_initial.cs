@@ -3,13 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class UpdateUserTable : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Users",
-                schema: "dbo");
+            migrationBuilder.EnsureSchema(
+                name: "dbo");
 
             migrationBuilder.CreateTable(
                 name: "AppOperationClaims",
@@ -77,7 +76,6 @@ namespace DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Status = table.Column<string>(type: "char(4)", maxLength: 4, nullable: false),
-                    AppUserId = table.Column<int>(type: "int", nullable: true),
                     UserTypeId = table.Column<int>(type: "int", nullable: false),
                     OperationClaimId = table.Column<int>(type: "int", nullable: false),
                     UpdatedUserId = table.Column<int>(type: "int", nullable: true),
@@ -94,13 +92,6 @@ namespace DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_AppUserTypeAppOperationClaims_AppUsers_AppUserId",
-                        column: x => x.AppUserId,
-                        principalSchema: "dbo",
-                        principalTable: "AppUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_AppUserTypeAppOperationClaims_AppUserTypes_UserTypeId",
                         column: x => x.UserTypeId,
                         principalSchema: "dbo",
@@ -113,7 +104,12 @@ namespace DataAccess.Migrations
                 schema: "dbo",
                 table: "AppOperationClaims",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { 1, "AppUser" });
+                values: new object[,]
+                {
+                    { 1, "AppUser" },
+                    { 2, "AppUserTypeAppOperationClaim" },
+                    { 3, "AppUserType" }
+                });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
@@ -121,27 +117,37 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "UserTypeName" },
                 values: new object[,]
                 {
-                    { 1, "System Admin" },
-                    { 2, "Admin" }
+                    { -1, "System Admin" },
+                    { -2, "Admin" }
                 });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "AppUsers",
                 columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "Email", "FirstName", "GsmNumber", "IsDeleted", "LastName", "PasswordHash", "PasswordSalt", "ProfileImageUrl", "RefreshToken", "UpdatedDate", "UpdatedUserId", "UserName", "UserTypeId" },
-                values: new object[] { 1, new DateTime(2022, 3, 25, 23, 8, 13, 960, DateTimeKind.Local).AddTicks(4912), 1, null, null, "ali@gmail.com", "Ali Yasin", "", false, "Doğan", new byte[] { 2, 42, 139, 34, 254, 191, 85, 175, 99, 175, 5, 104, 21, 179, 125, 97, 248, 136, 228, 52, 30, 172, 134, 242, 73, 93, 143, 242, 114, 204, 206, 202, 197, 223, 248, 181, 139, 178, 99, 197, 136, 77, 113, 75, 138, 234, 109, 131, 37, 27, 3, 83, 208, 95, 58, 192, 151, 15, 8, 41, 44, 226, 29, 101 }, new byte[] { 244, 183, 176, 211, 117, 75, 181, 109, 2, 213, 84, 57, 107, 21, 17, 56, 76, 207, 91, 97, 250, 138, 253, 181, 21, 244, 173, 246, 123, 184, 69, 24, 67, 179, 36, 103, 173, 100, 240, 73, 17, 26, 114, 123, 172, 97, 170, 110, 215, 46, 153, 79, 138, 94, 209, 127, 90, 26, 35, 28, 236, 14, 145, 202, 177, 31, 115, 81, 106, 141, 6, 238, 208, 195, 172, 149, 17, 188, 50, 33, 2, 0, 166, 43, 176, 120, 23, 25, 184, 231, 158, 187, 247, 131, 124, 0, 236, 109, 184, 15, 6, 101, 129, 241, 5, 45, 6, 36, 230, 7, 95, 21, 27, 254, 237, 181, 89, 115, 8, 199, 103, 114, 236, 90, 67, 220, 86, 233 }, "", new Guid("b4489d7f-739a-435f-a645-95ec5aa7739c"), null, null, "aliyasin", 1 });
+                values: new object[,]
+                {
+                    { -1, new DateTime(2022, 7, 23, 15, 10, 33, 957, DateTimeKind.Local).AddTicks(7047), 1, null, null, "ali@gmail.com", "Ali Yasin", "", false, "Doğan", new byte[] { 203, 118, 128, 141, 193, 235, 163, 168, 249, 144, 166, 212, 154, 19, 208, 141, 121, 109, 98, 82, 111, 251, 79, 44, 24, 179, 64, 253, 125, 182, 78, 167, 251, 103, 27, 119, 192, 143, 40, 63, 139, 22, 211, 114, 39, 75, 145, 130, 156, 121, 62, 65, 241, 151, 92, 174, 139, 101, 7, 31, 174, 87, 37, 249 }, new byte[] { 184, 150, 200, 252, 217, 98, 187, 170, 66, 246, 46, 78, 14, 4, 93, 56, 173, 44, 188, 228, 156, 138, 132, 247, 98, 214, 97, 220, 3, 128, 77, 128, 126, 231, 209, 104, 139, 124, 104, 50, 61, 11, 247, 113, 149, 242, 150, 250, 119, 141, 112, 247, 155, 187, 207, 73, 66, 225, 123, 71, 156, 180, 118, 88, 244, 201, 46, 131, 173, 155, 125, 231, 168, 213, 213, 187, 239, 157, 24, 245, 28, 171, 212, 79, 165, 187, 193, 170, 9, 47, 50, 167, 10, 161, 143, 243, 85, 243, 60, 231, 95, 130, 146, 159, 165, 131, 152, 12, 134, 170, 205, 175, 232, 230, 178, 141, 177, 147, 43, 136, 129, 58, 27, 189, 66, 108, 201, 93 }, "", new Guid("8d7b733c-653d-4e3a-813f-76764dc95c6e"), null, null, "aliyasin", -1 },
+                    { -2, new DateTime(2022, 7, 23, 15, 10, 33, 961, DateTimeKind.Local).AddTicks(1332), 1, null, null, "admin@gmail.com", "Admin", "", false, "ADMIN", new byte[] { 203, 118, 128, 141, 193, 235, 163, 168, 249, 144, 166, 212, 154, 19, 208, 141, 121, 109, 98, 82, 111, 251, 79, 44, 24, 179, 64, 253, 125, 182, 78, 167, 251, 103, 27, 119, 192, 143, 40, 63, 139, 22, 211, 114, 39, 75, 145, 130, 156, 121, 62, 65, 241, 151, 92, 174, 139, 101, 7, 31, 174, 87, 37, 249 }, new byte[] { 184, 150, 200, 252, 217, 98, 187, 170, 66, 246, 46, 78, 14, 4, 93, 56, 173, 44, 188, 228, 156, 138, 132, 247, 98, 214, 97, 220, 3, 128, 77, 128, 126, 231, 209, 104, 139, 124, 104, 50, 61, 11, 247, 113, 149, 242, 150, 250, 119, 141, 112, 247, 155, 187, 207, 73, 66, 225, 123, 71, 156, 180, 118, 88, 244, 201, 46, 131, 173, 155, 125, 231, 168, 213, 213, 187, 239, 157, 24, 245, 28, 171, 212, 79, 165, 187, 193, 170, 9, 47, 50, 167, 10, 161, 143, 243, 85, 243, 60, 231, 95, 130, 146, 159, 165, 131, 152, 12, 134, 170, 205, 175, 232, 230, 178, 141, 177, 147, 43, 136, 129, 58, 27, 189, 66, 108, 201, 93 }, "", new Guid("e04b19e5-9503-4d7b-afed-667b55e5b6d1"), null, null, "admin", -2 }
+                });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "AppUserTypeAppOperationClaims",
-                columns: new[] { "Id", "AppUserId", "OperationClaimId", "Status", "UpdatedDate", "UpdatedUserId", "UserTypeId" },
-                values: new object[] { -1, null, 1, "1111", null, null, 2 });
+                columns: new[] { "Id", "OperationClaimId", "Status", "UpdatedDate", "UpdatedUserId", "UserTypeId" },
+                values: new object[] { -1, 1, "1011", null, null, -2 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_AppUserTypeAppOperationClaims_AppUserId",
+            migrationBuilder.InsertData(
                 schema: "dbo",
                 table: "AppUserTypeAppOperationClaims",
-                column: "AppUserId");
+                columns: new[] { "Id", "OperationClaimId", "Status", "UpdatedDate", "UpdatedUserId", "UserTypeId" },
+                values: new object[] { -2, 2, "1111", null, null, -2 });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
+                table: "AppUserTypeAppOperationClaims",
+                columns: new[] { "Id", "OperationClaimId", "Status", "UpdatedDate", "UpdatedUserId", "UserTypeId" },
+                values: new object[] { -3, 3, "1111", null, null, -2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUserTypeAppOperationClaims_OperationClaimId",
@@ -159,6 +165,10 @@ namespace DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AppUsers",
+                schema: "dbo");
+
+            migrationBuilder.DropTable(
                 name: "AppUserTypeAppOperationClaims",
                 schema: "dbo");
 
@@ -167,43 +177,8 @@ namespace DataAccess.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "AppUsers",
-                schema: "dbo");
-
-            migrationBuilder.DropTable(
                 name: "AppUserTypes",
                 schema: "dbo");
-
-            migrationBuilder.CreateTable(
-                name: "Users",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2021, 7, 9, 0, 55, 13, 983, DateTimeKind.Local).AddTicks(7403)),
-                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Gender = table.Column<bool>(type: "bit", nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedUserId = table.Column<int>(type: "int", nullable: true),
-                    UserName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.InsertData(
-                schema: "dbo",
-                table: "Users",
-                columns: new[] { "Id", "Address", "CreatedDate", "CreatedUserId", "DateOfBirth", "Email", "FirstName", "Gender", "LastName", "Password", "UpdatedDate", "UpdatedUserId", "UserName" },
-                values: new object[] { 1, "İSTANBUL", new DateTime(2021, 7, 9, 0, 55, 14, 0, DateTimeKind.Local).AddTicks(393), 1, new DateTime(1979, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "ali@gmail.com", "Ali Yasin", true, "Doğan", "12345", null, null, "aliyasin" });
         }
     }
 }

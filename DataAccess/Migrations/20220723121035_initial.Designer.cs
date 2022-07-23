@@ -4,14 +4,16 @@ using DataAccess.Concrete.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    partial class ECommerceProjectWithWebAPIContextModelSnapshot : ModelSnapshot
+    [Migration("20220723121035_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,20 +146,37 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CreatedDate = new DateTime(2022, 7, 15, 14, 47, 14, 153, DateTimeKind.Local).AddTicks(2127),
+                            Id = -1,
+                            CreatedDate = new DateTime(2022, 7, 23, 15, 10, 33, 957, DateTimeKind.Local).AddTicks(7047),
                             CreatedUserId = 1,
                             Email = "ali@gmail.com",
                             FirstName = "Ali Yasin",
                             GsmNumber = "",
                             IsDeleted = false,
                             LastName = "Doğan",
-                            PasswordHash = new byte[] { 80, 132, 110, 179, 236, 9, 253, 177, 22, 153, 183, 26, 186, 195, 7, 87, 103, 206, 120, 233, 9, 194, 35, 134, 190, 35, 97, 97, 44, 150, 247, 78, 32, 241, 108, 118, 195, 208, 188, 213, 76, 251, 60, 127, 173, 215, 216, 12, 183, 150, 72, 132, 236, 218, 198, 35, 239, 171, 74, 92, 241, 17, 139, 106 },
-                            PasswordSalt = new byte[] { 182, 3, 95, 30, 6, 183, 218, 36, 136, 32, 44, 72, 30, 25, 37, 231, 176, 159, 136, 13, 188, 102, 32, 58, 87, 148, 99, 231, 207, 94, 134, 91, 229, 111, 123, 250, 136, 30, 14, 50, 140, 194, 224, 41, 126, 154, 228, 30, 184, 206, 77, 159, 85, 89, 149, 109, 80, 50, 158, 123, 195, 88, 147, 55, 103, 73, 121, 239, 4, 69, 218, 127, 146, 171, 104, 1, 183, 101, 20, 99, 77, 1, 254, 116, 62, 191, 227, 85, 180, 72, 71, 69, 112, 226, 170, 138, 85, 97, 217, 173, 201, 173, 128, 204, 158, 74, 236, 222, 249, 183, 244, 13, 229, 89, 105, 105, 134, 170, 34, 245, 103, 189, 218, 213, 150, 254, 197, 230 },
+                            PasswordHash = new byte[] { 203, 118, 128, 141, 193, 235, 163, 168, 249, 144, 166, 212, 154, 19, 208, 141, 121, 109, 98, 82, 111, 251, 79, 44, 24, 179, 64, 253, 125, 182, 78, 167, 251, 103, 27, 119, 192, 143, 40, 63, 139, 22, 211, 114, 39, 75, 145, 130, 156, 121, 62, 65, 241, 151, 92, 174, 139, 101, 7, 31, 174, 87, 37, 249 },
+                            PasswordSalt = new byte[] { 184, 150, 200, 252, 217, 98, 187, 170, 66, 246, 46, 78, 14, 4, 93, 56, 173, 44, 188, 228, 156, 138, 132, 247, 98, 214, 97, 220, 3, 128, 77, 128, 126, 231, 209, 104, 139, 124, 104, 50, 61, 11, 247, 113, 149, 242, 150, 250, 119, 141, 112, 247, 155, 187, 207, 73, 66, 225, 123, 71, 156, 180, 118, 88, 244, 201, 46, 131, 173, 155, 125, 231, 168, 213, 213, 187, 239, 157, 24, 245, 28, 171, 212, 79, 165, 187, 193, 170, 9, 47, 50, 167, 10, 161, 143, 243, 85, 243, 60, 231, 95, 130, 146, 159, 165, 131, 152, 12, 134, 170, 205, 175, 232, 230, 178, 141, 177, 147, 43, 136, 129, 58, 27, 189, 66, 108, 201, 93 },
                             ProfileImageUrl = "",
-                            RefreshToken = new Guid("352e2e2f-051d-437e-929f-e489677113ba"),
+                            RefreshToken = new Guid("8d7b733c-653d-4e3a-813f-76764dc95c6e"),
                             UserName = "aliyasin",
-                            UserTypeId = 1
+                            UserTypeId = -1
+                        },
+                        new
+                        {
+                            Id = -2,
+                            CreatedDate = new DateTime(2022, 7, 23, 15, 10, 33, 961, DateTimeKind.Local).AddTicks(1332),
+                            CreatedUserId = 1,
+                            Email = "admin@gmail.com",
+                            FirstName = "Admin",
+                            GsmNumber = "",
+                            IsDeleted = false,
+                            LastName = "ADMIN",
+                            PasswordHash = new byte[] { 203, 118, 128, 141, 193, 235, 163, 168, 249, 144, 166, 212, 154, 19, 208, 141, 121, 109, 98, 82, 111, 251, 79, 44, 24, 179, 64, 253, 125, 182, 78, 167, 251, 103, 27, 119, 192, 143, 40, 63, 139, 22, 211, 114, 39, 75, 145, 130, 156, 121, 62, 65, 241, 151, 92, 174, 139, 101, 7, 31, 174, 87, 37, 249 },
+                            PasswordSalt = new byte[] { 184, 150, 200, 252, 217, 98, 187, 170, 66, 246, 46, 78, 14, 4, 93, 56, 173, 44, 188, 228, 156, 138, 132, 247, 98, 214, 97, 220, 3, 128, 77, 128, 126, 231, 209, 104, 139, 124, 104, 50, 61, 11, 247, 113, 149, 242, 150, 250, 119, 141, 112, 247, 155, 187, 207, 73, 66, 225, 123, 71, 156, 180, 118, 88, 244, 201, 46, 131, 173, 155, 125, 231, 168, 213, 213, 187, 239, 157, 24, 245, 28, 171, 212, 79, 165, 187, 193, 170, 9, 47, 50, 167, 10, 161, 143, 243, 85, 243, 60, 231, 95, 130, 146, 159, 165, 131, 152, 12, 134, 170, 205, 175, 232, 230, 178, 141, 177, 147, 43, 136, 129, 58, 27, 189, 66, 108, 201, 93 },
+                            ProfileImageUrl = "",
+                            RefreshToken = new Guid("e04b19e5-9503-4d7b-afed-667b55e5b6d1"),
+                            UserName = "admin",
+                            UserTypeId = -2
                         });
                 });
 
@@ -181,12 +200,12 @@ namespace DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = -1,
                             UserTypeName = "System Admin"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = -2,
                             UserTypeName = "Admin"
                         });
                 });
@@ -231,22 +250,22 @@ namespace DataAccess.Migrations
                         {
                             Id = -1,
                             OperationClaimId = 1,
-                            Status = "1111",
-                            UserTypeId = 1
+                            Status = "1011",
+                            UserTypeId = -2
                         },
                         new
                         {
                             Id = -2,
                             OperationClaimId = 2,
                             Status = "1111",
-                            UserTypeId = 1
+                            UserTypeId = -2
                         },
                         new
                         {
                             Id = -3,
                             OperationClaimId = 3,
                             Status = "1111",
-                            UserTypeId = 1
+                            UserTypeId = -2
                         });
                 });
 

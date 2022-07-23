@@ -25,7 +25,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new OperationClaimDto
                              {
                                  Id = appOperationClaim.Id,
-                                 Name = appOperationClaim.Name
+                                 Name = appOperationClaim.Name+ "."+ appUserTypeAppOperationClaim.Status
                              };
                 return await result.ToListAsync();
             }
