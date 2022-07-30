@@ -3,6 +3,7 @@ using Autofac.Extras.DynamicProxy;
 using Business.Abstract;
 using Business.Concrete;
 using Castle.DynamicProxy;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.CrossCuttingConcers.Caching;
 using Core.CrossCuttingConcers.Caching.Microsoft;
 using Core.Utilities.Interceptors;
@@ -22,6 +23,7 @@ namespace Business.DependencyResolvers
             builder.RegisterType<JwtTokenService>().As<ITokenService>();
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<MemoryCacheService>().As<ICacheService>();
+            builder.RegisterType<FileLogger>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

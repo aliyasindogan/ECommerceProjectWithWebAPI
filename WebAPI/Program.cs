@@ -3,6 +3,7 @@ using Autofac.Extensions.DependencyInjection;
 using Business.DependencyResolvers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace WebAPI
 {
@@ -24,6 +25,10 @@ namespace WebAPI
                .ConfigureWebHostDefaults(webBuilder =>
                {
                    webBuilder.UseStartup<Startup>();
+               }).ConfigureLogging(logging=>
+               {
+                   logging.ClearProviders();
+                   logging.SetMinimumLevel(LogLevel.Trace);
                });
         }
     }

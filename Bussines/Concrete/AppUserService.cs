@@ -2,8 +2,10 @@
 using Business.Abstract;
 using Business.Constants;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.SecuredOperation;
 using Core.Aspects.Autofac.Transaction;
+using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Entities.Concrete;
 using Core.Entities.Dtos;
 using Core.Utilities.Responses;
@@ -39,6 +41,7 @@ namespace Business.Concrete
 
         //[CacheAspect(10)]
         [SecuredOperationAspect("AppUser.List")]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<IEnumerable<AppUserDetailDto>>> GetListAsync()
         {
 

@@ -1,0 +1,1 @@
+2022-07-30 14:45:50.838 [Information] {"FullName":null,"MethodName":"GetListAsync","User":"Admin ADMIN","Parameters":[]}
