@@ -1,0 +1,2 @@
+2022-08-07 21:27:35.708 [Error] {"ExceptionMessage":"Unauthorized!","MethodName":"GetListAsync","User":"Admin ADMIN","Parameters":[]}
+2022-08-07 21:29:22.272 [Information] {"MethodName":"GetListAsync","User":"Admin ADMIN","Parameters":[]}

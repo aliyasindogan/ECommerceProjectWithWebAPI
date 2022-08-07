@@ -15,7 +15,7 @@ namespace Core.Aspects.Autofac.Validation
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
-                throw new Exception("Yanlış doğrulama türü");
+                throw new System.Exception("Yanlış doğrulama türü");
             }
             _validatorType = validatorType;
         }
