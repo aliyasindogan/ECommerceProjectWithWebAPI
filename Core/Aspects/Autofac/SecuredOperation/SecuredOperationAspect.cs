@@ -25,13 +25,17 @@ namespace Core.Aspects.Autofac.SecuredOperation
             {
                 var userId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
-                if (roleClaims.Count <= 0)
-                    throw new System.Exception("");
+
 
                 if (_attributeRoles != null)
                 {
+
+
                     if (userId != Constants.SystemAdminID)
                     {
+                        if (roleClaims.Count <= 0)
+                            throw new System.Exception("Bu kullanıcıya rol eklenmemiş!");
+
                         foreach (var role in _attributeRoles)
                         {
                             string roleName = role;
