@@ -10,9 +10,9 @@ namespace Core.Providers
     public class RequestHeaderCultureProvider : RequestCultureProvider
     {
         public string HeaderName { get; set; } = Constants.AcceptLangauge;
-        private AppSettings _appsetting;
+        private LocalizationAppSettings _appsetting;
 
-        public RequestHeaderCultureProvider(AppSettings settings)
+        public RequestHeaderCultureProvider(LocalizationAppSettings settings)
         {
             _appsetting = settings;
         }

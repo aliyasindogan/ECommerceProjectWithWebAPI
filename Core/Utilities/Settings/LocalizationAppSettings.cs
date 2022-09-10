@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace Core.Utilities.Settings
 {
-    public class AppSettings
+    public class LocalizationAppSettings
     {
         private Dictionary<string, string> _cultures;
         private string _localizations;
         public string BaseUrl { get; set; }
-        public AppSettings()
+        public LocalizationAppSettings()
         {
             _cultures = new Dictionary<string, string>();
         }

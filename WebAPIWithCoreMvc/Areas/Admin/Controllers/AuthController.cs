@@ -1,10 +1,15 @@
-﻿using System.Security.Claims;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Entities.Abstract.Enums;
 using Entities.Dtos.Auth;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 
 namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
@@ -24,30 +29,50 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            GetLanguages();
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
+            GetLanguages();
+
+            string _language = loginDto.LanguageId == (int)Languages.Turkish ? "tr-TR" : "en-US";
+
+            Response.Cookies.Append(
+                CookieRequestCultureProvider.DefaultCookieName,
+                CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(_language)),
+                new CookieOptions { Expires = DateTimeOffset.UtcNow.AddDays(7) }
+            );
+
+
             var user = await _authApiService.LoginAsync(loginDto);
-            if (user != null && user.Success)
-            {
-                //Todo: Token eklenecek
-                _httpContextAccessor.HttpContext.Session.SetString("token", user.Data.UserName);
-                var userClaims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
-                userClaims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Data.Id.ToString()));
-                userClaims.AddClaim(new Claim(ClaimTypes.Name, user.Data.UserName));
-                var claimPrincipal = new ClaimsPrincipal(userClaims);
-                var authProperties = new AuthenticationProperties() { IsPersistent = loginDto.IsRememberMe };
-                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, authProperties);
-                return RedirectToAction("Index", "User", new { area = "Admin" });
-            }
-            else
+            if (user != null && !user.Success)
             {
                 ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
+                return View(loginDto);
             }
-            return View(loginDto);
+            var userClaims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
+            userClaims.AddClaim(new Claim("token", user.Data.Token));
+            userClaims.AddClaim(new Claim("language", _language));
+            userClaims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Data.UserID.ToString()));
+            userClaims.AddClaim(new Claim(ClaimTypes.Name, user.Data.UserName));
+            userClaims.AddClaim(new Claim("FullName", user.Data.FullName));
+            var claimPrincipal = new ClaimsPrincipal(userClaims);
+            var authProperties = new AuthenticationProperties() { IsPersistent = loginDto.IsRememberMe };
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, authProperties);
+            return RedirectToAction("Index", "User", new { area = "Admin" });
+        }
+
+        private void GetLanguages()
+        {
+            List<SelectListItem> languageList = new()
+            {
+                new SelectListItem { Value = "1", Text = "Türkçe" },
+                new SelectListItem { Value = "2", Text = "English" },
+            };
+            ViewBag.LanguageList = languageList;
         }
     }
 }

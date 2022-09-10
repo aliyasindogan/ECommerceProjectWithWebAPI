@@ -11,22 +11,16 @@ namespace WebAPIWithCoreMvc.ApiServices
 {
     public class UserApiService : IUserApiService
     {
-        private readonly HttpClient _httpClient;
+        private readonly IHttpClientService _httpClientService;
 
-        public UserApiService(HttpClient httpClient)
+        public UserApiService(IHttpClientService httpClientService)
         {
-            _httpClient = httpClient;
+            _httpClientService = httpClientService;
         }
 
-        public async Task<List<AppUserDetailDto>> GetListAsync()
+        public async Task<ApiDataResponse<List<AppUserDetailDto>>> GetListAsync()
         {
-            var response = await _httpClient.GetAsync("Users/GetList");
-            if (!response.IsSuccessStatusCode)
-            {
-                return null;
-            }
-            var responseSuccess = await response.Content.ReadFromJsonAsync<ApiDataResponse<IEnumerable<AppUserDetailDto>>>();
-            return responseSuccess.Data.ToList();
+            return await _httpClientService.GetListAsync<AppUserDetailDto>("AppUsers/GetList");
         }
     }
 }

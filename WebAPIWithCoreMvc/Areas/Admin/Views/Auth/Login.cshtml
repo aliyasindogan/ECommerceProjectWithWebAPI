@@ -45,6 +45,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="input-group mb-3">
+                        <select asp-for="LanguageId" class="form-control" asp-items="@ViewBag.languageList"></select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-language"></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">

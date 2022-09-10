@@ -9,8 +9,8 @@ namespace Core.Providers
 {
     public class CookieRequestCultureProvider : RequestCultureProvider
     {
-        private AppSettings _appsetting;
-        public CookieRequestCultureProvider(AppSettings settings)
+        private LocalizationAppSettings _appsetting;
+        public CookieRequestCultureProvider(LocalizationAppSettings settings)
         {
             _appsetting = settings;
         }

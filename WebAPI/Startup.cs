@@ -1,6 +1,7 @@
 using AutoMapper;
 using Business.Mappings;
 using Core.Extensions;
+using Core.Localize;
 using Core.Providers;
 using Core.Utilities.Messages;
 using Core.Utilities.Settings;
@@ -36,8 +37,8 @@ namespace WebAPI
             services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                AppSettings settings = new AppSettings();
-                Configuration.GetSection("AppSettings").Bind(settings);
+                LocalizationAppSettings settings = new LocalizationAppSettings();
+                Configuration.GetSection("LocalizationAppSettings").Bind(settings);
                 var cultures = new List<CultureInfo>
                 {
                     new CultureInfo(Constants.LangTR),
@@ -53,7 +54,14 @@ namespace WebAPI
 
             services.AddDbContext<ECommerceDbContext>(opts => opts.UseSqlServer("Data Source =(LocalDB)\\MSSQLLocalDB; Initial Catalog = ECommerceDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddDataAnnotationsLocalization(options =>
+            {
+                options.DataAnnotationLocalizerProvider = (type, factory) =>
+                {
+                    return factory.Create(typeof(Resource));
+                };
+            });
             services.AddMemoryCache();
             services.AddCustomSwagger();
             services.AddCustomJwtToken(Configuration);

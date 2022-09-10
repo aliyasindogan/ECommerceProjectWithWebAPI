@@ -120,4 +120,7 @@
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>User not found !</value>
   </data>
+  <data name="LABEL_UserName" xml:space="preserve">
+    <value>User Name</value>
+  </data>
 </root>

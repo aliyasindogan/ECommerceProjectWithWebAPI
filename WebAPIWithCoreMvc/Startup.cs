@@ -1,13 +1,22 @@
 using System;
+using Core.Utilities.Settings;
+using System.Collections.Generic;
+using System.Globalization;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebAPIWithCoreMvc.ApiServices;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Handler;
+using Core.Utilities.Messages;
+using CookieRequestCultureProvider = Core.Providers.CookieRequestCultureProvider;
+using Core.Utilities.Localization;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 
 namespace WebAPIWithCoreMvc
 {
@@ -23,22 +32,41 @@ namespace WebAPIWithCoreMvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            #region Localization
+
+            services.AddLocalization(options => { options.ResourcesPath = "Resources"; });
+            LocalizationAppSettings settings = new LocalizationAppSettings();
+            Configuration.GetSection("LocalizationAppSettings").Bind(settings);
+
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var cultures = new List<CultureInfo>
+                {
+                    new CultureInfo(Constants.LangTR),
+                    new CultureInfo(Constants.LangEN)
+                };
+                options.DefaultRequestCulture = new RequestCulture(Constants.LangTR, Constants.LangTR);
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
+                options.AddInitialRequestCultureProvider(new CookieRequestCultureProvider(settings));
+            });
+
+            #endregion Localization
             services.AddControllersWithViews();
             services.AddHttpContextAccessor();
             services.AddSession();
             services.AddScoped<AuthTokenHandler>();
+            services.AddTransient<IAuthApiService, AuthApiService>();
+            services.AddTransient<IUserApiService, UserApiService>();
+            services.AddSingleton<ILocalizationService, LocalizationService>();
+            services.AddSingleton(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
 
             #region HttpClient
-
-            services.AddHttpClient<IAuthApiService, AuthApiService>(opt =>
-                {
-                    opt.BaseAddress = new Uri("http://localhost:63545/api/");
-                });
-            services.AddHttpClient<IUserApiService, UserApiService>(opt =>
+            services.AddHttpClient<IHttpClientService, HttpClientService>(opt =>
             {
-                opt.BaseAddress = new Uri("http://localhost:63545/api/");
-            }).AddHttpMessageHandler<AuthTokenHandler>();
+                opt.BaseAddress = new Uri(settings.BaseUrl);
 
+            }).AddHttpMessageHandler<AuthTokenHandler>();
             #endregion HttpClient
 
             #region Cookie
@@ -57,6 +85,9 @@ namespace WebAPIWithCoreMvc
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+            app.UseRequestLocalization(localizationOptions.Value);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
