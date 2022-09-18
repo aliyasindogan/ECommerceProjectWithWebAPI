@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Messages;
+﻿using Core.Utilities.Exceptions;
+using Core.Utilities.Messages;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Net;
@@ -6,7 +7,6 @@ using System.Net.Http;
 using System.Reflection.Metadata;
 using System.Threading;
 using System.Threading.Tasks;
-using WebAPIWithCoreMvc.Exceptions;
 
 namespace WebAPIWithCoreMvc.Handler
 {

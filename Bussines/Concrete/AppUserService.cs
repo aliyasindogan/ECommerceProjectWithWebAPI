@@ -11,7 +11,6 @@ using Core.Entities.Dtos;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
-using Entities.Concrete;
 using Entities.Dtos.AppUser;
 using Microsoft.Extensions.Options;
 using System;
@@ -107,7 +106,7 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<bool>(await _appUserDal.DeleteAsync(id), Messages.Deleted);
         }
 
-        public async Task<List<OperationClaimDto>> GetRolesAsync(User user)
+        public async Task<List<OperationClaimDto>> GetRolesAsync(AppUser user)
         {
             return await _appUserDal.GetRolesAsync(user);
         }

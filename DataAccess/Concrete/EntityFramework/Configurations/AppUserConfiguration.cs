@@ -1,7 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Entities.Enums;
 using Core.Utilities.Security.Hash.Sha512;
-using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -53,8 +52,8 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
               .HasColumnName("GsmNumber")
               .HasMaxLength(11);
 
-            builder.Property(x => x.UserTypeId)
-           .HasColumnName("UserTypeId")
+            builder.Property(x => x.AppUserTypeID)
+           .HasColumnName("AppUserTypeID")
            .IsRequired();
 
             builder.Property(x => x.CreatedDate)
@@ -77,7 +76,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 PasswordSalt = passwordSalt,
                 GsmNumber = String.Empty,
                 ProfileImageUrl = String.Empty,
-                UserTypeId = (int)AppUserTypes.SystemAdmin,
+                AppUserTypeID = (int)AppUserTypes.SystemAdmin,
                 RefreshToken = Guid.NewGuid(),
             },
             new AppUser
@@ -93,7 +92,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 PasswordSalt = passwordSalt,
                 GsmNumber = String.Empty,
                 ProfileImageUrl = String.Empty,
-                UserTypeId = (int)AppUserTypes.Admin,
+                AppUserTypeID = (int)AppUserTypes.Admin,
                 RefreshToken = Guid.NewGuid(),
             });
         }

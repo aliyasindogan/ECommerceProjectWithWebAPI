@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebAPIWithCoreMvc.Exceptions
+namespace Core.Utilities.Exceptions
 {
     public class UnAuthorizeException : Exception
     {

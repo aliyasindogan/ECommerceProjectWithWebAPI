@@ -56,7 +56,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             var userClaims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
             userClaims.AddClaim(new Claim("token", user.Data.Token));
             userClaims.AddClaim(new Claim("language", _language));
-            userClaims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Data.UserID.ToString()));
+            userClaims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Data.AppUserID.ToString()));
             userClaims.AddClaim(new Claim(ClaimTypes.Name, user.Data.UserName));
             userClaims.AddClaim(new Claim("FullName", user.Data.FullName));
             var claimPrincipal = new ClaimsPrincipal(userClaims);

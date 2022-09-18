@@ -1,7 +1,6 @@
 ﻿using Core.Entities.Concrete;
 using Core.Entities.Dtos;
 using Core.Utilities.Responses;
-using Entities.Concrete;
 using Entities.Dtos.AppUser;
 using System;
 using System.Collections.Generic;
@@ -24,6 +23,6 @@ namespace Business.Abstract
 
         Task<ApiDataResponse<bool>> DeleteAsync(int id);
 
-        Task<List<OperationClaimDto>> GetRolesAsync(User user);
+        Task<List<OperationClaimDto>> GetRolesAsync(AppUser user);
     }
 }

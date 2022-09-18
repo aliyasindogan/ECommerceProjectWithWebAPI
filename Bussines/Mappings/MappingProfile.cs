@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Entities.Concrete;
+using Core.Entities.Concrete;
 using Entities.Dtos.AppUser;
 
 namespace Business.Mappings
