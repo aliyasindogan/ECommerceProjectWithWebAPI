@@ -4,11 +4,13 @@
 <div class="col-12">
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">@_localizationService[ResultCodes.LABEL_AppUserList]</h3>
+            <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_AppUserList]</h3>
             <div class="card-tools">
-                <button type="submit" class="btn btn-default btn-xs float-right">
-                    <i class="fas fa-plus"></i>
-                </button>
+                <form asp-action="Add" asp-controller="AppUser" method="get">
+                    <button type="submit" class="btn btn-default btn-xs float-right">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </form>
             </div>
         </div>
         <!-- /.card-header -->
@@ -34,11 +36,10 @@
                             <td>@item.LastName</td>
                             <td>@item.AppUserTypeName</td>
                             <td>
-                                <a class="btn btn-secondary btn-xs" href="#">Düzenle</a>
-                                <a class="btn btn-secondary btn-xs" href="#">Detay</a>
-                                <a class="btn btn-secondary btn-xs" href="#">Sil</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Update" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Update]</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Detail" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Detail]</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Delete" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Delete]</a>
                             </td>
-
                         </tr>
                     }
                 </tbody>

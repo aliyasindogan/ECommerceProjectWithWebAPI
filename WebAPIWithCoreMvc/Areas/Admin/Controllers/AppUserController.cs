@@ -7,11 +7,11 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
 {
     [Authorize]
     [Area("Admin")]
-    public class UserController : Controller
+    public class AppUserController : Controller
     {
-        private IUserApiService _userApiService;
+        private IAppUserApiService _userApiService;
 
-        public UserController(IUserApiService userApiService)
+        public AppUserController(IAppUserApiService userApiService)
         {
             _userApiService = userApiService;
         }
@@ -21,6 +21,12 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         {
             var result = await _userApiService.GetListAsync();
             return View(result.Data);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Add()
+        {
+            return View();
         }
     }
 }

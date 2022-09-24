@@ -57,7 +57,7 @@ namespace WebAPIWithCoreMvc
             services.AddSession();
             services.AddScoped<AuthTokenHandler>();
             services.AddTransient<IAuthApiService, AuthApiService>();
-            services.AddTransient<IUserApiService, UserApiService>();
+            services.AddTransient<IAppUserApiService, AppUserApiService>();
             services.AddSingleton<ILocalizationService, LocalizationService>();
             services.AddSingleton(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
 

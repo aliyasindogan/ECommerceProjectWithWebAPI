@@ -1,0 +1,90 @@
+﻿@using Core.Utilities.Localization
+@using Core.Utilities.Messages
+@using Entities.Dtos.AppUser
+@model AppUserAddDto
+@inject ILocalizationService _localizationService
+@{
+    ViewData["Title"] = "Add";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_AppUserAdd]</h3>
+                    </div>
+
+                    <form asp-action="Add" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="position-relative">
+                                        <img src="~\lib\adminlte-3.2.0-rc\dist\img\user-160x160.png" alt="Photo" class="img-fluid" />
+                                    </div>
+                                    <div class="input-group">
+                                        <dl>
+                                            <dd>
+                                                <input type="file" name="file" />
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label asp-for="FirstName" class="control-label"></label>
+                                        <input asp-for="FirstName" class="form-control" />
+                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="UserName" class="control-label"></label>
+                                        <input asp-for="UserName" class="form-control" />
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="GsmNumber" class="control-label"></label>
+                                        <input asp-for="GsmNumber" class="form-control" />
+                                        <span asp-validation-for="GsmNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-5">
+
+                                    <div class="form-group">
+                                        <label asp-for="LastName" class="control-label"></label>
+                                        <input asp-for="LastName" class="form-control" />
+                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Password" class="control-label"></label>
+                                        <input asp-for="Password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+

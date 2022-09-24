@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebAPIWithCoreMvc.ApiServices.Interfaces
 {
-    public interface IUserApiService
+    public interface IAppUserApiService
     {
         Task<ApiDataResponse<List<AppUserDto>>> GetListAsync();
     }

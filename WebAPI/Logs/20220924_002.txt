@@ -21,3 +21,4 @@
 2022-09-24 18:08:32.739 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
 2022-09-24 18:08:51.137 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
 2022-09-24 18:09:28.134 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 23:31:13.340 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}

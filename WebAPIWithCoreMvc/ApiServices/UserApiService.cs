@@ -9,11 +9,11 @@ using WebAPIWithCoreMvc.ApiServices.Interfaces;
 
 namespace WebAPIWithCoreMvc.ApiServices
 {
-    public class UserApiService : IUserApiService
+    public class AppUserApiService : IAppUserApiService
     {
         private readonly IHttpClientService _httpClientService;
 
-        public UserApiService(IHttpClientService httpClientService)
+        public AppUserApiService(IHttpClientService httpClientService)
         {
             _httpClientService = httpClientService;
         }
