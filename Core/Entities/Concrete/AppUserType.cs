@@ -9,6 +9,8 @@ namespace Core.Entities.Concrete
         public AppUserType()
         {
             AppUsers = new HashSet<AppUser>();
+            AppUserTypeAppOperationClaims = new HashSet<AppUserTypeAppOperationClaim>();
+
         }
         #endregion
 
@@ -17,7 +19,9 @@ namespace Core.Entities.Concrete
         #endregion
 
         #region Relationships
-        ICollection<AppUser> AppUsers { get; set; } 
+        public virtual ICollection<AppUser> AppUsers { get; set; }
+        public virtual ICollection<AppUserTypeAppOperationClaim> AppUserTypeAppOperationClaims { get; set; }
+
         #endregion
     }
 }

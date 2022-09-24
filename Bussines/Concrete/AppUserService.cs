@@ -41,12 +41,12 @@ namespace Business.Concrete
         //[CacheAspect(10)]
         [SecuredOperationAspect("AppUser.List")]
         [LogAspect(typeof(FileLogger))]
-        public async Task<ApiDataResponse<IEnumerable<AppUserDetailDto>>> GetListAsync()
+        public async Task<ApiDataResponse<List<AppUserDto>>> GetListAsync()
         {
 
-            var response = await _appUserDal.GetListAsync();
-            var userDetailDtos = _mapper.Map<IEnumerable<AppUserDetailDto>>(response);
-            return new SuccessApiDataResponse<IEnumerable<AppUserDetailDto>>(userDetailDtos, Messages.Listed);
+            var response = await _appUserDal.Include(x=> x.AppUserType);
+            var userDtos = _mapper.Map<List<AppUserDto>>(response);
+            return new SuccessApiDataResponse<List<AppUserDto>>(userDtos, Messages.Listed);
 
         }
 

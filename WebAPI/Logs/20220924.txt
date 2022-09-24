@@ -1,0 +1,2 @@
+2022-09-24 14:15:17.120 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:18:50.515 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}

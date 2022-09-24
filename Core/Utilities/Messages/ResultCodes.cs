@@ -34,6 +34,7 @@ namespace Core.Utilities.Messages
         /// Kullanıcı Adı
         /// </summary>
         LABEL_UserName = 7000,
+        LABEL_AppUserTypeName=7001
         #endregion
     }
 }

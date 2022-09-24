@@ -17,5 +17,6 @@ namespace Core.DataAccess
         Task<T> UpdateAsync(T entity);
 
         Task<bool> DeleteAsync(int id);
+        Task<List<T>> Include(params Expression<Func<T, object>>[] includes);
     }
 }

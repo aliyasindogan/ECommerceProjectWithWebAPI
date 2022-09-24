@@ -12,6 +12,7 @@ namespace DataAccess.Concrete.Contexts
 
         public ECommerceDbContext()
         {
+            ChangeTracker.LazyLoadingEnabled = false;
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

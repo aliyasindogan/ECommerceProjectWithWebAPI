@@ -1,0 +1,11 @@
+2022-09-24 14:15:17.678 [Error] {"ExceptionMessage":"Error mapping types.\r\n\r\nMapping types:\r\nObject -> List`1\r\nSystem.Object -> System.Collections.Generic.List`1[[Entities.Dtos.AppUser.AppUserDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]","MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:20:18.885 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:22:16.954 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:29:57.120 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:31:04.092 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:31:44.442 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:31:58.363 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:55:50.166 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:57:27.067 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 14:58:53.169 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-09-24 15:00:12.064 [Information] {"MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}

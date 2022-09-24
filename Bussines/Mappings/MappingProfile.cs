@@ -8,20 +8,14 @@ namespace Business.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<AppUser, AppUserDetailDto>();
-            CreateMap<AppUserDetailDto, AppUser>();
+            CreateMap<AppUser, AppUserDto>()
+                .AfterMap((au, aud) => aud.AppUserTypeName = au.AppUserType.AppUserTypeName).ReverseMap();
 
-            CreateMap<AppUser, AppUserDto>();
-            CreateMap<AppUserDto, AppUser>();
+            CreateMap<AppUser, AppUserAddDto>().ReverseMap();
 
-            CreateMap<AppUser, AppUserAddDto>();
-            CreateMap<AppUserAddDto, AppUser>();
+            CreateMap<AppUser, AppUserUpdateDto>().ReverseMap();
 
-            CreateMap<AppUser, AppUserUpdateDto>();
-            CreateMap<AppUserUpdateDto, AppUser>();
-
-            CreateMap<AppUserDto, AppUserUpdateDto>();
-            CreateMap<AppUserUpdateDto, AppUserDto>();
+            CreateMap<AppUserDto, AppUserUpdateDto>().ReverseMap();
         }
     }
 }

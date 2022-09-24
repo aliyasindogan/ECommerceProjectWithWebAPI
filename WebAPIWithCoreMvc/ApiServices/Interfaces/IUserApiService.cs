@@ -7,6 +7,6 @@ namespace WebAPIWithCoreMvc.ApiServices.Interfaces
 {
     public interface IUserApiService
     {
-        Task<ApiDataResponse<List<AppUserDetailDto>>> GetListAsync();
+        Task<ApiDataResponse<List<AppUserDto>>> GetListAsync();
     }
 }

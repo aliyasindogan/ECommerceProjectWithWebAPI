@@ -1,0 +1,1 @@
+2022-09-22 23:34:38.940 [Error] {"ExceptionMessage":"Error mapping types.\r\n\r\nMapping types:\r\nObject -> List`1\r\nSystem.Object -> System.Collections.Generic.List`1[[Entities.Dtos.AppUser.AppUserDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]","MethodName":"GetListAsync","User":"Ali Yasin Doğan","Parameters":[]}

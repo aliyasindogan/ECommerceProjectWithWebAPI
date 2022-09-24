@@ -62,5 +62,16 @@ namespace Core.DataAccess.EntityFramework
                 return false;
             }
         }
+
+        public async Task<List<TEntity>> Include(params Expression<Func<TEntity, object>>[] includes)
+        {
+            using (TContext context = new TContext())
+            {
+                var query = context.Set<TEntity>().ToList();
+                foreach (var include in includes)
+                    query = context.Set<TEntity>().Include(include).ToList();
+                return query.ToList();
+            }
+        }
     }
 }
