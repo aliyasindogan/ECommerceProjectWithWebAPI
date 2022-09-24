@@ -52,7 +52,7 @@ namespace WebAPIWithCoreMvc
             });
 
             #endregion Localization
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation(); ;
             services.AddHttpContextAccessor();
             services.AddSession();
             services.AddScoped<AuthTokenHandler>();

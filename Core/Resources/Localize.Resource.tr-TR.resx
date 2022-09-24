@@ -123,8 +123,38 @@
   <data name="INFO_Listed" xml:space="preserve">
     <value>Listelendi</value>
   </data>
+  <data name="LABEL_AppUserAdd" xml:space="preserve">
+    <value>Kullanıcı Ekle</value>
+  </data>
+  <data name="LABEL_AppUserDelete" xml:space="preserve">
+    <value>Kullanıcı Sil</value>
+  </data>
+  <data name="LABEL_AppUserDetail" xml:space="preserve">
+    <value>Kullanıcı Detayı</value>
+  </data>
+  <data name="LABEL_AppUserList" xml:space="preserve">
+    <value>Kullanıcı Liste</value>
+  </data>
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>Kullanıcı Tipi</value>
+  </data>
+  <data name="LABEL_AppUserUpdate" xml:space="preserve">
+    <value>Kullanıcı Düzenle</value>
+  </data>
+  <data name="LABEL_FirstName" xml:space="preserve">
+    <value>Adı</value>
+  </data>
+  <data name="LABEL_LastName" xml:space="preserve">
+    <value>Soyadı</value>
+  </data>
+  <data name="LABEL_Operations" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="LABEL_ProfileImageUrl" xml:space="preserve">
+    <value>Resim Url</value>
+  </data>
+  <data name="LABEL_SignOut" xml:space="preserve">
+    <value>Oturumu Kapat</value>
   </data>
   <data name="LABEL_UserName" xml:space="preserve">
     <value>Kullanıcı Adı</value>

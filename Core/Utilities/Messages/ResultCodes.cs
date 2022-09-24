@@ -34,7 +34,18 @@ namespace Core.Utilities.Messages
         /// Kullanıcı Adı
         /// </summary>
         LABEL_UserName = 7000,
-        LABEL_AppUserTypeName=7001
+        LABEL_AppUserTypeName=7001,
+        LABEL_ProfileImageUrl = 7002,
+        LABEL_FirstName = 7003,
+        LABEL_LastName = 7004,
+        LABEL_Operations=7005,
+        LABEL_AppUserList = 7006,
+        LABEL_AppUserAdd = 7007,
+        LABEL_AppUserUpdate = 7008,
+        LABEL_AppUserDelete = 7009,
+        LABEL_AppUserDetail = 7010,
+        LABEL_SignOut = 7011,
+
         #endregion
     }
 }

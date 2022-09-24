@@ -123,8 +123,38 @@
   <data name="INFO_Listed" xml:space="preserve">
     <value>Listed</value>
   </data>
+  <data name="LABEL_AppUserAdd" xml:space="preserve">
+    <value>App User Add</value>
+  </data>
+  <data name="LABEL_AppUserDelete" xml:space="preserve">
+    <value>App User Delete</value>
+  </data>
+  <data name="LABEL_AppUserDetail" xml:space="preserve">
+    <value>App User Detail</value>
+  </data>
+  <data name="LABEL_AppUserList" xml:space="preserve">
+    <value>App User List</value>
+  </data>
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>App User Type Name</value>
+  </data>
+  <data name="LABEL_AppUserUpdate" xml:space="preserve">
+    <value>App User Update</value>
+  </data>
+  <data name="LABEL_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="LABEL_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LABEL_Operations" xml:space="preserve">
+    <value>Operations</value>
+  </data>
+  <data name="LABEL_ProfileImageUrl" xml:space="preserve">
+    <value>Profile Image Url</value>
+  </data>
+  <data name="LABEL_SignOut" xml:space="preserve">
+    <value>Sign Out</value>
   </data>
   <data name="LABEL_UserName" xml:space="preserve">
     <value>User Name</value>
