@@ -93,8 +93,8 @@ namespace WebAPIWithCoreMvc
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseExceptionHandler("/Home/Error");
-            app.UseStatusCodePagesWithRedirects("/Admin/Error/MyStatusCode?code={0}");
+            //app.UseExceptionHandler("/Home/Error");
+            //app.UseStatusCodePagesWithRedirects("/Admin/Error/MyStatusCode?code={0}");
             app.UseSession();
             app.UseStaticFiles();
 

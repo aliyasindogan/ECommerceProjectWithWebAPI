@@ -1,2 +1,12 @@
 2022-10-22 17:21:27.545 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
 2022-10-22 17:23:42.162 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 18:42:28.201 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 18:44:52.662 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 18:48:02.082 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:00:32.645 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:01:32.411 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:04:50.567 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:12:38.751 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:17:42.360 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:19:09.413 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
+2022-10-22 19:19:50.242 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}

@@ -1,9 +1,11 @@
 ﻿using Core.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Core.DataAccess.EntityFramework
@@ -12,6 +14,11 @@ namespace Core.DataAccess.EntityFramework
         where TEntity : class, IEntity, new()
     where TContext : DbContext, new()
     {
+        IHttpContextAccessor _httpContextAccessor;
+        public EfBaseRepository()
+        {
+            _httpContextAccessor = (IHttpContextAccessor)Utilities.Helpers.HttpContext.Current.RequestServices.GetService(typeof(IHttpContextAccessor)); ;
+        }
         public async Task<IEnumerable<TEntity>> GetListAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             using (TContext context = new TContext())
@@ -32,6 +39,16 @@ namespace Core.DataAccess.EntityFramework
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {
+            var createDate = entity.GetType().GetProperty("CreatedDate");
+            var dateValue = entity.GetType().GetProperty("CreatedDate").GetValue(entity);
+            if (!Equals(createDate, null))
+            {
+                if (Convert.ToDateTime(dateValue) == DateTime.MinValue)
+                {
+                    entity.GetType().GetProperty("CreatedDate").SetValue(entity, DateTime.Now);
+                    entity.GetType().GetProperty("CreatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                }
+            }
             using (TContext context = new TContext())
             {
                 await context.Set<TEntity>().AddAsync(entity);
@@ -42,6 +59,16 @@ namespace Core.DataAccess.EntityFramework
 
         public async Task<TEntity> UpdateAsync(TEntity entity)
         {
+            var createDate = entity.GetType().GetProperty("UpdatedDate");
+            var dateValue = entity.GetType().GetProperty("UpdatedDate").GetValue(entity);
+            if (!Equals(createDate, null))
+            {
+                if (Convert.ToDateTime(dateValue) == DateTime.MinValue)
+                {
+                    entity.GetType().GetProperty("UpdatedDate").SetValue(entity, DateTime.Now);
+                    entity.GetType().GetProperty("UpdatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                }
+            }
             using (TContext context = new TContext())
             {
                 context.Set<TEntity>().Update(entity);

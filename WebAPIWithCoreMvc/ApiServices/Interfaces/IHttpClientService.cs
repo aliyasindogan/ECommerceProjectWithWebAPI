@@ -10,5 +10,6 @@ namespace WebAPIWithCoreMvc.ApiServices.Interfaces
     {
         Task<ApiDataResponse<AccessToken>> LoginAsync(LoginDto loginDto);
         Task<ApiDataResponse<List<T>>> GetListAsync<T>(string url);
+        Task<ApiDataResponse<TResponseEntity>> PostAsync<TRequestEntity, TResponseEntity>(string url, TRequestEntity requestEntity, TResponseEntity responseEntity);
     }
 }

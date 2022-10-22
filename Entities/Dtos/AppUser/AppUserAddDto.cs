@@ -12,6 +12,7 @@ namespace Entities.Dtos.AppUser
         public string Email { get; set; }
         public string ProfileImageUrl { get; set; }
         public string GsmNumber { get; set; }
-        public int UserTypeId { get; set; }
+        public int AppUserTypeID { get; set; }
+        public Guid RefreshToken { get; set; }
     }
 }

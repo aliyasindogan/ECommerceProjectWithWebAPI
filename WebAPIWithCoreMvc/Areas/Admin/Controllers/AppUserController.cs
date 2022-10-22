@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Core.Entities.Enums;
+using Entities.Dtos.AppUser;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 
@@ -23,10 +26,26 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             return View(result.Data);
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Add()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add(AppUserAddDto appUserAddDto)
+        {
+            appUserAddDto.AppUserTypeID = (int)AppUserTypes.Admin;
+            appUserAddDto.ProfileImageUrl = "default";
+            appUserAddDto.RefreshToken = Guid.NewGuid();
+            var result = await _userApiService.AddAsync(appUserAddDto);
+            if (!result.Success)
+            {
+                ModelState.AddModelError("", result.Message);
+                return View(appUserAddDto);
+            }
+            return RedirectToAction("Index");
         }
     }
 }

@@ -53,5 +53,13 @@ namespace WebAPIWithCoreMvc.ApiServices
             var result = JsonConvert.DeserializeObject<ApiDataResponse<AccessToken>>(data);
             return await Task.FromResult(result);
         }
+
+        public async Task<ApiDataResponse<TResponseEntity>> PostAsync<TRequestEntity, TResponseEntity>(string url, TRequestEntity requestEntity, TResponseEntity responseEntity)
+        {
+            HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync(url, requestEntity);
+            var data = await httpResponseMessage.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<ApiDataResponse<TResponseEntity>>(data);
+            return await Task.FromResult(result);
+        }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using AutoMapper;
 using Business.Abstract;
 using Business.Constants;
+using Business.Validations.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Logging;
 using Core.Aspects.Autofac.SecuredOperation;
 using Core.Aspects.Autofac.Transaction;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Entities.Concrete;
 using Core.Entities.Dtos;
 using Core.Utilities.Responses;
+using Core.Utilities.Security.Hash.Sha512;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
@@ -82,12 +85,14 @@ namespace Business.Concrete
         }
         [TransactionScopeAspect]
         [CacheRemoveAspect("IUserService.GetListAsync")]
+        [ValidationAspect(typeof(AppUserAddDtoValidator))]
         public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
         {
+            byte[] passwordHash, passwordSalt;
             var user = _mapper.Map<AppUser>(userAddDto);
-            //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
-            user.CreatedDate = DateTime.Now;
-            user.CreatedUserId = 1;
+            Sha512Helper.CreatePasswordHash(userAddDto.Password, out passwordHash, out passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
             var userAdd = await _appUserDal.AddAsync(user);
             var userDto = _mapper.Map<AppUserDto>(userAdd);
             return new SuccessApiDataResponse<AppUserDto>(userDto, Messages.Added);

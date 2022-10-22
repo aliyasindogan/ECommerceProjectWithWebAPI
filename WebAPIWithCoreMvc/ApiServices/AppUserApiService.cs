@@ -1,9 +1,11 @@
-﻿using Core.Utilities.Responses;
+﻿using Core.Utilities.Messages;
+using Core.Utilities.Responses;
 using Entities.Dtos.AppUser;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 
@@ -26,6 +28,10 @@ namespace WebAPIWithCoreMvc.ApiServices
         public async Task<ApiDataResponse<List<AppUserDto>>> GetListDetailAsync()
         {
             return await _httpClientService.GetListAsync<AppUserDto>("AppUsers/GetListDetail");
+        }
+        public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
+        {
+            return await _httpClientService.PostAsync("AppUsers/"+Constants.Add, userAddDto, new AppUserDto());
         }
     }
 }
