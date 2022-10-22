@@ -22,5 +22,10 @@ namespace WebAPIWithCoreMvc.ApiServices
         {
             return await _httpClientService.GetListAsync<AppUserDto>("AppUsers/GetList");
         }
+
+        public async Task<ApiDataResponse<List<AppUserDto>>> GetListDetailAsync()
+        {
+            return await _httpClientService.GetListAsync<AppUserDto>("AppUsers/GetListDetail");
+        }
     }
 }

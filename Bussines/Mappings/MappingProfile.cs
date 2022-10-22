@@ -8,8 +8,7 @@ namespace Business.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<AppUser, AppUserDto>()
-                .AfterMap((au, aud) => aud.AppUserTypeName = au.AppUserType.AppUserTypeName).ReverseMap();
+            CreateMap<AppUser, AppUserDto>().ReverseMap();
 
             CreateMap<AppUser, AppUserAddDto>().ReverseMap();
 

@@ -19,7 +19,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var result = await _userApiService.GetListAsync();
+            var result = await _userApiService.GetListDetailAsync();
             return View(result.Data);
         }
 

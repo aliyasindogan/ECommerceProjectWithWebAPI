@@ -27,6 +27,18 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
+
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> GetListDetail()
+        {
+            var result = await _appUserService.GetListDetailAsync();
+            if (result != null)
+                return Ok(result);
+            return BadRequest();
+        }
+
+
         [HttpGet]
         [Route("[action]/{id:int}")]
         public async Task<IActionResult> GetById(int id)

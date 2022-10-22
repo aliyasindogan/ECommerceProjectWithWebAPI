@@ -11,6 +11,7 @@ using Core.Entities.Dtos;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Dtos.AppUser;
 using Microsoft.Extensions.Options;
 using System;
@@ -43,13 +44,22 @@ namespace Business.Concrete
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<List<AppUserDto>>> GetListAsync()
         {
-
-            var response = await _appUserDal.Include(x=> x.AppUserType);
+            var response = _appUserDal.GetListAsync();
             var userDtos = _mapper.Map<List<AppUserDto>>(response);
             return new SuccessApiDataResponse<List<AppUserDto>>(userDtos, Messages.Listed);
 
         }
 
+        //[CacheAspect(10)]
+        [SecuredOperationAspect("AppUser.List")]
+        [LogAspect(typeof(FileLogger))]
+        public async Task<ApiDataResponse<List<AppUserDto>>> GetListDetailAsync()
+        {
+            var response = await _appUserDal.GetListDetailAsync();
+            var userDtos = _mapper.Map<List<AppUserDto>>(response);
+            return new SuccessApiDataResponse<List<AppUserDto>>(userDtos, Messages.Listed);
+
+        }
         public async Task<ApiDataResponse<AppUser>> GetAsync(Expression<Func<AppUser, bool>> filter)
         {
             var user = await _appUserDal.GetAsync(filter);
@@ -88,13 +98,13 @@ namespace Business.Concrete
             var getUser = await _appUserDal.GetAsync(x => x.Id == userUpdateDto.Id);
             var user = _mapper.Map<AppUser>(userUpdateDto);
             //Todo:12.10.2021 CreatedDate ve CreatedUserId düzenlenecek.
-           // user.Password = getUser.Password;
+            // user.Password = getUser.Password;
             user.CreatedDate = getUser.CreatedDate;
             user.CreatedUserId = getUser.CreatedUserId;
             user.UpdatedDate = DateTime.Now;
             user.UpdatedUserId = 1;
-          //  user.Token = userUpdateDto.Token;
-           // user.TokenExpireDate = userUpdateDto.TokenExpireDate;
+            //  user.Token = userUpdateDto.Token;
+            // user.TokenExpireDate = userUpdateDto.TokenExpireDate;
             var resultUpdate = await _appUserDal.UpdateAsync(user);
             var userUpdataMap = _mapper.Map<AppUserUpdateDto>(resultUpdate);
 
