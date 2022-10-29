@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Responses;
+﻿using Core.Utilities.Localization;
+using Core.Utilities.Responses;
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,7 @@ namespace Core.Extensions
         private Task HandleExceptionAsync(HttpContext httpContext, Exception e)
         {
             var type = e.GetType();
+            ILocalizationService _localizationService = (ILocalizationService)httpContext.RequestServices.GetService(typeof(ILocalizationService));
             #region Code
 
             string message = String.Empty;
@@ -45,7 +47,7 @@ namespace Core.Extensions
                 string dataError = "";
                 foreach (var itemError in errors)
                 {
-                    dataError += itemError.ErrorCode + "\n";
+                    dataError += _localizationService[itemError.ErrorCode] + ";";
                 }
                 errorApiResponse = new ErrorApiResponse(dataError);
             }

@@ -3,6 +3,7 @@ using Entities.Dtos.AppUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 
@@ -42,7 +43,14 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             var result = await _userApiService.AddAsync(appUserAddDto);
             if (!result.Success)
             {
-                ModelState.AddModelError("", result.Message);
+                string[] errors = result.Message.Split(";");
+                List<string> errorList = new List<string>();
+                foreach (string error in errors)
+                {
+                    if (!String.IsNullOrEmpty(error))
+                        errorList.Add(error);
+                }
+                ViewBag.Errors = errorList;
                 return View(appUserAddDto);
             }
             return RedirectToAction("Index");
