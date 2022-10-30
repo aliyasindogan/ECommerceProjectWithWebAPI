@@ -138,6 +138,27 @@
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>Kullanıc bulunamadı !</value>
   </data>
+  <data name="HTTP_BadRequest" xml:space="preserve">
+    <value>Geçersiz istek</value>
+  </data>
+  <data name="HTTP_Conflict" xml:space="preserve">
+    <value>Çift Kayıt</value>
+  </data>
+  <data name="HTTP_Forbidden" xml:space="preserve">
+    <value>Yasaklı</value>
+  </data>
+  <data name="HTTP_InternalServerError" xml:space="preserve">
+    <value>Sunucu Hatası</value>
+  </data>
+  <data name="HTTP_NotFound" xml:space="preserve">
+    <value>Bulunamadı</value>
+  </data>
+  <data name="HTTP_OK" xml:space="preserve">
+    <value>İşlem Başarılı</value>
+  </data>
+  <data name="HTTP_Unauthorized" xml:space="preserve">
+    <value>Yetkiniz Yok</value>
+  </data>
   <data name="INFO_Listed" xml:space="preserve">
     <value>Listelendi</value>
   </data>

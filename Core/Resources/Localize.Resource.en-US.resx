@@ -138,6 +138,27 @@
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>User not found !</value>
   </data>
+  <data name="HTTP_BadRequest" xml:space="preserve">
+    <value>Bad Request</value>
+  </data>
+  <data name="HTTP_Conflict" xml:space="preserve">
+    <value>Conflict</value>
+  </data>
+  <data name="HTTP_Forbidden" xml:space="preserve">
+    <value>Forbidden</value>
+  </data>
+  <data name="HTTP_InternalServerError" xml:space="preserve">
+    <value>Internal Server Error</value>
+  </data>
+  <data name="HTTP_NotFound" xml:space="preserve">
+    <value>Not Found</value>
+  </data>
+  <data name="HTTP_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="HTTP_Unauthorized" xml:space="preserve">
+    <value>Unauthorized</value>
+  </data>
   <data name="INFO_Listed" xml:space="preserve">
     <value>Listed</value>
   </data>
