@@ -93,6 +93,7 @@ namespace WebAPI
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles();//wwwroot
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

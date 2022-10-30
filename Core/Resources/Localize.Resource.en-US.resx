@@ -135,6 +135,9 @@
   <data name="BUTTON_Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="ERROR_ImageNotFound" xml:space="preserve">
+    <value>Image not found</value>
+  </data>
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>User not found !</value>
   </data>

@@ -135,6 +135,9 @@
   <data name="BUTTON_Update" xml:space="preserve">
     <value>Düzenle</value>
   </data>
+  <data name="ERROR_ImageNotFound" xml:space="preserve">
+    <value>Resim mevcut değil</value>
+  </data>
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>Kullanıc bulunamadı !</value>
   </data>

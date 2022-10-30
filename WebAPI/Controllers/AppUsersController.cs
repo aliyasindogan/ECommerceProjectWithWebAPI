@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Entities.Dtos.AppUser;
+using Entities.Dtos.AppUsers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;

@@ -17,7 +17,7 @@ using Core.Utilities.Security.Hash.Sha512;
 using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
-using Entities.Dtos.AppUser;
+using Entities.Dtos.AppUsers;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;

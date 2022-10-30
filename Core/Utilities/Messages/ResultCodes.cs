@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core.Utilities.Messages
+﻿namespace Core.Utilities.Messages
 {
     public enum ResultCodes
     {
@@ -21,7 +15,11 @@ namespace Core.Utilities.Messages
         /// <summary>
         /// Kullanıcı Bulunamadı! 
         /// </summary>
-        ERROR_UserNotFound = -20_001,
+        ERROR_UserNotFound = -20001,
+        /// <summary>
+        /// Resim mevcut değil!
+        /// </summary>
+        ERROR_ImageNotFound = -20002,
         #endregion
 
         #region INFO

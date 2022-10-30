@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Messages;
 using Core.Utilities.Responses;
-using Entities.Dtos.AppUser;
+using Entities.Dtos.AppUsers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;

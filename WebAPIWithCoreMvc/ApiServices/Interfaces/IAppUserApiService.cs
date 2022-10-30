@@ -1,5 +1,5 @@
 ﻿using Core.Utilities.Responses;
-using Entities.Dtos.AppUser;
+using Entities.Dtos.AppUsers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

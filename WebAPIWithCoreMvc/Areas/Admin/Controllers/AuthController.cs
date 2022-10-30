@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.Utilities.Messages;
 using Entities.Abstract.Enums;
-using Entities.Dtos.Auth;
+using Entities.Dtos.Auths;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;

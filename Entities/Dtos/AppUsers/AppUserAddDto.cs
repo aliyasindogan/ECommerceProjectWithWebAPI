@@ -1,6 +1,9 @@
-﻿namespace Entities.Dtos.Auth
+﻿using Core.Entities;
+using System;
+
+namespace Entities.Dtos.AppUsers
 {
-    public  class RegisterDto
+    public class AppUserAddDto : IDto
     {
         public string UserName { get; set; }
         public string FirstName { get; set; }
@@ -9,5 +12,7 @@
         public string Email { get; set; }
         public string ProfileImageUrl { get; set; }
         public string GsmNumber { get; set; }
+        public int AppUserTypeID { get; set; }
+        public Guid RefreshToken { get; set; }
     }
 }

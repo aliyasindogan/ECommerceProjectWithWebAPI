@@ -1,7 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Entities.Dtos;
 using Core.Utilities.Responses;
-using Entities.Dtos.AppUser;
+using Entities.Dtos.AppUsers;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

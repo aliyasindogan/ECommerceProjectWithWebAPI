@@ -97,11 +97,9 @@ namespace WebAPIWithCoreMvc
             //app.UseStatusCodePagesWithRedirects("/Admin/Error/MyStatusCode?code={0}");
             app.UseSession();
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 //Admin/Home/Index

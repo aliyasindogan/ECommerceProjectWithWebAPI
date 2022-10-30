@@ -1,7 +1,7 @@
 ﻿using Core.Entities.Concrete;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
-using Entities.Dtos.Auth;
+using Entities.Dtos.Auths;
 using System.Threading.Tasks;
 
 namespace Business.Abstract

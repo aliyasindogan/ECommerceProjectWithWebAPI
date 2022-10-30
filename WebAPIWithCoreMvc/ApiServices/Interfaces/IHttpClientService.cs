@@ -1,6 +1,6 @@
 ﻿using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
-using Entities.Dtos.Auth;
+using Entities.Dtos.Auths;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

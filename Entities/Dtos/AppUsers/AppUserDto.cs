@@ -1,6 +1,6 @@
 ﻿using Core.Entities;
 
-namespace Entities.Dtos.AppUser
+namespace Entities.Dtos.AppUsers
 {
     public class AppUserDto : IDto
     {

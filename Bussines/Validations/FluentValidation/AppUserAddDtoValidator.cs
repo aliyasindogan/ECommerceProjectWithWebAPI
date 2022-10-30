@@ -1,4 +1,4 @@
-﻿using Entities.Dtos.AppUser;
+﻿using Entities.Dtos.AppUsers;
 using FluentValidation;
 
 namespace Business.Validations.FluentValidation
