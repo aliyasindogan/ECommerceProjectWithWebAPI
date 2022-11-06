@@ -18,5 +18,8 @@
         public const string Detail = "Detail";
         public const string AppUser = "AppUser";
         public const string Login = "Login";
+
+        public const string DefaultProfileImageUrl = "./wwwroot/Upload/user3-160x160.png";
+        public const string DefaultProfileImageName = "user3-160x160.png";
     }
 }

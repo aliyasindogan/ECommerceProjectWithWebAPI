@@ -58,9 +58,10 @@ namespace WebAPIWithCoreMvc
             services.AddScoped<AuthTokenHandler>();
             services.AddTransient<IAuthApiService, AuthApiService>();
             services.AddTransient<IAppUserApiService, AppUserApiService>();
+            services.AddTransient<IUploadImageApiService, UploadImageApiService>();
             services.AddSingleton<ILocalizationService, LocalizationService>();
             services.AddSingleton(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
-
+            
             #region HttpClient
             services.AddHttpClient<IHttpClientService, HttpClientService>(opt =>
             {

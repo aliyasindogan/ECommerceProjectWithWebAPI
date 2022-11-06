@@ -2,10 +2,12 @@
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using Entities.Dtos.Auths;
+using Entities.Dtos.UploadImages;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -60,6 +62,19 @@ namespace WebAPIWithCoreMvc.ApiServices
             var data = await httpResponseMessage.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<ApiDataResponse<TResponseEntity>>(data);
             return await Task.FromResult(result);
+        }
+
+        public async Task<ApiDataResponse<UploadImageDto>> UploadImageAsync<T>(FileInfo fileInfo)
+        {
+            byte[] fileContents = File.ReadAllBytes(fileInfo.FullName);
+            MultipartFormDataContent multiPartContent = new MultipartFormDataContent();
+            ByteArrayContent byteArrayContent = new ByteArrayContent(fileContents);
+            byteArrayContent.Headers.Add("Content-Type", "application/octet-stream");
+            multiPartContent.Add(byteArrayContent, "\"files\"", string.Format("\"{0}\"", fileInfo.Name));
+            HttpResponseMessage response = await _httpClient.PostAsync("UploadImages/AddUploadImage", multiPartContent);
+            string data = await response.Content.ReadAsStringAsync();
+            var result = await Task.FromResult(JsonConvert.DeserializeObject<ApiDataResponse<UploadImageDto>>(data));
+            return result;
         }
     }
 }

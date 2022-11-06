@@ -1,5 +1,5 @@
 ﻿@using Core.Utilities.Messages
-@model List<Entities.Dtos.AppUser.AppUserDto>
+@model List<Entities.Dtos.AppUsers.AppUserDto>
 @inject Core.Utilities.Localization.ILocalizationService _localizationService
 <div class="col-12">
     <div class="card card-secondary">
@@ -18,7 +18,7 @@
             <table class="table table-hover text-nowrap">
                 <thead>
                     <tr>
-                        @*<th>@_localizationService[ResultCodes.LABEL_ProfileImageUrl]</th>*@
+                        <th>@_localizationService[ResultCodes.LABEL_ProfileImageUrl]</th>
                         <th>@_localizationService[ResultCodes.LABEL_UserName]</th>
                         <th>@_localizationService[ResultCodes.LABEL_FirstName]</th>
                         <th>@_localizationService[ResultCodes.LABEL_LastName]</th>
@@ -30,7 +30,7 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            @*<td>@item.ProfileImageUrl</td>*@
+                            <td> <img src="@item.ProfileImageUrl" alt="Photo 1" height="30"></td>
                             <td>@item.UserName</td>
                             <td>@item.FirstName</td>
                             <td>@item.LastName</td>
