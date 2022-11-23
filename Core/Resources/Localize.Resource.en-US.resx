@@ -120,6 +120,9 @@
   <data name="BUTTON_Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="BUTTON_AppUserList" xml:space="preserve">
+    <value>App User List</value>
+  </data>
   <data name="BUTTON_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -137,6 +140,15 @@
   </data>
   <data name="ERROR_ImageNotFound" xml:space="preserve">
     <value>Image not found</value>
+  </data>
+  <data name="ERROR_NoAdded" xml:space="preserve">
+    <value>No Added</value>
+  </data>
+  <data name="ERROR_NotDeleted" xml:space="preserve">
+    <value>Not Deleted</value>
+  </data>
+  <data name="ERROR_NotUpdated" xml:space="preserve">
+    <value>Not Updated</value>
   </data>
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>User not found !</value>
@@ -168,14 +180,23 @@
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>App User Type Name</value>
   </data>
+  <data name="LABEL_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="LABEL_FirstName" xml:space="preserve">
     <value>First Name</value>
+  </data>
+  <data name="LABEL_GsmNumber" xml:space="preserve">
+    <value>Gsm Number</value>
   </data>
   <data name="LABEL_LastName" xml:space="preserve">
     <value>Last Name</value>
   </data>
   <data name="LABEL_Operations" xml:space="preserve">
     <value>Operations</value>
+  </data>
+  <data name="LABEL_Password" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="LABEL_ProfileImageUrl" xml:space="preserve">
     <value>Profile Image Url</value>

@@ -22,16 +22,26 @@ namespace WebAPIWithCoreMvc.ApiServices
 
         public async Task<ApiDataResponse<List<AppUserDto>>> GetListAsync()
         {
-            return await _httpClientService.GetListAsync<AppUserDto>("AppUsers/GetList");
+            return await _httpClientService.GetListAsync<AppUserDto>($"{Constants.AppUsers}/{Constants.GetList}");
         }
 
         public async Task<ApiDataResponse<List<AppUserDto>>> GetListDetailAsync()
         {
-            return await _httpClientService.GetListAsync<AppUserDto>("AppUsers/GetListDetail");
+            return await _httpClientService.GetListAsync<AppUserDto>($"{Constants.AppUsers}/{Constants.GetListDetail}");
         }
         public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
         {
-            return await _httpClientService.PostAsync("AppUsers/"+Constants.Add, userAddDto, new AppUserDto());
+            return await _httpClientService.PostAsync($"{Constants.AppUsers}/{Constants.Add}", userAddDto, new AppUserDto());
+        }
+
+        public async Task<ApiDataResponse<AppUserDto>> GetByIdAsync(int id)
+        {
+            return await _httpClientService.GetAsync<AppUserDto>($"{Constants.AppUsers}/{Constants.GetById}/", id);
+        }
+
+        public async Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto appUserUpdateDto)
+        {
+            return await _httpClientService.PutAsync($"{Constants.AppUsers}/{Constants.Update}", appUserUpdateDto);
         }
     }
 }

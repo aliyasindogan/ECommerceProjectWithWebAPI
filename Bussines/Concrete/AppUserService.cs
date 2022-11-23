@@ -10,6 +10,7 @@ using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
 using Core.Entities.Concrete;
 using Core.Entities.Dtos;
+using Core.Entities.Enums;
 using Core.Utilities.Localization;
 using Core.Utilities.Messages;
 using Core.Utilities.Responses;
@@ -100,11 +101,26 @@ namespace Business.Concrete
         {
             var getUser = await _appUserDal.GetAsync(x => x.Id == userUpdateDto.Id);
             var user = _mapper.Map<AppUser>(userUpdateDto);
+            if (String.IsNullOrEmpty(userUpdateDto.Password))
+            {
+                user.PasswordHash = getUser.PasswordHash;
+                user.PasswordSalt = getUser.PasswordSalt;
+            }
+            else if (!Sha512Helper.VerifyPasswordHash(userUpdateDto.Password, getUser.PasswordHash, getUser.PasswordSalt))
+            {
+                //Yeni Şifre
+                byte[] passwordHash, passwordSalt;
+                Sha512Helper.CreatePasswordHash(userUpdateDto.Password, out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+            }
             user.CreatedDate = getUser.CreatedDate;
             user.CreatedUserId = getUser.CreatedUserId;
-            user.UpdatedDate = DateTime.Now;
-            user.UpdatedUserId = 1;
+            user.AppUserTypeID = (int)AppUserTypes.Admin;
             var resultUpdate = await _appUserDal.UpdateAsync(user);
+            if (resultUpdate == null)
+                return new ErrorApiDataResponse<AppUserUpdateDto>(null, _localizationService[ResultCodes.ERROR_NotUpdated]);
+
             var userUpdataMap = _mapper.Map<AppUserUpdateDto>(resultUpdate);
             return new SuccessApiDataResponse<AppUserUpdateDto>(userUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }

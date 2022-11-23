@@ -26,6 +26,16 @@ namespace WebAPIWithCoreMvc.ApiServices
             _httpClient = httpClient;
         }
 
+        public async Task<ApiDataResponse<T>> GetAsync<T>(string url, int id)
+        {
+            HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
+            string _language = _httpContextAccessor.HttpContext.User.FindFirst("language").Value;
+            httpRequestMessage.Headers.Add("Accept-Language", _language);
+            var response = await _httpClient.GetAsync(url + id);
+            var result = JsonConvert.DeserializeObject<ApiDataResponse<T>>(await response.Content.ReadAsStringAsync());
+            return result;
+        }
+
         public async Task<ApiDataResponse<List<T>>> GetListAsync<T>(string url)
         {
             HttpRequestMessage httpRequestMessage = new HttpRequestMessage();
@@ -61,6 +71,14 @@ namespace WebAPIWithCoreMvc.ApiServices
             HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync(url, requestEntity);
             var data = await httpResponseMessage.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<ApiDataResponse<TResponseEntity>>(data);
+            return await Task.FromResult(result);
+        }
+
+        public async Task<ApiDataResponse<T>> PutAsync<T>(string url, T entity)
+        {
+            HttpResponseMessage httpResponseMessage = await _httpClient.PutAsJsonAsync(url, entity);
+            var data = await httpResponseMessage.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<ApiDataResponse<T>>(data);
             return await Task.FromResult(result);
         }
 

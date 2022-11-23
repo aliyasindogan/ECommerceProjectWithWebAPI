@@ -1,11 +1,11 @@
 using AutoMapper;
-using Business.Mappings;
 using Core.Extensions;
 using Core.Localize;
 using Core.Providers;
 using Core.Utilities.Messages;
 using Core.Utilities.Settings;
 using DataAccess.Concrete.Contexts;
+using Entities.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;

@@ -2,7 +2,7 @@
 using Core.Entities.Concrete;
 using Entities.Dtos.AppUsers;
 
-namespace Business.Mappings
+namespace Entities.Mappings
 {
     public class MappingProfile : Profile
     {

@@ -1,10 +1,10 @@
 ﻿@using Core.Utilities.Localization
 @using Core.Utilities.Messages
 @using Entities.Dtos.AppUsers
-@model AppUserAddDto
+@model AppUserUpdateDto
 @inject ILocalizationService _localizationService
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Update";
 }
 
 <section class="content">
@@ -13,10 +13,9 @@
             <div class="col-12">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_AppUserAdd]</h3>
+                        <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_AppUserUpdate]</h3>
                     </div>
-
-                    <form asp-action="Add" method="post" enctype="multipart/form-data">
+                    <form asp-action="Update" method="post" enctype="multipart/form-data">
                         <div class="card-body">
                             @if (ViewBag.Errors != null)
                             {
@@ -39,7 +38,7 @@
                             <div class="row">
                                 <div class="col-sm-2">
                                     <div class="position-relative">
-                                        <img src="~/lib/AdminLTE-3.2.0-rc/dist/img/user3-160x160.png" alt="Photo 1" class="img-fluid">
+                                        <img src="@Model.ProfileImageUrl" alt="Photo 1" class="img-fluid">
                                     </div>
                                     <div class="input-group">
                                         <dl>
@@ -84,7 +83,7 @@
                                         <span asp-validation-for="Password" class="text-danger"></span>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
                         <div class="card-footer">
@@ -97,7 +96,3 @@
         </div>
     </div>
 </section>
-
-
-
-

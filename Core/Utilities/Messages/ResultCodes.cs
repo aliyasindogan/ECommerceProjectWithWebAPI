@@ -20,6 +20,21 @@
         /// Resim mevcut değil!
         /// </summary>
         ERROR_ImageNotFound = -20002,
+
+        /// <summary>
+        /// Ekleme işlemi başarısız
+        /// </summary>
+        ERROR_NoAdded = -20003,
+
+        /// <summary>
+        /// Silme işlemi başarısız
+        /// </summary>
+        ERROR_NotDeleted = -20004,
+
+        /// <summary>
+        /// Düzenleme işlemi başarısız
+        /// </summary>
+        ERROR_NotUpdated = -20005,
         #endregion
 
         #region INFO
@@ -47,6 +62,10 @@
         LABEL_FirstName = 7003,
         LABEL_LastName = 7004,
         LABEL_Operations = 7005,
+
+        LABEL_GsmNumber = 7006,
+        LABEL_Email= 7007,
+        LABEL_Password=7008,
         #endregion
 
         #region BUTTON
@@ -55,6 +74,8 @@
         BUTTON_Delete = 9002,
         BUTTON_Detail = 9003,
         BUTTON_SignOut = 9004,
+        BUTTON_AppUserList = 9005,
+        BUTTON_Save = 90006,
 
         #endregion
 

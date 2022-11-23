@@ -41,13 +41,11 @@ namespace Core.DataAccess.EntityFramework
         {
             var createDate = entity.GetType().GetProperty("CreatedDate");
             var dateValue = entity.GetType().GetProperty("CreatedDate").GetValue(entity);
+            entity.GetType().GetProperty("CreatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
             if (!Equals(createDate, null))
             {
                 if (Convert.ToDateTime(dateValue) == DateTime.MinValue)
-                {
                     entity.GetType().GetProperty("CreatedDate").SetValue(entity, DateTime.Now);
-                    entity.GetType().GetProperty("CreatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
-                }
             }
             using (TContext context = new TContext())
             {
@@ -61,13 +59,11 @@ namespace Core.DataAccess.EntityFramework
         {
             var createDate = entity.GetType().GetProperty("UpdatedDate");
             var dateValue = entity.GetType().GetProperty("UpdatedDate").GetValue(entity);
+            entity.GetType().GetProperty("UpdatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
             if (!Equals(createDate, null))
             {
                 if (Convert.ToDateTime(dateValue) == DateTime.MinValue)
-                {
                     entity.GetType().GetProperty("UpdatedDate").SetValue(entity, DateTime.Now);
-                    entity.GetType().GetProperty("UpdatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
-                }
             }
             using (TContext context = new TContext())
             {

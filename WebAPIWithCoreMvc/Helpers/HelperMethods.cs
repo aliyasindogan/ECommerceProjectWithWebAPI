@@ -4,6 +4,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System;
 using Core.Utilities.Messages;
+using Core.Utilities.Responses;
+using System.Collections.Generic;
 
 namespace WebAPIWithCoreMvc.Helpers
 {
@@ -58,5 +60,16 @@ namespace WebAPIWithCoreMvc.Helpers
             return filePath;
         }
 
+        public static List<string> ErrorList<T>(ApiDataResponse<T> result)
+        {
+            string[] errors = result.Message.Split(";");
+            List<string> errorList = new List<string>();
+            foreach (string error in errors)
+            {
+                if (!String.IsNullOrEmpty(error))
+                    errorList.Add(error);
+            }
+            return errorList;
+        }
     }
 }

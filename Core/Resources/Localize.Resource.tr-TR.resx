@@ -120,6 +120,9 @@
   <data name="BUTTON_Add" xml:space="preserve">
     <value>Ekle</value>
   </data>
+  <data name="BUTTON_AppUserList" xml:space="preserve">
+    <value>Kullanıcı Listesi</value>
+  </data>
   <data name="BUTTON_Delete" xml:space="preserve">
     <value>Sil</value>
   </data>
@@ -137,6 +140,15 @@
   </data>
   <data name="ERROR_ImageNotFound" xml:space="preserve">
     <value>Resim mevcut değil</value>
+  </data>
+  <data name="ERROR_NoAdded" xml:space="preserve">
+    <value>Ekleme işlemi başarısız</value>
+  </data>
+  <data name="ERROR_NotDeleted" xml:space="preserve">
+    <value>Silme işlemi başarısız</value>
+  </data>
+  <data name="ERROR_NotUpdated" xml:space="preserve">
+    <value>Düzenleme işlemi başarısız</value>
   </data>
   <data name="ERROR_UserNotFound" xml:space="preserve">
     <value>Kullanıc bulunamadı !</value>
@@ -168,14 +180,23 @@
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>Kullanıcı Tipi</value>
   </data>
+  <data name="LABEL_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="LABEL_FirstName" xml:space="preserve">
     <value>Adı</value>
+  </data>
+  <data name="LABEL_GsmNumber" xml:space="preserve">
+    <value>Cep Tel</value>
   </data>
   <data name="LABEL_LastName" xml:space="preserve">
     <value>Soyadı</value>
   </data>
   <data name="LABEL_Operations" xml:space="preserve">
     <value>İşlemler</value>
+  </data>
+  <data name="LABEL_Password" xml:space="preserve">
+    <value>Şifre</value>
   </data>
   <data name="LABEL_ProfileImageUrl" xml:space="preserve">
     <value>Resim Url</value>
