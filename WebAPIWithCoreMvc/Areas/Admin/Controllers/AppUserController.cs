@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Helpers;
@@ -34,7 +35,11 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             var result = await _appUserApiService.GetListDetailAsync();
-            return View(result.Data);
+            List<int> ids = new List<int>();
+            ids.Add((int)AppUserTypes.SystemAdmin);//SAdmin
+            ids.Add((int)AppUserTypes.Admin);//Admin
+            var users = result.Data.Where(x => ids.Contains(x.Id) == false);
+            return View(users.ToList());
         }
 
 
@@ -45,7 +50,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AppUserAddDto appUserAddDto,IFormFile file)
+        public async Task<IActionResult> Add(AppUserAddDto appUserAddDto, IFormFile file)
         {
             HelperMethods helperMethods = new HelperMethods(_webHostEnvironment);
             string filePath = await helperMethods.FileUpload(file);
@@ -74,21 +79,21 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(AppUserUpdateDto appUserUpdateDto,IFormFile file)
+        public async Task<IActionResult> Update(AppUserUpdateDto appUserUpdateDto, IFormFile file)
         {
-            if (file!=null)
+            if (file != null)
             {
                 HelperMethods helpers = new HelperMethods(_webHostEnvironment);
                 string filePath = await helpers.FileUpload(file);
                 var profileImageUrl = await _uploadImageApiService.UploadImageAsync(new FileInfo(filePath));
-                appUserUpdateDto.ProfileImageUrl=profileImageUrl.Data.FullPath;
+                appUserUpdateDto.ProfileImageUrl = profileImageUrl.Data.FullPath;
             }
             else
             {
                 var appUserDto = await _appUserApiService.GetByIdAsync(appUserUpdateDto.Id);
                 appUserUpdateDto.ProfileImageUrl = appUserDto.Data.ProfileImageUrl;
             }
-            var result=await _appUserApiService.UpdateAsync(appUserUpdateDto);
+            var result = await _appUserApiService.UpdateAsync(appUserUpdateDto);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
@@ -119,6 +124,14 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
 
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Detail(int id)
+        {
+            var appUserDto = await _appUserApiService.GetByIdAsync(id);
+            var appUserDetailDto = _mapper.Map<AppUserDetailDto>(appUserDto.Data);
+            return View(appUserDetailDto);
         }
     }
 }

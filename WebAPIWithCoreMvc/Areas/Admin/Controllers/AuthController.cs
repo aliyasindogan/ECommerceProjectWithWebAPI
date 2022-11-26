@@ -53,7 +53,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             if (user != null && !user.Success)
             {
                 ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı!");
-                return View(loginDto);
+                 return View(loginDto);
             }
             var userClaims = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
             userClaims.AddClaim(new Claim("token", user.Data.Token));
