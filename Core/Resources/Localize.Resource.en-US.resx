@@ -138,6 +138,9 @@
   <data name="BUTTON_Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="ERROR_Error" xml:space="preserve">
+    <value>ERROR !</value>
+  </data>
   <data name="ERROR_ImageNotFound" xml:space="preserve">
     <value>Image not found</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>App User Type Name</value>
+  </data>
+  <data name="LABEL_AreYouSureYouWantToDelete" xml:space="preserve">
+    <value>Are you sure you want to delete?</value>
   </data>
   <data name="LABEL_Email" xml:space="preserve">
     <value>Email</value>

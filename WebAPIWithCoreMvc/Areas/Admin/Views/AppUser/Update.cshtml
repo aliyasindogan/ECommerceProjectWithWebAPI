@@ -23,7 +23,7 @@
                                     <div class="col-sm-12">
                                         <div class="alert alert-danger alert-dismissible">
                                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                                            <h5><i class="icon fas fa-ban"></i> HATA!</h5>
+                                            <h5><i class="icon fas fa-ban"></i> @_localizationService[ResultCodes.ERROR_Error]</h5>
                                             <ul>
                                                 @foreach (var item in ViewBag.Errors)
                                                 {
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" value="Create" class="btn btn-primary">@_localizationService[ResultCodes.BUTTON_Save]</button>
+                            <button type="submit" value="Update" class="btn btn-primary">@_localizationService[ResultCodes.BUTTON_Save]</button>
                             <a asp-action="Index" class="btn btn-warning">@_localizationService[ResultCodes.BUTTON_AppUserList]</a>
                         </div>
                     </form>

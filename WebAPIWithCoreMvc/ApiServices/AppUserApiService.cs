@@ -43,5 +43,10 @@ namespace WebAPIWithCoreMvc.ApiServices
         {
             return await _httpClientService.PutAsync($"{Constants.AppUsers}/{Constants.Update}", appUserUpdateDto);
         }
+
+        public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
+        {
+            return await _httpClientService.DeleteAsync($"{Constants.AppUsers}/{Constants.Delete}/", id);
+        }
     }
 }

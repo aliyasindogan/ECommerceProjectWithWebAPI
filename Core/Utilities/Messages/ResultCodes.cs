@@ -35,6 +35,10 @@
         /// Düzenleme işlemi başarısız
         /// </summary>
         ERROR_NotUpdated = -20005,
+        /// <summary>
+        /// HATA!
+        /// </summary>
+        ERROR_Error=-20006,
         #endregion
 
         #region INFO
@@ -64,8 +68,10 @@
         LABEL_Operations = 7005,
 
         LABEL_GsmNumber = 7006,
-        LABEL_Email= 7007,
-        LABEL_Password=7008,
+        LABEL_Email = 7007,
+        LABEL_Password = 7008,
+        LABEL_AreYouSureYouWantToDelete = 7009,
+
         #endregion
 
         #region BUTTON

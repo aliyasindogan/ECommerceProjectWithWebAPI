@@ -124,7 +124,7 @@ namespace Business.Concrete
             var userUpdataMap = _mapper.Map<AppUserUpdateDto>(resultUpdate);
             return new SuccessApiDataResponse<AppUserUpdateDto>(userUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }
-
+        [CacheRemoveAspect("IUserService.GetListAsync")]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {
             return new SuccessApiDataResponse<bool>(await _appUserDal.DeleteAsync(id), _localizationService[ResultCodes.HTTP_OK]);

@@ -98,5 +98,27 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var appUserDto = await _appUserApiService.GetByIdAsync(id);
+            var appUserDeleteDto = _mapper.Map<AppUserDeleteDto>(appUserDto.Data);
+            return View(appUserDeleteDto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(AppUserDeleteDto appUserDeleteDto)
+        {
+            var result = await _appUserApiService.DeleteAsync(appUserDeleteDto.Id);
+            if (!result.Success)
+            {
+                var errorList = HelperMethods.ErrorList(result);
+                ViewBag.Errors = errorList;
+                return View(appUserDeleteDto);
+
+            }
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -3,7 +3,7 @@ using Core.Entities;
 
 namespace Entities.Dtos.AppUsers
 {
-    public class AppUserUpdateDto : IDto
+    public class AppUserDeleteDto : IDto
     {
         public int Id { get; set; }
         public string UserName { get; set; }

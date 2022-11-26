@@ -1,4 +1,5 @@
-﻿using Core.Utilities.Messages;
+﻿using Core.Entities;
+using Core.Utilities.Messages;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Token;
 using Entities.Dtos.Auths;
@@ -24,6 +25,16 @@ namespace WebAPIWithCoreMvc.ApiServices
         {
             _httpContextAccessor = httpContextAccessor;
             _httpClient = httpClient;
+        }
+
+        public async Task<ApiDataResponse<bool>> DeleteAsync(string url, int id)
+        {
+            HttpResponseMessage httpResponseMessage = await _httpClient.DeleteAsync(url+id);
+            string _language = _httpContextAccessor.HttpContext.User.FindFirst("language").Value;
+            httpResponseMessage.Headers.Add("Accept-Language", _language);
+            var data = await httpResponseMessage.Content.ReadAsStringAsync();
+            var result = JsonConvert.DeserializeObject<ApiDataResponse<bool>>(data);
+            return await Task.FromResult(result);
         }
 
         public async Task<ApiDataResponse<T>> GetAsync<T>(string url, int id)
@@ -69,6 +80,8 @@ namespace WebAPIWithCoreMvc.ApiServices
         public async Task<ApiDataResponse<TResponseEntity>> PostAsync<TRequestEntity, TResponseEntity>(string url, TRequestEntity requestEntity, TResponseEntity responseEntity)
         {
             HttpResponseMessage httpResponseMessage = await _httpClient.PostAsJsonAsync(url, requestEntity);
+            string _language = _httpContextAccessor.HttpContext.User.FindFirst("language").Value;
+            httpResponseMessage.Headers.Add("Accept-Language", _language);
             var data = await httpResponseMessage.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<ApiDataResponse<TResponseEntity>>(data);
             return await Task.FromResult(result);
@@ -77,6 +90,8 @@ namespace WebAPIWithCoreMvc.ApiServices
         public async Task<ApiDataResponse<T>> PutAsync<T>(string url, T entity)
         {
             HttpResponseMessage httpResponseMessage = await _httpClient.PutAsJsonAsync(url, entity);
+            string _language = _httpContextAccessor.HttpContext.User.FindFirst("language").Value;
+            httpResponseMessage.Headers.Add("Accept-Language", _language);
             var data = await httpResponseMessage.Content.ReadAsStringAsync();
             var result = JsonConvert.DeserializeObject<ApiDataResponse<T>>(data);
             return await Task.FromResult(result);
