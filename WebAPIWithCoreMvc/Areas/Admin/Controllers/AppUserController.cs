@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Entities.Concrete;
 using Core.Entities.Enums;
 using Entities.Dtos.AppUsers;
 using Microsoft.AspNetCore.Authorization;
@@ -36,8 +37,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         {
             var result = await _appUserApiService.GetListDetailAsync();
             List<int> ids = new List<int>();
-            ids.Add((int)AppUserTypes.SystemAdmin);//SAdmin
-            ids.Add((int)AppUserTypes.Admin);//Admin
+            ids.Add((int)AppUserTypes.SystemAdmin);//SystemAdmin
             var users = result.Data.Where(x => ids.Contains(x.Id) == false);
             return View(users.ToList());
         }
@@ -46,6 +46,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
+
             return View();
         }
 
@@ -56,8 +57,6 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             string filePath = await helperMethods.FileUpload(file);
             var profileImageUrl = await _uploadImageApiService.UploadImageAsync(new FileInfo(filePath));
             appUserAddDto.ProfileImageUrl = profileImageUrl.Data.FullPath;
-
-            appUserAddDto.AppUserTypeID = (int)AppUserTypes.Admin;
             appUserAddDto.RefreshToken = Guid.NewGuid();
             var result = await _appUserApiService.AddAsync(appUserAddDto);
             if (!result.Success)

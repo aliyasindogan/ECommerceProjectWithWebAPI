@@ -32,10 +32,10 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             * 1111
             * 0111
             */
-            builder.HasData(
-                new AppUserTypeAppOperationClaim() { Id = -1, AppUserTypeID = (int)AppUserTypes.Admin, AppOperationClaimID = 1, Status = "1011" },
-                new AppUserTypeAppOperationClaim() { Id = -2, AppUserTypeID = (int)AppUserTypes.Admin, AppOperationClaimID = 2, Status = "1111" },
-                new AppUserTypeAppOperationClaim() { Id = -3, AppUserTypeID = (int)AppUserTypes.Admin, AppOperationClaimID = 3, Status = "1111" });
+            //builder.HasData(
+            //    new AppUserTypeAppOperationClaim() { Id = -1, AppUserTypeID = (int)AppUserTypes.Admin, AppOperationClaimID = 1, Status = "1011" },
+            //    new AppUserTypeAppOperationClaim() { Id = -2, AppUserTypeID = (int)AppUserTypes.Admin, AppOperationClaimID = 2, Status = "1111" },
+            //    new AppUserTypeAppOperationClaim() { Id = -3, AppUserTypeID = (int)AppUserTypes.Admin, AppOperationClaimID = 3, Status = "1111" });
         }
     }
 }

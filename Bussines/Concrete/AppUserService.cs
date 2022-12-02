@@ -97,6 +97,8 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
 
+        [CacheRemoveAspect("IUserService.GetListAsync")]
+        [ValidationAspect(typeof(AppUserUpdateDtoValidator))]
         public async Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto userUpdateDto)
         {
             var getUser = await _appUserDal.GetAsync(x => x.Id == userUpdateDto.Id);
@@ -116,7 +118,6 @@ namespace Business.Concrete
             }
             user.CreatedDate = getUser.CreatedDate;
             user.CreatedUserId = getUser.CreatedUserId;
-            user.AppUserTypeID = (int)AppUserTypes.Admin;
             var resultUpdate = await _appUserDal.UpdateAsync(user);
             if (resultUpdate == null)
                 return new ErrorApiDataResponse<AppUserUpdateDto>(null, _localizationService[ResultCodes.ERROR_NotUpdated]);

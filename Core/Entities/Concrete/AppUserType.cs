@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Core.Entities.Concrete
 {
-    public class AppUserType : BaseEntity
+    public class AppUserType : CreatedUpdatedDeletedEntity
     {
         #region Constroctor
         public AppUserType()
