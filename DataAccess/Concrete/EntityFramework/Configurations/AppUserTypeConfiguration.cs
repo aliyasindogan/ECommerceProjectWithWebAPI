@@ -17,7 +17,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.HasData(new AppUserType() { Id = 1, AppUserTypeName = "System Admin" });
+            builder.HasData(new AppUserType() { Id = -1, AppUserTypeName = "System Admin" });
         }
     }
 }

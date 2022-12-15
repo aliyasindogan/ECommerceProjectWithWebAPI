@@ -222,6 +222,21 @@
   <data name="PAGETITLE_AppUserList" xml:space="preserve">
     <value>Kullanıcı Liste</value>
   </data>
+  <data name="PAGETITLE_AppUserTypeAdd" xml:space="preserve">
+    <value>Kullanıcı Tipi Ekle</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeDelete" xml:space="preserve">
+    <value>Kullanıcı Tipi Sil</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeDetail" xml:space="preserve">
+    <value>Kullanıcı Tipi Detayı</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeList" xml:space="preserve">
+    <value>Kullanıcı Tipi Liste</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeUpdate" xml:space="preserve">
+    <value>Kullanıcı Tipi Düzenle</value>
+  </data>
   <data name="PAGETITLE_AppUserUpdate" xml:space="preserve">
     <value>Kullanıcı Düzenle</value>
   </data>

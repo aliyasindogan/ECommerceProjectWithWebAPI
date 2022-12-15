@@ -1,17 +1,14 @@
 ﻿using Core.Entities.BaseEntities;
-using Core.Entities.Enums;
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entities.Concrete
 {
-    public class AppUserTypeAppOperationClaim : BaseEntity, IUpdatedEntity
+    public class AppUserTypeAppOperationClaim : AuditEntity
     {
         #region Properties
         public int AppUserTypeID { get; set; }
         public int AppOperationClaimID { get; set; }
-        public int? UpdatedUserId { get; set; }
-        public DateTime? UpdatedDate { get; set; }
         public string Status { get; set; }
         #endregion
 

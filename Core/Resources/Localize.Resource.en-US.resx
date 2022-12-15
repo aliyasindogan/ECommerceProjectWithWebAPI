@@ -222,6 +222,21 @@
   <data name="PAGETITLE_AppUserList" xml:space="preserve">
     <value>App User List</value>
   </data>
+  <data name="PAGETITLE_AppUserTypeAdd" xml:space="preserve">
+    <value>App User Type Add</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeDelete" xml:space="preserve">
+    <value>App User Type Delete</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeDetail" xml:space="preserve">
+    <value>App User Type Detail</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeList" xml:space="preserve">
+    <value>App User Type List</value>
+  </data>
+  <data name="PAGETITLE_AppUserTypeUpdate" xml:space="preserve">
+    <value>App User Type Update</value>
+  </data>
   <data name="PAGETITLE_AppUserUpdate" xml:space="preserve">
     <value>App User Update</value>
   </data>

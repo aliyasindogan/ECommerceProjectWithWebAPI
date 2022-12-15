@@ -18,6 +18,7 @@
         public const string Detail = "Detail";
         public const string AppUser = "AppUser";
         public const string AppUsers = "AppUsers";
+        public const string AppUserTypes = "AppUserTypes";
         public const string Login = "Login";
         public const string GetById = "GetById";
         public const string GetList = "GetList";

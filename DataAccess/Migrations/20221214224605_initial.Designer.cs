@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20220921213453_UpdateUserTable")]
-    partial class UpdateUserTable
+    [Migration("20221214224605_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,9 @@ namespace DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -42,16 +45,19 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
+                            IsActive = false,
                             Name = "AppUser"
                         },
                         new
                         {
                             Id = 2,
+                            IsActive = false,
                             Name = "AppUserTypeAppOperationClaim"
                         },
                         new
                         {
                             Id = 3,
+                            IsActive = false,
                             Name = "AppUserType"
                         });
                 });
@@ -98,6 +104,9 @@ namespace DataAccess.Migrations
                         .HasMaxLength(11)
                         .HasColumnType("nvarchar(11)")
                         .HasColumnName("GsmNumber");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -150,35 +159,19 @@ namespace DataAccess.Migrations
                         {
                             Id = -1,
                             AppUserTypeID = -1,
-                            CreatedDate = new DateTime(2022, 9, 22, 0, 34, 52, 746, DateTimeKind.Local).AddTicks(1546),
+                            CreatedDate = new DateTime(2022, 12, 15, 1, 46, 3, 346, DateTimeKind.Local).AddTicks(596),
                             CreatedUserId = 1,
-                            Email = "ali@gmail.com",
-                            FirstName = "Ali Yasin",
+                            Email = "sadmin@gmail.com",
+                            FirstName = "System",
                             GsmNumber = "",
+                            IsActive = false,
                             IsDeleted = false,
-                            LastName = "Doğan",
-                            PasswordHash = new byte[] { 158, 173, 246, 14, 157, 42, 247, 134, 21, 96, 47, 89, 89, 135, 61, 208, 125, 87, 206, 96, 20, 216, 140, 79, 201, 251, 150, 206, 126, 180, 138, 140, 86, 94, 214, 106, 253, 53, 14, 106, 97, 86, 87, 87, 160, 195, 62, 216, 197, 242, 195, 66, 20, 111, 238, 123, 222, 114, 184, 137, 197, 64, 17, 204 },
-                            PasswordSalt = new byte[] { 220, 182, 9, 15, 131, 147, 130, 194, 54, 128, 249, 198, 201, 112, 242, 239, 71, 128, 207, 166, 1, 109, 193, 181, 36, 47, 47, 105, 186, 208, 16, 101, 170, 236, 78, 10, 75, 177, 125, 14, 37, 33, 202, 37, 85, 106, 175, 16, 76, 27, 67, 24, 195, 53, 250, 141, 0, 168, 125, 143, 39, 193, 141, 152, 17, 50, 167, 99, 80, 3, 253, 140, 119, 136, 92, 28, 15, 157, 129, 5, 116, 61, 40, 120, 193, 204, 99, 172, 191, 170, 6, 192, 201, 81, 133, 224, 114, 71, 237, 161, 16, 98, 44, 217, 114, 46, 206, 119, 16, 101, 136, 171, 171, 152, 151, 4, 251, 158, 61, 44, 219, 8, 121, 123, 176, 166, 243, 12 },
+                            LastName = "Admin",
+                            PasswordHash = new byte[] { 116, 81, 184, 200, 77, 17, 201, 22, 228, 242, 218, 149, 182, 63, 221, 188, 93, 59, 161, 178, 62, 75, 234, 92, 10, 146, 132, 128, 101, 137, 73, 80, 111, 69, 248, 100, 83, 154, 20, 248, 220, 213, 236, 100, 93, 41, 118, 25, 42, 32, 36, 27, 193, 153, 229, 204, 120, 120, 82, 195, 157, 74, 49, 153 },
+                            PasswordSalt = new byte[] { 88, 248, 101, 69, 85, 113, 229, 213, 114, 26, 85, 196, 127, 28, 125, 228, 16, 92, 145, 199, 220, 37, 39, 250, 2, 240, 159, 43, 189, 228, 154, 246, 53, 222, 210, 211, 126, 129, 160, 248, 103, 179, 96, 20, 187, 128, 249, 50, 143, 215, 165, 222, 19, 163, 2, 84, 54, 82, 63, 44, 204, 235, 135, 55, 58, 76, 109, 68, 143, 235, 197, 4, 71, 41, 213, 163, 140, 33, 20, 192, 77, 222, 57, 59, 108, 107, 143, 129, 33, 209, 152, 164, 214, 105, 211, 116, 59, 246, 178, 22, 11, 255, 21, 159, 81, 128, 231, 231, 237, 47, 75, 152, 86, 15, 13, 88, 6, 130, 34, 55, 138, 153, 43, 144, 93, 150, 255, 14 },
                             ProfileImageUrl = "",
-                            RefreshToken = new Guid("dd7e878f-e985-48a6-b152-4f755a212b7d"),
-                            UserName = "aliyasin"
-                        },
-                        new
-                        {
-                            Id = -2,
-                            AppUserTypeID = -2,
-                            CreatedDate = new DateTime(2022, 9, 22, 0, 34, 52, 747, DateTimeKind.Local).AddTicks(2598),
-                            CreatedUserId = 1,
-                            Email = "admin@gmail.com",
-                            FirstName = "Admin",
-                            GsmNumber = "",
-                            IsDeleted = false,
-                            LastName = "ADMIN",
-                            PasswordHash = new byte[] { 158, 173, 246, 14, 157, 42, 247, 134, 21, 96, 47, 89, 89, 135, 61, 208, 125, 87, 206, 96, 20, 216, 140, 79, 201, 251, 150, 206, 126, 180, 138, 140, 86, 94, 214, 106, 253, 53, 14, 106, 97, 86, 87, 87, 160, 195, 62, 216, 197, 242, 195, 66, 20, 111, 238, 123, 222, 114, 184, 137, 197, 64, 17, 204 },
-                            PasswordSalt = new byte[] { 220, 182, 9, 15, 131, 147, 130, 194, 54, 128, 249, 198, 201, 112, 242, 239, 71, 128, 207, 166, 1, 109, 193, 181, 36, 47, 47, 105, 186, 208, 16, 101, 170, 236, 78, 10, 75, 177, 125, 14, 37, 33, 202, 37, 85, 106, 175, 16, 76, 27, 67, 24, 195, 53, 250, 141, 0, 168, 125, 143, 39, 193, 141, 152, 17, 50, 167, 99, 80, 3, 253, 140, 119, 136, 92, 28, 15, 157, 129, 5, 116, 61, 40, 120, 193, 204, 99, 172, 191, 170, 6, 192, 201, 81, 133, 224, 114, 71, 237, 161, 16, 98, 44, 217, 114, 46, 206, 119, 16, 101, 136, 171, 171, 152, 151, 4, 251, 158, 61, 44, 219, 8, 121, 123, 176, 166, 243, 12 },
-                            ProfileImageUrl = "",
-                            RefreshToken = new Guid("c439cb2b-866f-4d14-bef4-163aeb7afa78"),
-                            UserName = "admin"
+                            RefreshToken = new Guid("51a568a4-dd23-4d66-9ed3-935ebcf9659b"),
+                            UserName = "sadmin"
                         });
                 });
 
@@ -195,6 +188,30 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("AppUserTypeName");
 
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("UpdatedUserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("AppUserTypes", "dbo");
@@ -203,12 +220,11 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = -1,
-                            AppUserTypeName = "System Admin"
-                        },
-                        new
-                        {
-                            Id = -2,
-                            AppUserTypeName = "Admin"
+                            AppUserTypeName = "System Admin",
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedUserId = 0,
+                            IsActive = false,
+                            IsDeleted = false
                         });
                 });
 
@@ -226,6 +242,24 @@ namespace DataAccess.Migrations
                     b.Property<int>("AppUserTypeID")
                         .HasColumnType("int")
                         .HasColumnName("UserTypeId");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -246,35 +280,12 @@ namespace DataAccess.Migrations
                     b.HasIndex("AppUserTypeID");
 
                     b.ToTable("AppUserTypeAppOperationClaims", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = -1,
-                            AppOperationClaimID = 1,
-                            AppUserTypeID = -2,
-                            Status = "1011"
-                        },
-                        new
-                        {
-                            Id = -2,
-                            AppOperationClaimID = 2,
-                            AppUserTypeID = -2,
-                            Status = "1111"
-                        },
-                        new
-                        {
-                            Id = -3,
-                            AppOperationClaimID = 3,
-                            AppUserTypeID = -2,
-                            Status = "1111"
-                        });
                 });
 
             modelBuilder.Entity("Core.Entities.Concrete.AppUser", b =>
                 {
                     b.HasOne("Core.Entities.Concrete.AppUserType", "AppUserType")
-                        .WithMany()
+                        .WithMany("AppUsers")
                         .HasForeignKey("AppUserTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -291,7 +302,7 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.HasOne("Core.Entities.Concrete.AppUserType", "AppUserType")
-                        .WithMany()
+                        .WithMany("AppUserTypeAppOperationClaims")
                         .HasForeignKey("AppUserTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -303,6 +314,13 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Core.Entities.Concrete.AppOperationClaim", b =>
                 {
+                    b.Navigation("AppUserTypeAppOperationClaims");
+                });
+
+            modelBuilder.Entity("Core.Entities.Concrete.AppUserType", b =>
+                {
+                    b.Navigation("AppUsers");
+
                     b.Navigation("AppUserTypeAppOperationClaims");
                 });
 #pragma warning restore 612, 618

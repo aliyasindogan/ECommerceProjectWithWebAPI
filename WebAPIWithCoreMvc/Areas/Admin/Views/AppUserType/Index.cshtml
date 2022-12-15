@@ -1,0 +1,43 @@
+﻿@using Core.Utilities.Messages
+@model List<Entities.Dtos.AppUserTypes.AppUserTypeDto>
+@inject Core.Utilities.Localization.ILocalizationService _localizationService
+<div class="col-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_AppUserTypeList]</h3>
+            <div class="card-tools">
+                <form asp-action="Add" asp-controller="AppUserType" method="get">
+                    <button type="submit" class="btn btn-default btn-xs float-right">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>@_localizationService[ResultCodes.LABEL_AppUserTypeName]</th>
+                        <th>@_localizationService[ResultCodes.LABEL_Operations]</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.AppUserTypeName</td>
+                            <td>
+                                <a class="btn btn-secondary btn-xs" asp-action="Update" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Update]</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Detail" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Detail]</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Delete" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Delete]</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>

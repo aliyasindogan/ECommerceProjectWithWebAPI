@@ -4,7 +4,7 @@ namespace Entities.Dtos.AppUserTypes
 {
     public class AppUserTypeAddDto : IDto
     {
-        public int UserTypeName { get; set; }
+        public int AppUserTypeName { get; set; }
 
     }
 }

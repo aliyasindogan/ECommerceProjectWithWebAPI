@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entities.Concrete
 {
-    public class AppUser : CreatedUpdatedDeletedEntity
+    public class AppUser : AuditEntity
     {
         #region Properties
         public string UserName { get; set; }
