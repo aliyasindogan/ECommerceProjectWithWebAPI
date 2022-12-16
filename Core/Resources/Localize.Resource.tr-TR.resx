@@ -123,6 +123,9 @@
   <data name="BUTTON_AppUserList" xml:space="preserve">
     <value>Kullanıcı Listesi</value>
   </data>
+  <data name="BUTTON_AppUserTypeList" xml:space="preserve">
+    <value>Kullanıcı Tipi Listesi</value>
+  </data>
   <data name="BUTTON_Delete" xml:space="preserve">
     <value>Sil</value>
   </data>

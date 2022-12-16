@@ -123,6 +123,9 @@
   <data name="BUTTON_AppUserList" xml:space="preserve">
     <value>App User List</value>
   </data>
+  <data name="BUTTON_AppUserTypeList" xml:space="preserve">
+    <value>App User Type List</value>
+  </data>
   <data name="BUTTON_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>

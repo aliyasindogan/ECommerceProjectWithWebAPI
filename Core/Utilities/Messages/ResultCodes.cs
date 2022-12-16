@@ -82,7 +82,7 @@
         BUTTON_SignOut = 9004,
         BUTTON_AppUserList = 9005,
         BUTTON_Save = 90006,
-
+        BUTTON_AppUserTypeList= 90007,
         #endregion
 
         #region PAGETITLE

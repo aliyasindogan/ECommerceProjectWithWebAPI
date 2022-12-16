@@ -1,0 +1,56 @@
+﻿@using Core.Utilities.Localization
+@using Core.Utilities.Messages
+@using Entities.Dtos.AppUserTypes
+@model AppUserTypeDetailDto
+@inject ILocalizationService _localizationService
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_AppUserTypeDetail]</h3>
+                    </div>
+                    <form asp-action="Detail" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            @if (ViewBag.Errors != null)
+                            {
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h5><i class="icon fas fa-ban"></i>  @_localizationService[ResultCodes.ERROR_Error]</h5>
+                                            <ul>
+                                                @foreach (var item in ViewBag.Errors)
+                                                {
+                                                    <li>@item</li>
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>@_localizationService[ResultCodes.LABEL_AppUserTypeName]</label>
+                                        <input asp-for="AppUserTypeName" class="form-control" disabled="disabled" />
+                                        <span asp-validation-for="AppUserTypeName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a asp-action="Index" class="btn btn-info">@_localizationService[ResultCodes.BUTTON_AppUserTypeList]</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
