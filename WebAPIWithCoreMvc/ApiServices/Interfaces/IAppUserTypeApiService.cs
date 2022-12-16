@@ -8,6 +8,7 @@ namespace WebAPIWithCoreMvc.ApiServices.Interfaces
     public interface IAppUserTypeApiService
     {
         Task<ApiDataResponse<List<AppUserTypeDto>>> GetListAsync();
+
         Task<ApiDataResponse<List<AppUserTypeDto>>> GetListDetailAsync();
         Task<ApiDataResponse<AppUserTypeDto>> AddAsync(AppUserTypeAddDto userAddDto);
         Task<ApiDataResponse<AppUserTypeDto>> GetByIdAsync(int id);

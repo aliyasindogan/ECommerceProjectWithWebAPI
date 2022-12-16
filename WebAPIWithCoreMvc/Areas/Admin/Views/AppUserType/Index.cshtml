@@ -23,16 +23,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @if (Model != null)
                     {
-                        <tr>
-                            <td>@item.AppUserTypeName</td>
-                            <td>
-                                <a class="btn btn-secondary btn-xs" asp-action="Update" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Update]</a>
-                                <a class="btn btn-secondary btn-xs" asp-action="Detail" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Detail]</a>
-                                <a class="btn btn-secondary btn-xs" asp-action="Delete" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Delete]</a>
-                            </td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.AppUserTypeName</td>
+                                <td>
+                                    <a class="btn btn-secondary btn-xs" asp-action="Update" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Update]</a>
+                                    <a class="btn btn-secondary btn-xs" asp-action="Detail" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Detail]</a>
+                                    <a class="btn btn-secondary btn-xs" asp-action="Delete" asp-route-id="@item.Id">@_localizationService[ResultCodes.BUTTON_Delete]</a>
+                                </td>
+                            </tr>
+                        }
                     }
                 </tbody>
             </table>

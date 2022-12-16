@@ -26,11 +26,13 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var result = await _appUserTypeApiService.GetListDetailAsync();
-            /// List<int> ids = new List<int>();
-            //ids.Add((int)AppUserTypes.SystemAdmin);//SystemAdmin
-            //var users = result.Data.Where(x => ids.Contains(x.Id) == false);
-            return View(result.Data.ToList());
+            var result = await _appUserTypeApiService.GetListAsync();
+            if (result == null)
+                return View();
+            List<int> ids = new List<int>();
+            ids.Add((int)AppUserTypes.SystemAdmin);//SystemAdmin
+            var userTypes = result.Data.Where(x => ids.Contains(x.Id) == false);
+            return View(userTypes.ToList());
         }
 
 
