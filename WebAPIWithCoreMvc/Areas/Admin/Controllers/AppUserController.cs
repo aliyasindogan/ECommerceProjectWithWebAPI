@@ -6,11 +6,14 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPIWithCoreMvc.ApiServices;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Helpers;
 
@@ -21,15 +24,17 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
     public class AppUserController : Controller
     {
         private readonly IAppUserApiService _appUserApiService;
+        private readonly IAppUserTypeApiService _appUserTypeApiService;
         private readonly IUploadImageApiService _uploadImageApiService;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IMapper _mapper;
-        public AppUserController(IAppUserApiService userApiService, IUploadImageApiService uploadImageApiService, IWebHostEnvironment webHostEnvironment, IMapper mapper)
+        public AppUserController(IAppUserApiService userApiService, IUploadImageApiService uploadImageApiService, IWebHostEnvironment webHostEnvironment, IMapper mapper, IAppUserTypeApiService appUserTypeApiService)
         {
             _appUserApiService = userApiService;
             _uploadImageApiService = uploadImageApiService;
             _webHostEnvironment = webHostEnvironment;
             _mapper = mapper;
+            _appUserTypeApiService = appUserTypeApiService;
         }
 
         [HttpGet]
@@ -46,8 +51,14 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
-
+            await DropDownListFill();
             return View();
+        }
+
+        private async Task DropDownListFill()
+        {
+            var appUserTypes = await _appUserTypeApiService.GetListAsync();
+            ViewBag.AppUserTypes = new SelectList(appUserTypes.Data.Where(x => x.Id > 0).ToList(), "Id", "AppUserTypeName");
         }
 
         [HttpPost]
@@ -72,6 +83,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(int id)
         {
+            await DropDownListFill();
             var appUserDto = await _appUserApiService.GetByIdAsync(id);
             var appUserUpdateDto = _mapper.Map<AppUserUpdateDto>(appUserDto.Data);
             return View(appUserUpdateDto);

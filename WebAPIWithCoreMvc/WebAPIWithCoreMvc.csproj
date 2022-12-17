@@ -21,8 +21,4 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\Upload\" />
-  </ItemGroup>
-
 </Project>

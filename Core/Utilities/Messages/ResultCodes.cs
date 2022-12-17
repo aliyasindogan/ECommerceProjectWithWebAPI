@@ -71,7 +71,8 @@
         LABEL_Email = 7007,
         LABEL_Password = 7008,
         LABEL_AreYouSureYouWantToDelete = 7009,
-         
+        LABEL_AppUserType = 7010,
+        LABEL_Choose      =7011,
         #endregion
 
         #region BUTTON

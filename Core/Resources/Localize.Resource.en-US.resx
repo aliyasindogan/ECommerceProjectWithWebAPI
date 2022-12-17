@@ -183,11 +183,17 @@
   <data name="INFO_Listed" xml:space="preserve">
     <value>Listed</value>
   </data>
+  <data name="LABEL_AppUserType" xml:space="preserve">
+    <value>App User Type</value>
+  </data>
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>App User Type Name</value>
   </data>
   <data name="LABEL_AreYouSureYouWantToDelete" xml:space="preserve">
     <value>Are you sure you want to delete?</value>
+  </data>
+  <data name="LABEL_Choose" xml:space="preserve">
+    <value>Choose</value>
   </data>
   <data name="LABEL_Email" xml:space="preserve">
     <value>Email</value>

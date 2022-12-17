@@ -10,8 +10,6 @@ namespace Business.Validations.FluentValidation
             RuleFor(x => x.UserName).NotEmpty().
                 WithErrorCode("VALIDATION_UserNameFieldCannotBeEmpty");
 
-            RuleFor(x => x.Password).NotEmpty().
-                WithErrorCode("VALIDATION_PasswordFieldCannotBeEmpty");
 
             RuleFor(x => x.Email).NotEmpty().
                 WithErrorCode("VALIDATION_EmailFieldCannotBeEmpty");

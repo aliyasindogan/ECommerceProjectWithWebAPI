@@ -85,6 +85,17 @@
                                 </div>
 
                             </div>
+                            <div class="row">
+                                <div class="offset-sm-2 col-sm-10">
+                                    <div class="form-group">
+                                        <label asp-for="AppUserTypeID">@_localizationService[ResultCodes.LABEL_AppUserType]</label>
+                                        <select asp-for="AppUserTypeID" class="form-control" asp-items="@ViewBag.AppUserTypes" id="AppUserTypeID">
+                                            <option value="">@_localizationService[ResultCodes.LABEL_Choose]</option>
+                                        </select>
+                                        <span class="text-danger" asp-validation-for="AppUserTypeID"></span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" value="Update" class="btn btn-primary">@_localizationService[ResultCodes.BUTTON_Save]</button>

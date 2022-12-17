@@ -183,11 +183,17 @@
   <data name="INFO_Listed" xml:space="preserve">
     <value>Listelendi</value>
   </data>
+  <data name="LABEL_AppUserType" xml:space="preserve">
+    <value>Kullanıcı Tipi</value>
+  </data>
   <data name="LABEL_AppUserTypeName" xml:space="preserve">
     <value>Kullanıcı Tipi</value>
   </data>
   <data name="LABEL_AreYouSureYouWantToDelete" xml:space="preserve">
     <value>Silmek istediğinizden emin misiniz?</value>
+  </data>
+  <data name="LABEL_Choose" xml:space="preserve">
+    <value>Seçiniz</value>
   </data>
   <data name="LABEL_Email" xml:space="preserve">
     <value>Email</value>

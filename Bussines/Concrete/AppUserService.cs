@@ -83,7 +83,7 @@ namespace Business.Concrete
 
 
         [TransactionScopeAspect]
-        [CacheRemoveAspect("IUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync")]
         [ValidationAspect(typeof(AppUserAddDtoValidator))]
         public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
         {
@@ -97,7 +97,7 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
 
-        [CacheRemoveAspect("IUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync")]
         [ValidationAspect(typeof(AppUserUpdateDtoValidator))]
         public async Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto userUpdateDto)
         {
@@ -125,7 +125,7 @@ namespace Business.Concrete
             var userUpdataMap = _mapper.Map<AppUserUpdateDto>(resultUpdate);
             return new SuccessApiDataResponse<AppUserUpdateDto>(userUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }
-        [CacheRemoveAspect("IUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync")]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {
             return new SuccessApiDataResponse<bool>(await _appUserDal.DeleteAsync(id), _localizationService[ResultCodes.HTTP_OK]);
