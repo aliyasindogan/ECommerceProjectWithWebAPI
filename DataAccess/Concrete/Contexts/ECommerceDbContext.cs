@@ -1,4 +1,5 @@
 ﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -33,5 +34,8 @@ namespace DataAccess.Concrete.Contexts
         public virtual DbSet<AppOperationClaim> AppOperationClaims { get; set; }
         public virtual DbSet<AppUserTypeAppOperationClaim> AppUserTypeAppOperationClaims { get; set; }
         public virtual DbSet<AppUserType> AppUserTypes { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
+        public virtual DbSet<PageType> PageTypes { get; set; }
+        public virtual DbSet<PagePermisson> PagePermissons { get; set; }
     }
 }

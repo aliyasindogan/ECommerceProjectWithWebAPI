@@ -33,22 +33,19 @@ namespace Business.Concrete
         #region DI
 
         private readonly IAppUserTypeDal _appUserTypeDal;
-        private readonly AppSettings _appSettings;
         private IMapper _mapper;
         private readonly ILocalizationService _localizationService;
-        public AppUserTypeService(IAppUserTypeDal appUserTypeDal, IOptions<AppSettings> appSettings, IMapper mapper, ILocalizationService localizationService)
+        public AppUserTypeService(IAppUserTypeDal appUserTypeDal, IMapper mapper, ILocalizationService localizationService)
         {
             _appUserTypeDal = appUserTypeDal;
             _mapper = mapper;
-            _appSettings = appSettings.Value;
             _localizationService = localizationService;
         }
 
         #endregion DI
 
-        //[CacheAspect(10)]
+        [CacheAspect(10)]
         [SecuredOperationAspect("AppUserType.List")]
-        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<List<AppUserTypeDto>>> GetListAsync()
         {
             var response = await _appUserTypeDal.GetListAsync();
@@ -57,23 +54,14 @@ namespace Business.Concrete
 
         }
 
-        //[CacheAspect(10)]
-        //[SecuredOperationAspect("AppUserType.List")]
-        //[LogAspect(typeof(FileLogger))]
-        //public async Task<ApiDataResponse<List<AppUserTypeDto>>> GetListDetailAsync()
-        //{
-        //    var response = await _appUserTypeDal.GetListDetailAsync();
-        //    var userDtos = _mapper.Map<List<AppUserTypeDto>>(response);
-        //    return new SuccessApiDataResponse<List<AppUserTypeDto>>(userDtos, message: _localizationService[ResultCodes.HTTP_OK],resultCount:userDtos.Count);
-
-        //}
         public async Task<ApiDataResponse<AppUserType>> GetAsync(Expression<Func<AppUserType, bool>> filter)
         {
             var user = await _appUserTypeDal.GetAsync(filter);
             return new SuccessApiDataResponse<AppUserType>(data: user, user == null ? _localizationService[ResultCodes.ERROR_UserNotFound] : _localizationService[ResultCodes.HTTP_OK]);
 
         }
-
+        [CacheAspect(10)]
+        [SecuredOperationAspect("AppUserType.List")]
         public async Task<ApiDataResponse<AppUserTypeDto>> GetByIdAsync(int id)
         {
             var user = await _appUserTypeDal.GetAsync(x => x.Id == id);
@@ -82,9 +70,10 @@ namespace Business.Concrete
         }
 
 
-        //[TransactionScopeAspect]
-        [CacheRemoveAspect("IUserTypeService.GetListAsync")]
+        [TransactionScopeAspect]
+        [CacheRemoveAspect("IAppUserTypeService.GetListAsync")]
         [ValidationAspect(typeof(AppUserTypeAddDtoValidator))]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserTypeDto>> AddAsync(AppUserTypeAddDto userTypeAddDto)
         {
             var userType = _mapper.Map<AppUserType>(userTypeAddDto);
@@ -92,9 +81,11 @@ namespace Business.Concrete
             var userTypeDto = _mapper.Map<AppUserTypeDto>(userTypeAdd);
             return new SuccessApiDataResponse<AppUserTypeDto>(userTypeDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
-        
-        [CacheRemoveAspect("IUserTypeService.GetListAsync")]
+
+        [TransactionScopeAspect]
+        [CacheRemoveAspect("IAppUserTypeService.GetListAsync")]
         [ValidationAspect(typeof(AppUserTypeUpdateDtoValidator))]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserTypeUpdateDto>> UpdateAsync(AppUserTypeUpdateDto userTypeUpdateDto)
         {
             var getUserType = await _appUserTypeDal.GetAsync(x => x.Id == userTypeUpdateDto.Id);
@@ -107,7 +98,8 @@ namespace Business.Concrete
             var userUpdataMap = _mapper.Map<AppUserTypeUpdateDto>(resultUpdate);
             return new SuccessApiDataResponse<AppUserTypeUpdateDto>(userUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }
-        [CacheRemoveAspect("IUserTypeService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserTypeService.GetListAsync")]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {
             return new SuccessApiDataResponse<bool>(await _appUserTypeDal.DeleteAsync(id), _localizationService[ResultCodes.HTTP_OK]);

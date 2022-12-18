@@ -1,5 +1,6 @@
 ﻿using Core.Entities.BaseEntities;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Core.Entities.Concrete
 {
@@ -13,6 +14,8 @@ namespace Core.Entities.Concrete
         #endregion
 
         #region Properties
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
         #endregion
 

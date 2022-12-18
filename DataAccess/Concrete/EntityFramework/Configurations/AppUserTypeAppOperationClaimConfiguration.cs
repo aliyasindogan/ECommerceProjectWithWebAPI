@@ -1,5 +1,4 @@
 ﻿using Core.Entities.Concrete;
-using Core.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,11 +13,11 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.AppOperationClaimID)
-                .HasColumnName("OperationClaimId")
+                .HasColumnName("AppOperationClaimId")
                 .IsRequired();
 
             builder.Property(x => x.AppUserTypeID)
-             .HasColumnName("UserTypeId")
+             .HasColumnName("AppUserTypeID")
              .IsRequired();
 
             builder.Property(x => x.Status)

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20221214224605_initial")]
-    partial class initial
+    [Migration("20221218130648_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,19 +45,13 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "AppUser"
                         },
                         new
                         {
-                            Id = 2,
-                            IsActive = false,
-                            Name = "AppUserTypeAppOperationClaim"
-                        },
-                        new
-                        {
                             Id = 3,
-                            IsActive = false,
+                            IsActive = true,
                             Name = "AppUserType"
                         });
                 });
@@ -159,18 +153,18 @@ namespace DataAccess.Migrations
                         {
                             Id = -1,
                             AppUserTypeID = -1,
-                            CreatedDate = new DateTime(2022, 12, 15, 1, 46, 3, 346, DateTimeKind.Local).AddTicks(596),
+                            CreatedDate = new DateTime(2022, 12, 18, 16, 6, 47, 344, DateTimeKind.Local).AddTicks(5401),
                             CreatedUserId = 1,
                             Email = "sadmin@gmail.com",
                             FirstName = "System",
                             GsmNumber = "",
-                            IsActive = false,
+                            IsActive = true,
                             IsDeleted = false,
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 116, 81, 184, 200, 77, 17, 201, 22, 228, 242, 218, 149, 182, 63, 221, 188, 93, 59, 161, 178, 62, 75, 234, 92, 10, 146, 132, 128, 101, 137, 73, 80, 111, 69, 248, 100, 83, 154, 20, 248, 220, 213, 236, 100, 93, 41, 118, 25, 42, 32, 36, 27, 193, 153, 229, 204, 120, 120, 82, 195, 157, 74, 49, 153 },
-                            PasswordSalt = new byte[] { 88, 248, 101, 69, 85, 113, 229, 213, 114, 26, 85, 196, 127, 28, 125, 228, 16, 92, 145, 199, 220, 37, 39, 250, 2, 240, 159, 43, 189, 228, 154, 246, 53, 222, 210, 211, 126, 129, 160, 248, 103, 179, 96, 20, 187, 128, 249, 50, 143, 215, 165, 222, 19, 163, 2, 84, 54, 82, 63, 44, 204, 235, 135, 55, 58, 76, 109, 68, 143, 235, 197, 4, 71, 41, 213, 163, 140, 33, 20, 192, 77, 222, 57, 59, 108, 107, 143, 129, 33, 209, 152, 164, 214, 105, 211, 116, 59, 246, 178, 22, 11, 255, 21, 159, 81, 128, 231, 231, 237, 47, 75, 152, 86, 15, 13, 88, 6, 130, 34, 55, 138, 153, 43, 144, 93, 150, 255, 14 },
+                            PasswordHash = new byte[] { 62, 73, 37, 135, 19, 209, 35, 54, 22, 219, 198, 20, 3, 167, 111, 51, 5, 121, 51, 35, 97, 45, 0, 80, 147, 123, 99, 168, 121, 100, 194, 246, 217, 139, 134, 16, 190, 46, 179, 50, 152, 149, 201, 80, 255, 101, 117, 92, 237, 131, 64, 128, 155, 84, 36, 100, 17, 122, 239, 234, 180, 56, 181, 98 },
+                            PasswordSalt = new byte[] { 13, 163, 43, 29, 128, 31, 125, 114, 140, 253, 98, 47, 214, 8, 176, 89, 97, 47, 152, 61, 245, 53, 110, 26, 18, 13, 129, 240, 201, 114, 38, 21, 148, 175, 93, 4, 46, 144, 91, 76, 14, 91, 17, 207, 197, 205, 202, 82, 202, 88, 70, 28, 159, 42, 149, 45, 170, 63, 196, 193, 25, 137, 232, 79, 87, 196, 226, 123, 121, 38, 178, 7, 65, 156, 101, 109, 110, 217, 229, 161, 167, 180, 161, 106, 90, 209, 184, 234, 226, 36, 207, 139, 66, 123, 197, 104, 243, 250, 4, 199, 180, 199, 247, 238, 189, 134, 56, 31, 114, 205, 143, 39, 145, 139, 130, 48, 23, 22, 70, 229, 215, 61, 35, 129, 160, 213, 87, 126 },
                             ProfileImageUrl = "",
-                            RefreshToken = new Guid("51a568a4-dd23-4d66-9ed3-935ebcf9659b"),
+                            RefreshToken = new Guid("f305154d-9e29-4aef-9837-8a13ed761294"),
                             UserName = "sadmin"
                         });
                 });
@@ -223,7 +217,7 @@ namespace DataAccess.Migrations
                             AppUserTypeName = "System Admin",
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedUserId = 0,
-                            IsActive = false,
+                            IsActive = true,
                             IsDeleted = false
                         });
                 });
@@ -237,11 +231,11 @@ namespace DataAccess.Migrations
 
                     b.Property<int>("AppOperationClaimID")
                         .HasColumnType("int")
-                        .HasColumnName("OperationClaimId");
+                        .HasColumnName("AppOperationClaimId");
 
                     b.Property<int>("AppUserTypeID")
                         .HasColumnType("int")
-                        .HasColumnName("UserTypeId");
+                        .HasColumnName("AppUserTypeID");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");

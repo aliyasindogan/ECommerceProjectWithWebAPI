@@ -46,9 +46,8 @@ namespace Business.Concrete
 
         #endregion DI
 
-        //[CacheAspect(10)]
+        [CacheAspect(10)]
         [SecuredOperationAspect("AppUser.List")]
-        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<List<AppUserDto>>> GetListAsync()
         {
             var response = await _appUserDal.GetListAsync();
@@ -57,9 +56,8 @@ namespace Business.Concrete
 
         }
 
-        //[CacheAspect(10)]
+        [CacheAspect(10)]
         [SecuredOperationAspect("AppUser.List")]
-        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<List<AppUserDto>>> GetListDetailAsync()
         {
             var response = await _appUserDal.GetListDetailAsync();
@@ -73,7 +71,8 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<AppUser>(data: user, user == null ? _localizationService[ResultCodes.ERROR_UserNotFound] : _localizationService[ResultCodes.HTTP_OK]);
 
         }
-
+        [CacheAspect(10)]
+        [SecuredOperationAspect("AppUser.List")]
         public async Task<ApiDataResponse<AppUserDto>> GetByIdAsync(int id)
         {
             var user = await _appUserDal.GetAsync(x => x.Id == id);
@@ -83,8 +82,9 @@ namespace Business.Concrete
 
 
         [TransactionScopeAspect]
-        [CacheRemoveAspect("IAppUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListAsync")]
         [ValidationAspect(typeof(AppUserAddDtoValidator))]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
         {
             byte[] passwordHash, passwordSalt;
@@ -96,9 +96,10 @@ namespace Business.Concrete
             var userDto = _mapper.Map<AppUserDto>(userAdd);
             return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
-
-        [CacheRemoveAspect("IAppUserService.GetListAsync")]
+        [TransactionScopeAspect]
+        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListAsync")]
         [ValidationAspect(typeof(AppUserUpdateDtoValidator))]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto userUpdateDto)
         {
             var getUser = await _appUserDal.GetAsync(x => x.Id == userUpdateDto.Id);
@@ -125,7 +126,9 @@ namespace Business.Concrete
             var userUpdataMap = _mapper.Map<AppUserUpdateDto>(resultUpdate);
             return new SuccessApiDataResponse<AppUserUpdateDto>(userUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }
-        [CacheRemoveAspect("IAppUserService.GetListAsync")]
+
+        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListAsync")]
+        [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {
             return new SuccessApiDataResponse<bool>(await _appUserDal.DeleteAsync(id), _localizationService[ResultCodes.HTTP_OK]);
