@@ -7,6 +7,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Responses;
 using Core.Utilities.Security.Hash.Sha512;
 using Core.Utilities.Security.Token;
+using Entities.Concrete;
 using Entities.Dtos.AppUsers;
 using Entities.Dtos.Auths;
 using Microsoft.AspNetCore.Http;
@@ -42,7 +43,7 @@ namespace Business.Concrete
             if (!Sha512Helper.VerifyPasswordHash(loginDto.Password, user.Data.PasswordHash, user.Data.PasswordSalt))
                 return new ErrorApiDataResponse<AccessToken>(null, Messages.UserNotFound);
 
-            var accessToken = await CreateAccessTokenAsync(_mapper.Map<AppUser>(user.Data));
+            var accessToken = await CreateAccessTokenAsync(_mapper.Map<User>(user.Data));
             return new SuccessApiDataResponse<AccessToken>(accessToken, Messages.SystemLoginSuccessful);
         }
 
@@ -64,13 +65,15 @@ namespace Business.Concrete
             if (appUserAdd == null)
                 return new ErrorApiDataResponse<AccessToken>(null, Messages.NotAdded);
             var appUserAccessToken = _mapper.Map<AppUser>(appUserAdd);
-            var newAccessToken = await CreateAccessTokenAsync(appUserAccessToken);
+            var _userMap = _mapper.Map<User>(appUserAccessToken);
+            var newAccessToken = await CreateAccessTokenAsync(_userMap);
             return new SuccessApiDataResponse<AccessToken>(newAccessToken, Messages.UserRegistered);
         }
-        public async Task<AccessToken> CreateAccessTokenAsync(AppUser appUser)
+        public async Task<AccessToken> CreateAccessTokenAsync(User user)
         {
+            var appUser = _mapper.Map<AppUser>(user);
             var roles = await _appUserService.GetRolesAsync(appUser);
-            var accessToken = _tokenService.CreateToken(appUser, roles);
+            var accessToken = _tokenService.CreateToken(user, roles);
             return accessToken;
         }
     }

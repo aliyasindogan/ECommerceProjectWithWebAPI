@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Core.Entities.Concrete
+namespace Entities.Concrete
 {
     public class AppUser : AuditEntity
     {
@@ -31,7 +31,7 @@ namespace Core.Entities.Concrete
 
         #region Relationships
         [ForeignKey("AppUserTypeID")]
-        public virtual AppUserType AppUserType { get; set; } 
+        public virtual AppUserType AppUserType { get; set; }
         #endregion
     }
 }

@@ -20,7 +20,7 @@ namespace Core.Utilities.Security.Token.Jwt
             _appSettings = appSettings.Value;
         }
 
-        public AccessToken CreateToken(AppUser user, List<OperationClaimDto> roles)
+        public AccessToken CreateToken(User user, List<OperationClaimDto> roles)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.SecurityKey);
@@ -53,8 +53,8 @@ namespace Core.Utilities.Security.Token.Jwt
                 AppUserID = user.Id,
                 FullName = user.FirstName + " " + user.LastName,
                 ImageUrl = user.ProfileImageUrl,
-                AppUserTypeID = user.AppUserTypeID,
-                AppUserTypeName = user.AppUserTypeID == 1 ? Constants.SystemAdmin : Constants.Admin,
+                AppUserTypeID = user.UserTypeID,
+                AppUserTypeName = user.UserTypeID == 1 ? Constants.SystemAdmin : Constants.Admin,
             };
         }
 

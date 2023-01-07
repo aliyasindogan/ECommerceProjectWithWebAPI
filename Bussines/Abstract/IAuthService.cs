@@ -10,6 +10,6 @@ namespace Business.Abstract
     {
         Task<ApiDataResponse<AccessToken>> LoginAsync(LoginDto loginDto);
         Task<ApiDataResponse<AccessToken>> RegisterAsync(RegisterDto registerDto, string password);
-        Task<AccessToken> CreateAccessTokenAsync(AppUser appUser);
+        Task<AccessToken> CreateAccessTokenAsync(User user);
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Core.DataAccess;
-using Core.Entities.Concrete;
+using Entities.Concrete;
 using Entities.Dtos.AppUsers;
 using System.Collections.Generic;
 using System.Threading.Tasks;

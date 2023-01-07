@@ -1,8 +1,8 @@
 ﻿using Core.DataAccess.EntityFramework;
-using Core.Entities.Concrete;
 using Core.Entities.Dtos;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Contexts;
+using Entities.Concrete;
 using Entities.Dtos.AppUsers;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -18,9 +18,9 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new ECommerceDbContext())
             {
                 var result = from appUserTypeAppOperationClaim in context.AppUserTypeAppOperationClaims
-                             join appOperationClaim in context.AppOperationClaims on appUserTypeAppOperationClaim.AppOperationClaimID equals appOperationClaim.Id
-                             join appUserType in context.AppUserTypes on appUserTypeAppOperationClaim.AppUserTypeID equals appUserType.Id
-                             where appUserTypeAppOperationClaim.AppUserTypeID == user.AppUserTypeID
+                             join appOperationClaim in context.AppOperationClaims on appUserTypeAppOperationClaim.OperationClaimID equals appOperationClaim.Id
+                             join appUserType in context.AppUserTypes on appUserTypeAppOperationClaim.AUserTypeID equals appUserType.Id
+                             where appUserTypeAppOperationClaim.AUserTypeID == user.AppUserTypeID
                              select new OperationClaimDto
                              {
                                  Id = appOperationClaim.Id,
@@ -39,7 +39,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new AppUserDto
                              {
                                  Id = appUser.Id,
-                                 AppUserTypeName = appUserType.AppUserTypeName,
+                                 AppUserTypeName = appUserType.UserTypeName,
                                  AppUserTypeID = appUser.AppUserTypeID,
                                  Email = appUser.Email,
                                  FirstName = appUser.FirstName,
