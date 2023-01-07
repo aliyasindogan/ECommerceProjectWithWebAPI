@@ -8,8 +8,10 @@ namespace Entities.Concrete
         public AppUserType()
         {
             PagePermissons = new HashSet<PagePermisson>();
+            AppUsers = new HashSet<AppUser>();
         }
         public ICollection<PagePermisson> PagePermissons { get; set; }
+        public ICollection<AppUser> AppUsers { get; set; }
 
     }
 }

@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.UserTypeName)
-                .HasColumnName("AppUserTypeName")
+                .HasColumnName("UserTypeName")
                 .HasMaxLength(50)
                 .IsRequired();
 

@@ -52,8 +52,8 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
               .HasColumnName("GsmNumber")
               .HasMaxLength(11);
 
-            builder.Property(x => x.AppUserTypeID)
-           .HasColumnName("AppUserTypeID")
+            builder.Property(x => x.UserTypeID)
+           .HasColumnName("UserTypeID")
            .IsRequired();
 
             builder.Property(x => x.CreatedDate)
@@ -76,7 +76,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 PasswordSalt = passwordSalt,
                 GsmNumber = String.Empty,
                 ProfileImageUrl = String.Empty,
-                AppUserTypeID = (int)AppUserTypes.SystemAdmin,
+                UserTypeID = (int)AppUserTypes.SystemAdmin,
                 RefreshToken = Guid.NewGuid(),
             });
         }

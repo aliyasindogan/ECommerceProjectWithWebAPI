@@ -13,11 +13,11 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.OperationClaimID)
-                .HasColumnName("AppOperationClaimId")
+                .HasColumnName("OperationClaimId")
                 .IsRequired();
 
-            builder.Property(x => x.AUserTypeID)
-             .HasColumnName("AppUserTypeID")
+            builder.Property(x => x.UserTypeID)
+             .HasColumnName("UserTypeID")
              .IsRequired();
 
             builder.Property(x => x.Status)

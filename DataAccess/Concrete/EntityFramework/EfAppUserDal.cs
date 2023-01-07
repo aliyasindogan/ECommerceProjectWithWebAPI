@@ -19,8 +19,8 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from appUserTypeAppOperationClaim in context.AppUserTypeAppOperationClaims
                              join appOperationClaim in context.AppOperationClaims on appUserTypeAppOperationClaim.OperationClaimID equals appOperationClaim.Id
-                             join appUserType in context.AppUserTypes on appUserTypeAppOperationClaim.AUserTypeID equals appUserType.Id
-                             where appUserTypeAppOperationClaim.AUserTypeID == user.AppUserTypeID
+                             join appUserType in context.AppUserTypes on appUserTypeAppOperationClaim.UserTypeID equals appUserType.Id
+                             where appUserTypeAppOperationClaim.UserTypeID == user.UserTypeID
                              select new OperationClaimDto
                              {
                                  Id = appOperationClaim.Id,
@@ -35,12 +35,12 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new ECommerceDbContext())
             {
                 var result = from appUser in context.AppUsers
-                             join appUserType in context.AppUserTypes on appUser.AppUserTypeID equals appUserType.Id
+                             join appUserType in context.AppUserTypes on appUser.UserTypeID equals appUserType.Id
                              select new AppUserDto
                              {
                                  Id = appUser.Id,
                                  AppUserTypeName = appUserType.UserTypeName,
-                                 AppUserTypeID = appUser.AppUserTypeID,
+                                 AppUserTypeID = appUser.UserTypeID,
                                  Email = appUser.Email,
                                  FirstName = appUser.FirstName,
                                  GsmNumber = appUser.GsmNumber,

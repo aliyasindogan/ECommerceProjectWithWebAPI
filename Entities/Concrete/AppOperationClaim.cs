@@ -8,8 +8,10 @@ namespace Entities.Concrete
         public AppOperationClaim()
         {
             PagePermissons = new HashSet<PagePermisson>();
+            AppUserTypeAppOperationClaims=new HashSet<AppUserTypeAppOperationClaim>();
         }
         public ICollection<PagePermisson> PagePermissons { get; set; }
+        public ICollection<AppUserTypeAppOperationClaim> AppUserTypeAppOperationClaims { get; set; }
 
     }
 }
