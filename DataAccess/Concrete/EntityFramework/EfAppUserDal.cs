@@ -39,8 +39,8 @@ namespace DataAccess.Concrete.EntityFramework
                              select new AppUserDto
                              {
                                  Id = appUser.Id,
-                                 AppUserTypeName = appUserType.UserTypeName,
-                                 AppUserTypeID = appUser.UserTypeID,
+                                 UserTypeName = appUserType.UserTypeName,
+                                 UserTypeID = appUser.UserTypeID,
                                  Email = appUser.Email,
                                  FirstName = appUser.FirstName,
                                  GsmNumber = appUser.GsmNumber,

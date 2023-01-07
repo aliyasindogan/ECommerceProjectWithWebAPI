@@ -23,7 +23,7 @@ namespace Business.Validations.FluentValidation
             RuleFor(x => x.GsmNumber).NotEmpty().
                WithErrorCode("VALIDATION_GsmNumberFieldCannotBeEmpty");
 
-            RuleFor(x => x.AppUserTypeID).NotEmpty().
+            RuleFor(x => x.UserTypeID).NotEmpty().
                 WithErrorCode("VALIDATION_AppUserTypeFieldCannotBeEmpty");
         }
     }

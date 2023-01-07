@@ -28,7 +28,7 @@ namespace Business.Validations.FluentValidation
             RuleFor(x => x.RefreshToken).NotEmpty().
                WithErrorCode("VALIDATION_RefreshTokenFieldCannotBeEmpty");
 
-            RuleFor(x => x.AppUserTypeID).NotEmpty().
+            RuleFor(x => x.UserTypeID).NotEmpty().
                 WithErrorCode("VALIDATION_AppUserTypeFieldCannotBeEmpty");
         }
     }

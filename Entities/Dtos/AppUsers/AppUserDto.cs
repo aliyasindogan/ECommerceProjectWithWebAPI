@@ -11,7 +11,7 @@ namespace Entities.Dtos.AppUsers
         public string Email { get; set; }
         public string ProfileImageUrl { get; set; }
         public string GsmNumber { get; set; }
-        public string AppUserTypeName { get; set; }
-        public int AppUserTypeID { get; set; }
+        public string UserTypeName { get; set; }
+        public int UserTypeID { get; set; }
     }
 }

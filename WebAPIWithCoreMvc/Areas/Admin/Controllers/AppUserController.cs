@@ -58,7 +58,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         private async Task DropDownListFill()
         {
             var appUserTypes = await _appUserTypeApiService.GetListAsync();
-            ViewBag.AppUserTypes = new SelectList(appUserTypes.Data.Where(x => x.Id > 0).ToList(), "Id", "AppUserTypeName");
+            ViewBag.AppUserTypes = new SelectList(appUserTypes.Data.Where(x => x.Id > 0).ToList(), "Id", "UserTypeName");
         }
 
         [HttpPost]

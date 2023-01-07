@@ -19,7 +19,12 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
 
             builder.HasData(
                 new AppOperationClaim() { Id = 1, Name = "AppUser" },
-                new AppOperationClaim() { Id = 3, Name = "AppUserType" });
+                new AppOperationClaim() { Id = 2, Name = "AppUserType" },
+                new AppOperationClaim() { Id = 3, Name = "Page" },
+                new AppOperationClaim() { Id = 4, Name = "PageType" },
+                new AppOperationClaim() { Id = 4, Name = "Product" },
+                new AppOperationClaim() { Id = 4, Name = "ProductType" },
+                new AppOperationClaim() { Id = 4, Name = "Contact" });
         }
     }
 }

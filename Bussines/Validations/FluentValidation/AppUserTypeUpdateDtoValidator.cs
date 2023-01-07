@@ -7,7 +7,7 @@ namespace Business.Validations.FluentValidation
     {
         public AppUserTypeUpdateDtoValidator()
         {
-            RuleFor(x => x.AppUserTypeName).NotEmpty().
+            RuleFor(x => x.UserTypeName).NotEmpty().
                 WithErrorCode("VALIDATION_UserTypeNameFieldCannotBeEmpty");
         }
     }

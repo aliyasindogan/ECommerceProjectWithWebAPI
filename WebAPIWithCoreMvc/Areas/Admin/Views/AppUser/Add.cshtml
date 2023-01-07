@@ -89,11 +89,11 @@
                             <div class="row">
                                 <div class="offset-sm-2 col-sm-10">
                                     <div class="form-group">
-                                        <label asp-for="AppUserTypeID">@_localizationService[ResultCodes.LABEL_AppUserType]</label>
-                                        <select asp-for="AppUserTypeID" class="form-control" asp-items="@ViewBag.AppUserTypes" id="AppUserTypeID">
+                                        <label asp-for="UserTypeID">@_localizationService[ResultCodes.LABEL_AppUserType]</label>
+                                        <select asp-for="UserTypeID" class="form-control" asp-items="@ViewBag.AppUserTypes" id="UserTypeID">
                                             <option value="">@_localizationService[ResultCodes.LABEL_Choose]</option>
                                         </select>
-                                        <span class="text-danger" asp-validation-for="AppUserTypeID"></span>
+                                        <span class="text-danger" asp-validation-for="UserTypeID"></span>
                                     </div>
                                 </div>
                             </div>
