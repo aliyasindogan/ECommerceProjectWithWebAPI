@@ -24,6 +24,8 @@ namespace Business.DependencyResolvers
             builder.RegisterType<AppUserService>().As<IAppUserService>();
             builder.RegisterType<AppUserTypeService>().As<IAppUserTypeService>();
             builder.RegisterType<EfAppUserTypeDal>().As<IAppUserTypeDal>();
+            builder.RegisterType<EfPageDal>().As<IPageDal>();
+            builder.RegisterType<PageService>().As<IPageService>();
             builder.RegisterType<JwtTokenService>().As<ITokenService>();
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<MemoryCacheService>().As<ICacheService>();

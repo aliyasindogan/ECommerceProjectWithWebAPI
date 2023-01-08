@@ -61,6 +61,7 @@ namespace WebAPIWithCoreMvc
             services.AddTransient<IAuthApiService, AuthApiService>();
             services.AddTransient<IAppUserApiService, AppUserApiService>();
             services.AddTransient<IAppUserTypeApiService, AppUserTypeApiService>();
+            services.AddTransient<IPageApiService, PageApiService>();
             services.AddTransient<IUploadImageApiService, UploadImageApiService>();
             services.AddSingleton<ILocalizationService, LocalizationService>();
             services.AddSingleton(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));

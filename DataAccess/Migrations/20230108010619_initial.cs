@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class First : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -173,6 +173,7 @@ namespace DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "PagePermissons",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -224,7 +225,12 @@ namespace DataAccess.Migrations
                 values: new object[,]
                 {
                     { 1, true, "AppUser" },
-                    { 3, true, "AppUserType" }
+                    { 2, true, "AppUserType" },
+                    { 3, true, "Page" },
+                    { 4, true, "PageType" },
+                    { 5, true, "Product" },
+                    { 6, true, "ProductType" },
+                    { 7, true, "Contact" }
                 });
 
             migrationBuilder.InsertData(
@@ -237,7 +243,7 @@ namespace DataAccess.Migrations
                 schema: "dbo",
                 table: "AppUsers",
                 columns: new[] { "Id", "AppUserTypeId", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "Email", "FirstName", "GsmNumber", "IsActive", "IsDeleted", "LastName", "PasswordHash", "PasswordSalt", "ProfileImageUrl", "RefreshToken", "UpdatedDate", "UpdatedUserId", "UserName", "UserTypeID" },
-                values: new object[] { -1, null, new DateTime(2023, 1, 8, 1, 53, 50, 824, DateTimeKind.Local).AddTicks(6400), 1, null, null, "sadmin@gmail.com", "System", "", true, false, "Admin", new byte[] { 126, 190, 78, 215, 118, 139, 169, 251, 211, 149, 103, 124, 128, 172, 32, 88, 3, 241, 192, 60, 237, 136, 206, 43, 96, 176, 73, 0, 78, 72, 10, 213, 188, 30, 9, 218, 161, 208, 241, 1, 71, 117, 7, 153, 166, 178, 188, 143, 201, 224, 23, 75, 91, 128, 184, 82, 88, 172, 10, 104, 68, 247, 25, 61 }, new byte[] { 163, 199, 110, 90, 104, 165, 89, 161, 25, 136, 41, 238, 96, 97, 92, 90, 213, 145, 173, 114, 52, 208, 97, 213, 188, 87, 99, 27, 122, 13, 218, 151, 55, 74, 159, 218, 81, 0, 120, 97, 131, 122, 96, 246, 210, 228, 22, 169, 108, 10, 75, 19, 164, 53, 37, 107, 106, 160, 247, 18, 132, 173, 128, 103, 248, 56, 65, 39, 139, 217, 40, 103, 174, 141, 186, 49, 98, 46, 233, 40, 214, 111, 253, 124, 153, 249, 4, 52, 75, 229, 187, 92, 76, 218, 211, 181, 20, 0, 17, 204, 239, 205, 88, 250, 161, 46, 255, 148, 200, 213, 52, 60, 29, 165, 139, 6, 96, 214, 75, 49, 84, 119, 76, 230, 237, 57, 194, 85 }, "", new Guid("1d502e9c-2693-4dee-adde-1f0126160316"), null, null, "sadmin", -1 });
+                values: new object[] { -1, null, new DateTime(2023, 1, 8, 4, 6, 18, 451, DateTimeKind.Local).AddTicks(6990), 1, null, null, "sadmin@gmail.com", "System", "", true, false, "Admin", new byte[] { 205, 51, 117, 241, 80, 186, 134, 199, 56, 72, 134, 212, 93, 20, 244, 104, 121, 24, 128, 202, 19, 120, 87, 148, 187, 139, 230, 135, 53, 255, 111, 245, 239, 38, 113, 4, 17, 64, 149, 217, 125, 59, 103, 130, 34, 77, 228, 8, 3, 196, 73, 211, 116, 178, 110, 106, 92, 239, 213, 229, 107, 176, 178, 204 }, new byte[] { 115, 155, 5, 104, 160, 152, 205, 197, 12, 46, 27, 77, 222, 253, 204, 185, 66, 233, 31, 154, 35, 133, 189, 49, 111, 168, 104, 39, 33, 238, 108, 12, 2, 108, 56, 241, 10, 165, 203, 101, 111, 187, 89, 75, 17, 141, 119, 105, 164, 32, 194, 112, 98, 248, 210, 212, 255, 5, 115, 25, 1, 121, 106, 180, 76, 27, 110, 54, 152, 158, 57, 33, 105, 33, 124, 251, 160, 6, 164, 28, 147, 140, 104, 146, 28, 210, 220, 83, 154, 2, 201, 29, 20, 139, 129, 25, 160, 14, 164, 146, 60, 113, 48, 234, 22, 235, 82, 50, 217, 247, 181, 183, 227, 94, 136, 147, 165, 116, 127, 45, 45, 125, 134, 121, 194, 33, 174, 239 }, "", new Guid("59f1cb02-a792-4fa7-af08-173b6c039354"), null, null, "sadmin", -1 });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
@@ -256,10 +262,39 @@ namespace DataAccess.Migrations
                 values: new object[,]
                 {
                     { 1, 1, true, "", "", "", "Sistem Ayarları", "", 1, "#", null },
+                    { 33, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contacts/Update", 30 },
+                    { 32, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contacts/Add", 30 },
+                    { 31, 1, true, "", "", "", "Hakkımızda", "", 1, "/Admin/Contacts/List", 29 },
+                    { 29, 1, true, "", "", "", "Genel Sayfalar", "", 1, "#", null },
+                    { 28, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductTypes/Detail", 24 },
+                    { 27, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductTypes/Delete", 24 },
+                    { 26, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductTypes/Update", 24 },
+                    { 25, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductTypes/Add", 24 },
+                    { 24, 1, true, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductTypes/List", 18 },
+                    { 23, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Products/Detail", 19 },
+                    { 22, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Products/Delete", 19 },
+                    { 21, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Products/Update", 19 },
+                    { 20, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Products/Add", 19 },
+                    { 19, 1, true, "", "", "", "Ürünler", "", 1, "/Admin/Products/List", 18 },
+                    { 18, 1, true, "", "", "", "Ürün", "", 1, "#", null },
+                    { 17, 1, true, "", "", "", "Sayfa Yetkileri", "", 1, "/Admin/PagePermissons/List", 1 },
+                    { 16, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Pages/Detail", 12 },
                     { 2, 1, true, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUsers/List", 1 },
-                    { 3, 1, true, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserTypes/List", 1 },
-                    { 4, 1, true, "", "", "", "Sayfalar", "", 1, "/Admin/Pages/List", 1 },
-                    { 5, 1, true, "", "", "", "Sayfa Yetkileri", "", 1, "/Admin/PagePermissons/List", 1 }
+                    { 3, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUsers/Add", 2 },
+                    { 4, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUsers/Update", 2 },
+                    { 5, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUsers/Delete", 2 },
+                    { 6, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUsers/Detail", 2 },
+                    { 7, 1, true, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserTypes/List", 1 },
+                    { 34, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contacts/Delete", 30 },
+                    { 8, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserTypes/Add", 7 },
+                    { 10, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserTypes/Delete", 7 },
+                    { 11, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserTypes/Detail", 7 },
+                    { 12, 1, true, "", "", "", "Sayfalar", "", 1, "/Admin/Pages/List", 1 },
+                    { 13, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Pages/Add", 12 },
+                    { 14, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Pages/Update", 12 },
+                    { 15, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Pages/Delete", 12 },
+                    { 9, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserTypes/Update", 7 },
+                    { 35, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contacts/Detail", 30 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -282,16 +317,19 @@ namespace DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_PagePermissons_AppOperationClaimId",
+                schema: "dbo",
                 table: "PagePermissons",
                 column: "AppOperationClaimId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PagePermissons_AppUserTypeId",
+                schema: "dbo",
                 table: "PagePermissons",
                 column: "AppUserTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PagePermissons_PageID",
+                schema: "dbo",
                 table: "PagePermissons",
                 column: "PageID");
 
@@ -313,7 +351,8 @@ namespace DataAccess.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "PagePermissons");
+                name: "PagePermissons",
+                schema: "dbo");
 
             migrationBuilder.DropTable(
                 name: "AppOperationClaims",

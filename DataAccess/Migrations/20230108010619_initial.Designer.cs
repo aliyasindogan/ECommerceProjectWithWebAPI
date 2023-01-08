@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20230107225351_First")]
-    partial class First
+    [Migration("20230108010619_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,9 +50,39 @@ namespace DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 3,
+                            Id = 2,
                             IsActive = true,
                             Name = "AppUserType"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            Name = "Page"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IsActive = true,
+                            Name = "PageType"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IsActive = true,
+                            Name = "Product"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IsActive = true,
+                            Name = "ProductType"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IsActive = true,
+                            Name = "Contact"
                         });
                 });
 
@@ -155,7 +185,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = -1,
-                            CreatedDate = new DateTime(2023, 1, 8, 1, 53, 50, 824, DateTimeKind.Local).AddTicks(6400),
+                            CreatedDate = new DateTime(2023, 1, 8, 4, 6, 18, 451, DateTimeKind.Local).AddTicks(6990),
                             CreatedUserId = 1,
                             Email = "sadmin@gmail.com",
                             FirstName = "System",
@@ -163,10 +193,10 @@ namespace DataAccess.Migrations
                             IsActive = true,
                             IsDeleted = false,
                             LastName = "Admin",
-                            PasswordHash = new byte[] { 126, 190, 78, 215, 118, 139, 169, 251, 211, 149, 103, 124, 128, 172, 32, 88, 3, 241, 192, 60, 237, 136, 206, 43, 96, 176, 73, 0, 78, 72, 10, 213, 188, 30, 9, 218, 161, 208, 241, 1, 71, 117, 7, 153, 166, 178, 188, 143, 201, 224, 23, 75, 91, 128, 184, 82, 88, 172, 10, 104, 68, 247, 25, 61 },
-                            PasswordSalt = new byte[] { 163, 199, 110, 90, 104, 165, 89, 161, 25, 136, 41, 238, 96, 97, 92, 90, 213, 145, 173, 114, 52, 208, 97, 213, 188, 87, 99, 27, 122, 13, 218, 151, 55, 74, 159, 218, 81, 0, 120, 97, 131, 122, 96, 246, 210, 228, 22, 169, 108, 10, 75, 19, 164, 53, 37, 107, 106, 160, 247, 18, 132, 173, 128, 103, 248, 56, 65, 39, 139, 217, 40, 103, 174, 141, 186, 49, 98, 46, 233, 40, 214, 111, 253, 124, 153, 249, 4, 52, 75, 229, 187, 92, 76, 218, 211, 181, 20, 0, 17, 204, 239, 205, 88, 250, 161, 46, 255, 148, 200, 213, 52, 60, 29, 165, 139, 6, 96, 214, 75, 49, 84, 119, 76, 230, 237, 57, 194, 85 },
+                            PasswordHash = new byte[] { 205, 51, 117, 241, 80, 186, 134, 199, 56, 72, 134, 212, 93, 20, 244, 104, 121, 24, 128, 202, 19, 120, 87, 148, 187, 139, 230, 135, 53, 255, 111, 245, 239, 38, 113, 4, 17, 64, 149, 217, 125, 59, 103, 130, 34, 77, 228, 8, 3, 196, 73, 211, 116, 178, 110, 106, 92, 239, 213, 229, 107, 176, 178, 204 },
+                            PasswordSalt = new byte[] { 115, 155, 5, 104, 160, 152, 205, 197, 12, 46, 27, 77, 222, 253, 204, 185, 66, 233, 31, 154, 35, 133, 189, 49, 111, 168, 104, 39, 33, 238, 108, 12, 2, 108, 56, 241, 10, 165, 203, 101, 111, 187, 89, 75, 17, 141, 119, 105, 164, 32, 194, 112, 98, 248, 210, 212, 255, 5, 115, 25, 1, 121, 106, 180, 76, 27, 110, 54, 152, 158, 57, 33, 105, 33, 124, 251, 160, 6, 164, 28, 147, 140, 104, 146, 28, 210, 220, 83, 154, 2, 201, 29, 20, 139, 129, 25, 160, 14, 164, 146, 60, 113, 48, 234, 22, 235, 82, 50, 217, 247, 181, 183, 227, 94, 136, 147, 165, 116, 127, 45, 45, 125, 134, 121, 194, 33, 174, 239 },
                             ProfileImageUrl = "",
-                            RefreshToken = new Guid("1d502e9c-2693-4dee-adde-1f0126160316"),
+                            RefreshToken = new Guid("59f1cb02-a792-4fa7-af08-173b6c039354"),
                             UserName = "sadmin",
                             UserTypeID = -1
                         });
@@ -377,6 +407,62 @@ namespace DataAccess.Migrations
                         {
                             Id = 3,
                             DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcılar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUsers/Add",
+                            ParentID = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcılar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUsers/Update",
+                            ParentID = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcılar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUsers/Delete",
+                            ParentID = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcılar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUsers/Detail",
+                            ParentID = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DisplayOrder = 1,
                             IsActive = true,
                             MetaDescription = "",
                             MetaKeywords = "",
@@ -389,7 +475,63 @@ namespace DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 4,
+                            Id = 8,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcı Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUserTypes/Add",
+                            ParentID = 7
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcı Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUserTypes/Update",
+                            ParentID = 7
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcı Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUserTypes/Delete",
+                            ParentID = 7
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Kullanıcı Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/AppUserTypes/Detail",
+                            ParentID = 7
+                        },
+                        new
+                        {
+                            Id = 12,
                             DisplayOrder = 1,
                             IsActive = true,
                             MetaDescription = "",
@@ -403,7 +545,63 @@ namespace DataAccess.Migrations
                         },
                         new
                         {
-                            Id = 5,
+                            Id = 13,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Sayfalar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Pages/Add",
+                            ParentID = 12
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Sayfalar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Pages/Update",
+                            ParentID = 12
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Sayfalar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Pages/Delete",
+                            ParentID = 12
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Sayfalar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Pages/Detail",
+                            ParentID = 12
+                        },
+                        new
+                        {
+                            Id = 17,
                             DisplayOrder = 1,
                             IsActive = true,
                             MetaDescription = "",
@@ -414,6 +612,242 @@ namespace DataAccess.Migrations
                             PageTypeID = 1,
                             PageURL = "/Admin/PagePermissons/List",
                             ParentID = 1
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DisplayOrder = 1,
+                            IsActive = true,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürün",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "#"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DisplayOrder = 1,
+                            IsActive = true,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürünler",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Products/List",
+                            ParentID = 18
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürünler",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Products/Add",
+                            ParentID = 19
+                        },
+                        new
+                        {
+                            Id = 21,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürünler",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Products/Update",
+                            ParentID = 19
+                        },
+                        new
+                        {
+                            Id = 22,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürünler",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Products/Delete",
+                            ParentID = 19
+                        },
+                        new
+                        {
+                            Id = 23,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürünler",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Products/Detail",
+                            ParentID = 19
+                        },
+                        new
+                        {
+                            Id = 24,
+                            DisplayOrder = 1,
+                            IsActive = true,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürün Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/ProductTypes/List",
+                            ParentID = 18
+                        },
+                        new
+                        {
+                            Id = 25,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürün Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/ProductTypes/Add",
+                            ParentID = 24
+                        },
+                        new
+                        {
+                            Id = 26,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürün Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/ProductTypes/Update",
+                            ParentID = 24
+                        },
+                        new
+                        {
+                            Id = 27,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürün Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/ProductTypes/Delete",
+                            ParentID = 24
+                        },
+                        new
+                        {
+                            Id = 28,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Ürün Tipleri",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/ProductTypes/Detail",
+                            ParentID = 24
+                        },
+                        new
+                        {
+                            Id = 29,
+                            DisplayOrder = 1,
+                            IsActive = true,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Genel Sayfalar",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "#"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            DisplayOrder = 1,
+                            IsActive = true,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Hakkımızda",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Contacts/List",
+                            ParentID = 29
+                        },
+                        new
+                        {
+                            Id = 32,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Hakkımızda",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Contacts/Add",
+                            ParentID = 30
+                        },
+                        new
+                        {
+                            Id = 33,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Hakkımızda",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Contacts/Update",
+                            ParentID = 30
+                        },
+                        new
+                        {
+                            Id = 34,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Hakkımızda",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Contacts/Delete",
+                            ParentID = 30
+                        },
+                        new
+                        {
+                            Id = 35,
+                            DisplayOrder = 1,
+                            IsActive = false,
+                            MetaDescription = "",
+                            MetaKeywords = "",
+                            MetaTitle = "",
+                            PageName = "Hakkımızda",
+                            PageSeoURL = "",
+                            PageTypeID = 1,
+                            PageURL = "/Admin/Contacts/Detail",
+                            ParentID = 30
                         });
                 });
 
@@ -449,10 +883,12 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("OperationClaimID")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("OperationClaimID");
 
                     b.Property<int>("PageID")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("PageID");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -461,7 +897,8 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("UserTypeID")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("UserTypeID");
 
                     b.HasKey("Id");
 
@@ -471,7 +908,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("PageID");
 
-                    b.ToTable("PagePermissons");
+                    b.ToTable("PagePermissons", "dbo");
                 });
 
             modelBuilder.Entity("Entities.Concrete.PageType", b =>

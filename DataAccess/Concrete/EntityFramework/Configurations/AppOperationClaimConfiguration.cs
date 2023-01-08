@@ -22,9 +22,9 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 new AppOperationClaim() { Id = 2, Name = "AppUserType" },
                 new AppOperationClaim() { Id = 3, Name = "Page" },
                 new AppOperationClaim() { Id = 4, Name = "PageType" },
-                new AppOperationClaim() { Id = 4, Name = "Product" },
-                new AppOperationClaim() { Id = 4, Name = "ProductType" },
-                new AppOperationClaim() { Id = 4, Name = "Contact" });
+                new AppOperationClaim() { Id = 5, Name = "Product" },
+                new AppOperationClaim() { Id = 6, Name = "ProductType" },
+                new AppOperationClaim() { Id = 7, Name = "Contact" });
         }
     }
 }
