@@ -9,7 +9,7 @@
         public const string LangTR = "tr-TR";
         public const string LangEN = "en-US";
         public const string AcceptLangauge = "Accept-Language";
-        public const string Index = "Index";
+        public const string List = "List";
         public const string Add = "Add";
         public const string Update = "Update";
         public const string Delete = "Delete";

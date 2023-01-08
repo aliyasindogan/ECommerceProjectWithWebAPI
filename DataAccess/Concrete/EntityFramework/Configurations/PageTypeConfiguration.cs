@@ -19,8 +19,8 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 .IsRequired();
 
             builder.HasData(
-                new PageType() { Id = 1, PageTypeName = "Admin" },
-                new PageType() { Id = 2, PageTypeName = "Web" }
+                new PageType() { Id = 1, PageTypeName = "Admin",IsActive=true },
+                new PageType() { Id = 2, PageTypeName = "Web", IsActive = true }
             );
         }
     }

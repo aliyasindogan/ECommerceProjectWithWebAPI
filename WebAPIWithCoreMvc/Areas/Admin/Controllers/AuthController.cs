@@ -64,7 +64,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             var claimPrincipal = new ClaimsPrincipal(userClaims);
             var authProperties = new AuthenticationProperties() { IsPersistent = loginDto.IsRememberMe };
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, authProperties);
-            return RedirectToAction(Constants.Index, Constants.AppUser, new { area = Constants.Admin });
+            return RedirectToAction(Constants.List, Constants.AppUser, new { area = Constants.Admin });
         }
 
         public async Task<IActionResult> Logout()

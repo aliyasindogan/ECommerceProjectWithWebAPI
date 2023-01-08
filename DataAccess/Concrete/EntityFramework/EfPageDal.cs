@@ -32,6 +32,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  PageTypeName = pageType.PageTypeName,
                                  PageURL = page.PageURL,
                                  ParentID = page.ParentID,
+                                 IsActive = page.IsActive,
                              };
                 return await result.ToListAsync();
             }
