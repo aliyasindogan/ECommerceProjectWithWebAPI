@@ -82,7 +82,7 @@ namespace Business.Concrete
 
 
         [TransactionScopeAspect]
-        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
         [ValidationAspect(typeof(AppUserAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
@@ -97,7 +97,7 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
         [TransactionScopeAspect]
-        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
         [ValidationAspect(typeof(AppUserUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserUpdateDto>> UpdateAsync(AppUserUpdateDto userUpdateDto)
@@ -127,7 +127,7 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<AppUserUpdateDto>(userUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }
 
-        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListAsync")]
+        [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {
