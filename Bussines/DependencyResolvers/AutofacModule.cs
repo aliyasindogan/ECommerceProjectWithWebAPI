@@ -26,6 +26,13 @@ namespace Business.DependencyResolvers
             builder.RegisterType<EfAppUserTypeDal>().As<IAppUserTypeDal>();
             builder.RegisterType<EfPageDal>().As<IPageDal>();
             builder.RegisterType<PageService>().As<IPageService>();
+            
+            builder.RegisterType<EfResourceDal>().As<IResourceDal>();
+            builder.RegisterType<ResourceService>().As<IResourceService>();
+
+            builder.RegisterType<EfLanguageDal>().As<ILanguageDal>();
+            builder.RegisterType<LanguageService>().As<ILanguageService>();
+
             builder.RegisterType<JwtTokenService>().As<ITokenService>();
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<MemoryCacheService>().As<ICacheService>();

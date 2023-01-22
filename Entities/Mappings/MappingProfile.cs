@@ -3,7 +3,9 @@ using Core.Entities.Concrete;
 using Entities.Concrete;
 using Entities.Dtos.AppUsers;
 using Entities.Dtos.AppUserTypes;
+using Entities.Dtos.Languages;
 using Entities.Dtos.Pages;
+using Entities.Dtos.Resources;
 
 namespace Entities.Mappings
 {
@@ -41,6 +43,20 @@ namespace Entities.Mappings
             CreateMap<PageDto, PageUpdateDto>().ReverseMap();
             CreateMap<PageDto, PageDeleteDto>().ReverseMap();
             CreateMap<PageDto, PageDetailDto>().ReverseMap();
+            #endregion
+
+            #region Resource
+            CreateMap<Resource, ResourceDto>().ReverseMap();
+            CreateMap<Resource, ResourceAddDto>().ReverseMap();
+            CreateMap<Resource, ResourceUpdateDto>().ReverseMap();
+            CreateMap<ResourceDto, ResourceUpdateDto>().ReverseMap();
+            CreateMap<ResourceDto, ResourceDeleteDto>().ReverseMap();
+            CreateMap<ResourceDto, ResourceDetailDto>().ReverseMap();
+            #endregion
+
+            #region Language
+            CreateMap<Language, LanguageDto>().ReverseMap();
+            CreateMap<LanguageDto, LanguageDetailDto>().ReverseMap();
             #endregion
         }
     }
