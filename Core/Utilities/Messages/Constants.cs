@@ -21,6 +21,7 @@
 
         public const string AppUser = "AppUser";
         public const string AppUsers = "AppUsers";
+        public const string AppUserType = "AppUserType";
         public const string AppUserTypes = "AppUserTypes";
         public const string Page = "Page";
         public const string Pages = "Pages";

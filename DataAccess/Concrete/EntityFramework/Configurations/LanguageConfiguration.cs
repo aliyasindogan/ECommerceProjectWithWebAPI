@@ -26,6 +26,8 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
               .HasColumnName("DisplayOrder")
               .IsRequired();
 
+            builder.HasData(new Language() { Id = 1, LanguageName = "Türkçe",DisplayOrder=1,IsActive=true,LanguageCode="tr-TR"});
+            builder.HasData(new Language() { Id = 2, LanguageName = "English", DisplayOrder = 2, IsActive = true, LanguageCode = "en-EN" });
         }
     }
 }

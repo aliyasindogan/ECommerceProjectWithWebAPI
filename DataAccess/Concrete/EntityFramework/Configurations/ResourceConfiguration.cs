@@ -1,6 +1,8 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Messages;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 
 namespace DataAccess.Concrete.EntityFramework.Configurations
 {
@@ -11,10 +13,6 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.ToTable("Resources", @"dbo");
 
             builder.HasKey(x => x.Id);
-
-            builder.Property(x => x.ResourceName)
-                .HasColumnName("ResourceName")
-                .IsRequired();
 
             builder.Property(x => x.ResourceValue)
                .HasColumnName("ResourceValue")
@@ -29,6 +27,23 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.Property(x => x.LanguageID)
             .HasColumnName("LanguageID")
             .IsRequired();
+
+            builder.HasData(new Resource()
+            {
+                Id = 1,
+                IsActive = true,
+                LanguageID = 1,
+                ResourceGroup = Constants.AppUserType,
+                ResourceValue = "System Admin"
+            });
+            builder.HasData(new Resource()
+            {
+                Id = 2,
+                IsActive = true,
+                LanguageID = 2,
+                ResourceGroup = Constants.AppUserType,
+                ResourceValue = "System Admin"
+            });
         }
     }
 }

@@ -39,7 +39,7 @@ namespace DataAccess.Concrete.EntityFramework
                              select new AppUserDto
                              {
                                  Id = appUser.Id,
-                                 UserTypeName = appUserType.UserTypeName,
+                                 //UserTypeName = appUserType.UserTypeName,
                                  UserTypeID = appUser.UserTypeID,
                                  Email = appUser.Email,
                                  FirstName = appUser.FirstName,

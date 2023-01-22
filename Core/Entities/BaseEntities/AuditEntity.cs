@@ -8,7 +8,7 @@ namespace Core.Entities.BaseEntities
         public DateTime CreatedDate { get; set; }
         public int? UpdatedUserId { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }=false;
         public int? DeletedUserId { get; set; }
         public DateTime? DeletedDate { get; set; }
     }

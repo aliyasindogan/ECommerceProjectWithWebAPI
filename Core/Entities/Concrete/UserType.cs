@@ -4,7 +4,6 @@ namespace Core.Entities.Concrete
 {
     public class UserType : AuditEntity
     {
-        public string UserTypeName { get; set; }
 
     }
 }
