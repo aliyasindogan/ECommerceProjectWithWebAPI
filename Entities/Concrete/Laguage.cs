@@ -7,7 +7,7 @@ namespace Entities.Concrete
     {
         public Language()
         {
-            Resources = new HashSet<Resource>();
+            ResourceDetails = new HashSet<ResourceDetail>();
         }
         //Türkçe
         //English
@@ -18,6 +18,6 @@ namespace Entities.Concrete
         //1,2
         public int DisplayOrder { get; set; }
 
-        public ICollection<Resource> Resources { get; set; }
+        public ICollection<ResourceDetail> ResourceDetails { get; set; }
     }
 }
