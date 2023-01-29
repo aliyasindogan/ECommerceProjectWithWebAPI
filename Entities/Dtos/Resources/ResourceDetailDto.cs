@@ -6,8 +6,7 @@ namespace Entities.Dtos.Resources
     public class ResourceDetailDto : IDto
     {
         public int Id { get; set; }
-        public string ResourceValue { get; set; }
-        public string ResourceGroupName { get; set; }
-        public int LanguageID { get; set; }
+        public string ResourceName { get; set; }
+        
     }
 }
