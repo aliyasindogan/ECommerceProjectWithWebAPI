@@ -29,6 +29,9 @@ namespace Business.DependencyResolvers
             
             builder.RegisterType<EfResourceDal>().As<IResourceDal>();
             builder.RegisterType<ResourceService>().As<IResourceService>();
+            
+            builder.RegisterType<EfResourceDetailDal>().As<IResourceDetailDal>();
+            builder.RegisterType<ResourceDetailService>().As<IResourceDetailService>();
 
             builder.RegisterType<EfLanguageDal>().As<ILanguageDal>();
             builder.RegisterType<LanguageService>().As<ILanguageService>();

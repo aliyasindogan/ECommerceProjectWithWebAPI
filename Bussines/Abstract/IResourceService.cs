@@ -14,7 +14,7 @@ namespace Business.Abstract
         Task<ApiDataResponse<List<ResourceDto>>> GetListDetailAsync();
         Task<ApiDataResponse<Resource>> GetAsync(Expression<Func<Resource, bool>> filter);
         Task<ApiDataResponse<ResourceDto>> GetByIdAsync(int id);
-        Task<ApiDataResponse<ResourceDto>> AddAsync(ResourceAddDto userAddTypeDto);
+        Task<ApiDataResponse<ResourceDto>> AddAsync(ResourceAddDto resourceAddDto);
         Task<ApiDataResponse<ResourceUpdateDto>> UpdateAsync(ResourceUpdateDto resourceUpdateDto);
         Task<ApiDataResponse<bool>> DeleteAsync(int id);
     }
