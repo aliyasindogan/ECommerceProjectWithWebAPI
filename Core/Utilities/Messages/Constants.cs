@@ -26,6 +26,7 @@
         public const string Page = "Page";
         public const string Pages = "Pages";
 
+        public const string DefaultProfileImageUrl2 = "/Upload/user3-160x160.png";
         public const string DefaultProfileImageUrl = "./wwwroot/Upload/user3-160x160.png";
         public const string DefaultProfileImageName = "user3-160x160.png";
     }

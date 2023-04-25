@@ -4,6 +4,6 @@
     //AppUserType eklendiğinde mevcut dillere göre foreach ile ekleme işlemi yapıulacak.
     public enum AppUserTypes
     {
-        SystemAdmin = 1
+        SystemAdmin = -1
     }
 }

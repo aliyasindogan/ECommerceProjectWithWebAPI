@@ -1,10 +1,12 @@
 ﻿using Core.DataAccess.EntityFramework;
 using Core.Entities.Dtos;
+using Core.Utilities.Messages;
 using DataAccess.Abstract;
 using DataAccess.Concrete.Contexts;
 using Entities.Concrete;
 using Entities.Dtos.AppUsers;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,13 +41,13 @@ namespace DataAccess.Concrete.EntityFramework
                              select new AppUserDto
                              {
                                  Id = appUser.Id,
-                                 //UserTypeName = appUserType.UserTypeName,
+                                 UserTypeName = appUserType.UserTypeName,
                                  UserTypeID = appUser.UserTypeID,
                                  Email = appUser.Email,
                                  FirstName = appUser.FirstName,
                                  GsmNumber = appUser.GsmNumber,
                                  LastName = appUser.LastName,
-                                 ProfileImageUrl = appUser.ProfileImageUrl,
+                                 ProfileImageUrl = String.IsNullOrEmpty(appUser.ProfileImageUrl)? Constants.DefaultProfileImageUrl2 : appUser.ProfileImageUrl,
                                  UserName = appUser.UserName,
                              };
                 return await result.ToListAsync();
