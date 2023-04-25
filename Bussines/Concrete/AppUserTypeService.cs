@@ -36,15 +36,11 @@ namespace Business.Concrete
         private readonly IAppUserTypeDal _appUserTypeDal;
         private readonly IMapper _mapper;
         private readonly ILocalizationService _localizationService;
-        private readonly IResourceService _resourceService;
-        private readonly IResourceDetailService _resourceDetailService;
-        public AppUserTypeService(IAppUserTypeDal appUserTypeDal, IMapper mapper, ILocalizationService localizationService, IResourceService resourceService, IResourceDetailService resourceDetailService)
+        public AppUserTypeService(IAppUserTypeDal appUserTypeDal, IMapper mapper, ILocalizationService localizationService)
         {
             _appUserTypeDal = appUserTypeDal;
             _mapper = mapper;
             _localizationService = localizationService;
-            _resourceService = resourceService;
-            _resourceDetailService = resourceDetailService;
         }
 
         #endregion DI
@@ -81,15 +77,7 @@ namespace Business.Concrete
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<AppUserTypeDto>> AddAsync(AppUserTypeAddDto userTypeAddDto)
         {
-            string resourceName = Core.Utilities.Messages.Constants.AppUserType + "_" + userTypeAddDto.UserTypeName.Replace(" ", "");
-            var getResource = await _resourceService.GetAsync(x => x.ResourceName == resourceName);
-            if (getResource.Success)
-                return new ErrorApiDataResponse<AppUserTypeDto>(null, message: _localizationService[ResultCodes.VALIDATION_ThisRecordAlreadyExists], resultCodes: ResultCodes.HTTP_Conflict);
-
-            ResourceAddDto resourceAddDto = new ResourceAddDto { ResourceName = resourceName };
-            var resource = await _resourceService.AddAsync(resourceAddDto);
             var userType = _mapper.Map<AppUserType>(userTypeAddDto);
-            userType.ResourceID = resource.Data.Id;
             var userTypeAdd = await _appUserTypeDal.AddAsync(userType);
             var userTypeDto = _mapper.Map<AppUserTypeDto>(userTypeAdd);
             return new SuccessApiDataResponse<AppUserTypeDto>(userTypeDto, message: _localizationService[ResultCodes.HTTP_OK]);

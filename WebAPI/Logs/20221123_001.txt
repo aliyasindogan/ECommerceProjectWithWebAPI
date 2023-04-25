@@ -1,8 +1,0 @@
-2022-11-23 23:11:07.137 [Error] {"ExceptionMessage":"An error occurred while updating the entries. See the inner exception for details.","MethodName":"UpdateAsync","User":"Ali Yasin Doğan","Parameters":[{"Name":"userUpdateDto","Value":{"Id":18,"UserName":"deneme11","FirstName":"deneme1","LastName":"deneme1","Password":"11111","Email":"deneme1@gmail.com","ProfileImageUrl":"http://localhost:63545/Upload/ebd902a6-2576-4023-9af8-9d26944271c2.jpg","GsmNumber":"1111111111111","UserTypeId":0,"UpdatedUserId":0,"UpdatedDate":"2022-11-23T23:10:55.4834936+03:00"},"Type":"AppUserUpdateDto"}]}
-2022-11-23 23:15:43.221 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
-2022-11-23 23:16:18.167 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
-2022-11-23 23:16:58.881 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
-2022-11-23 23:18:09.153 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
-2022-11-23 23:18:26.690 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
-2022-11-23 23:20:23.320 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}
-2022-11-23 23:21:12.876 [Information] {"MethodName":"GetListDetailAsync","User":"Ali Yasin Doğan","Parameters":[]}

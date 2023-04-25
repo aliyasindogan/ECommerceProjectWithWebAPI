@@ -10,10 +10,9 @@ namespace Entities.Concrete
             PagePermissons = new HashSet<PagePermisson>();
             AppUsers = new HashSet<AppUser>();
         }
-        public int ResourceID { get; set; }//UserTypeName
+        public string UserTypeName { get; set; }//UserTypeName
         public ICollection<PagePermisson> PagePermissons { get; set; }
         public ICollection<AppUser> AppUsers { get; set; }
-        public Resource Resource { get; set; }
 
     }
 }

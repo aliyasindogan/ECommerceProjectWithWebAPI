@@ -13,7 +13,8 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
 
             builder.HasKey(x => x.Id);
 
-            builder.HasData(new AppUserType() { Id = 1, ResourceID = 1,CreatedDate=DateTime.Now,CreatedUserId=-1 });
+            builder.HasData(new AppUserType() { Id = 1, UserTypeName = "System Admin", CreatedDate = DateTime.Now, CreatedUserId = -1 });
+            builder.HasData(new AppUserType() { Id = 2, UserTypeName = "Admin", CreatedDate = DateTime.Now, CreatedUserId = -1 });
         }
     }
 }

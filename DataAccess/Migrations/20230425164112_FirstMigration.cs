@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DataAccess.Migrations
 {
-    public partial class First : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,28 @@ namespace DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppOperationClaims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AppUserTypes",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedUserId = table.Column<int>(type: "int", nullable: true),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedUserId = table.Column<int>(type: "int", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUserTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,125 +77,6 @@ namespace DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PageTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Resources",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ResourceValue = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedUserId = table.Column<int>(type: "int", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedUserId = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Resources", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Pages",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PageName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PageURL = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    ParentID = table.Column<int>(type: "int", nullable: true),
-                    PageSeoURL = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
-                    PageTypeID = table.Column<int>(type: "int", nullable: false),
-                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
-                    MetaTitle = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: true),
-                    MetaKeywords = table.Column<string>(type: "nvarchar(260)", maxLength: 260, nullable: true),
-                    MetaDescription = table.Column<string>(type: "nvarchar(160)", maxLength: 160, nullable: true),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pages", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pages_PageTypes_PageTypeID",
-                        column: x => x.PageTypeID,
-                        principalSchema: "dbo",
-                        principalTable: "PageTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AppUserTypes",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ResourceID = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedUserId = table.Column<int>(type: "int", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedUserId = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AppUserTypes", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AppUserTypes_Resources_ResourceID",
-                        column: x => x.ResourceID,
-                        principalSchema: "dbo",
-                        principalTable: "Resources",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ResourceDetails",
-                schema: "dbo",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ResourceID = table.Column<int>(type: "int", nullable: false),
-                    ResourceValue = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    LanguageID = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedUserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedUserId = table.Column<int>(type: "int", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    DeletedUserId = table.Column<int>(type: "int", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ResourceDetails", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ResourceDetails_Languages_LanguageID",
-                        column: x => x.LanguageID,
-                        principalSchema: "dbo",
-                        principalTable: "Languages",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ResourceDetails_Resources_ResourceID",
-                        column: x => x.ResourceID,
-                        principalSchema: "dbo",
-                        principalTable: "Resources",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -255,6 +158,36 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pages",
+                schema: "dbo",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PageName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PageURL = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    ParentID = table.Column<int>(type: "int", nullable: true),
+                    PageSeoURL = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    PageTypeID = table.Column<int>(type: "int", nullable: false),
+                    DisplayOrder = table.Column<int>(type: "int", nullable: false),
+                    MetaTitle = table.Column<string>(type: "nvarchar(70)", maxLength: 70, nullable: true),
+                    MetaKeywords = table.Column<string>(type: "nvarchar(260)", maxLength: 260, nullable: true),
+                    MetaDescription = table.Column<string>(type: "nvarchar(160)", maxLength: 160, nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Pages_PageTypes_PageTypeID",
+                        column: x => x.PageTypeID,
+                        principalSchema: "dbo",
+                        principalTable: "PageTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PagePermissons",
                 schema: "dbo",
                 columns: table => new
@@ -318,6 +251,16 @@ namespace DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 schema: "dbo",
+                table: "AppUserTypes",
+                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "IsActive", "IsDeleted", "UpdatedDate", "UpdatedUserId", "UserTypeName" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2023, 4, 25, 19, 41, 11, 702, DateTimeKind.Local).AddTicks(2197), -1, null, null, true, false, null, null, "System Admin" },
+                    { 2, new DateTime(2023, 4, 25, 19, 41, 11, 702, DateTimeKind.Local).AddTicks(2459), -1, null, null, true, false, null, null, "Admin" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "dbo",
                 table: "Languages",
                 columns: new[] { "Id", "DisplayOrder", "IsActive", "LanguageCode", "LanguageName" },
                 values: new object[,]
@@ -338,15 +281,9 @@ namespace DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 schema: "dbo",
-                table: "Resources",
-                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "IsActive", "IsDeleted", "ResourceValue", "UpdatedDate", "UpdatedUserId" },
-                values: new object[] { 1, new DateTime(2023, 1, 29, 22, 28, 37, 68, DateTimeKind.Local).AddTicks(5107), -1, null, null, true, false, "AppUserType_SystemAdmin", null, null });
-
-            migrationBuilder.InsertData(
-                schema: "dbo",
-                table: "AppUserTypes",
-                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "IsActive", "IsDeleted", "ResourceID", "UpdatedDate", "UpdatedUserId" },
-                values: new object[] { 1, new DateTime(2023, 1, 29, 22, 28, 37, 53, DateTimeKind.Local).AddTicks(6341), -1, null, null, true, false, 1, null, null });
+                table: "AppUsers",
+                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "Email", "FirstName", "GsmNumber", "IsActive", "IsDeleted", "LastName", "PasswordHash", "PasswordSalt", "ProfileImageUrl", "RefreshToken", "UpdatedDate", "UpdatedUserId", "UserName", "UserTypeID" },
+                values: new object[] { -1, new DateTime(2023, 4, 25, 19, 41, 11, 696, DateTimeKind.Local).AddTicks(4355), 1, null, null, "sadmin@gmail.com", "System", "", true, false, "Admin", new byte[] { 111, 43, 247, 24, 169, 251, 238, 130, 22, 40, 11, 187, 211, 85, 231, 156, 206, 153, 74, 128, 142, 185, 147, 133, 102, 132, 11, 37, 11, 98, 45, 46, 142, 59, 207, 34, 68, 241, 30, 109, 43, 70, 173, 151, 253, 142, 148, 119, 126, 163, 209, 231, 136, 219, 250, 242, 241, 169, 233, 167, 22, 38, 123, 219 }, new byte[] { 208, 176, 236, 68, 69, 217, 116, 159, 240, 204, 195, 13, 1, 40, 100, 13, 149, 7, 106, 18, 91, 53, 139, 29, 28, 70, 163, 26, 155, 222, 204, 209, 75, 50, 123, 135, 187, 205, 136, 212, 210, 157, 187, 93, 112, 187, 24, 92, 83, 245, 171, 196, 199, 50, 110, 69, 127, 97, 78, 46, 228, 3, 31, 107, 218, 50, 231, 191, 89, 121, 217, 118, 38, 24, 226, 0, 221, 45, 7, 147, 46, 123, 101, 140, 73, 245, 124, 168, 224, 172, 199, 251, 61, 92, 111, 181, 113, 152, 195, 152, 223, 247, 122, 149, 54, 202, 156, 231, 17, 220, 154, 99, 154, 223, 114, 115, 151, 8, 172, 42, 8, 38, 8, 234, 84, 217, 24, 162 }, "", new Guid("f6a6dca3-0eb8-4291-ae5a-81dcab19af5d"), null, null, "sadmin", 1 });
 
             migrationBuilder.InsertData(
                 schema: "dbo",
@@ -354,57 +291,41 @@ namespace DataAccess.Migrations
                 columns: new[] { "Id", "DisplayOrder", "IsActive", "MetaDescription", "MetaKeywords", "MetaTitle", "PageName", "PageSeoURL", "PageTypeID", "PageURL", "ParentID" },
                 values: new object[,]
                 {
-                    { 1, 3, true, "", "", "", "Sistem Ayarları", "", 1, "#", null },
+                    { 19, 1, true, "", "", "", "Ürünler", "", 1, "/Admin/Product/List", 18 },
+                    { 20, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Product/Add", 19 },
+                    { 21, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Product/Update", 19 },
                     { 22, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Product/Delete", 19 },
                     { 23, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Product/Detail", 19 },
                     { 24, 1, true, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductType/List", 18 },
+                    { 18, 1, true, "", "", "", "Ürün", "", 1, "#", null },
                     { 25, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductType/Add", 24 },
-                    { 26, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductType/Update", 24 },
                     { 27, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductType/Delete", 24 },
                     { 28, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductType/Detail", 24 },
                     { 29, 2, true, "", "", "", "Genel Sayfalar", "", 1, "#", null },
                     { 31, 1, true, "", "", "", "Hakkımızda", "", 1, "/Admin/Contact/List", 29 },
                     { 32, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contact/Add", 30 },
                     { 33, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contact/Update", 30 },
+                    { 26, 1, false, "", "", "", "Ürün Tipleri", "", 1, "/Admin/ProductType/Update", 24 },
                     { 34, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contact/Delete", 30 },
-                    { 35, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contact/Detail", 30 },
-                    { 21, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Product/Update", 19 },
-                    { 20, 1, false, "", "", "", "Ürünler", "", 1, "/Admin/Product/Add", 19 },
-                    { 19, 1, true, "", "", "", "Ürünler", "", 1, "/Admin/Product/List", 18 },
-                    { 9, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Update", 7 },
+                    { 17, 1, true, "", "", "", "Sayfa Yetkileri", "", 1, "/Admin/PagePermisson/List", 1 },
+                    { 15, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Page/Delete", 12 },
+                    { 1, 3, true, "", "", "", "Sistem Ayarları", "", 1, "#", null },
+                    { 2, 1, true, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/List", 1 },
+                    { 3, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/Add", 2 },
                     { 4, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/Update", 2 },
                     { 5, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/Delete", 2 },
                     { 6, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/Detail", 2 },
+                    { 16, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Page/Detail", 12 },
                     { 7, 1, true, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/List", 1 },
-                    { 8, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Add", 7 },
-                    { 18, 1, true, "", "", "", "Ürün", "", 1, "#", null },
-                    { 3, 1, false, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/Add", 2 },
+                    { 9, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Update", 7 },
                     { 10, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Delete", 7 },
+                    { 11, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Detail", 7 },
                     { 12, 1, true, "", "", "", "Sayfalar", "", 1, "/Admin/Page/List", 1 },
                     { 13, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Page/Add", 12 },
                     { 14, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Page/Update", 12 },
-                    { 15, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Page/Delete", 12 },
-                    { 16, 1, false, "", "", "", "Sayfalar", "", 1, "/Admin/Page/Detail", 12 },
-                    { 17, 1, true, "", "", "", "Sayfa Yetkileri", "", 1, "/Admin/PagePermisson/List", 1 },
-                    { 11, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Detail", 7 },
-                    { 2, 1, true, "", "", "", "Kullanıcılar", "", 1, "/Admin/AppUser/List", 1 }
+                    { 8, 1, false, "", "", "", "Kullanıcı Tipleri", "", 1, "/Admin/AppUserType/Add", 7 },
+                    { 35, 1, false, "", "", "", "Hakkımızda", "", 1, "/Admin/Contact/Detail", 30 }
                 });
-
-            migrationBuilder.InsertData(
-                schema: "dbo",
-                table: "ResourceDetails",
-                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "IsActive", "IsDeleted", "LanguageID", "ResourceID", "ResourceValue", "UpdatedDate", "UpdatedUserId" },
-                values: new object[,]
-                {
-                    { 1, new DateTime(2023, 1, 29, 22, 28, 37, 71, DateTimeKind.Local).AddTicks(6794), -1, null, null, true, false, 1, 1, "System Admin", null, null },
-                    { 2, new DateTime(2023, 1, 29, 22, 28, 37, 71, DateTimeKind.Local).AddTicks(9125), -1, null, null, true, false, 2, 1, "System Admin", null, null }
-                });
-
-            migrationBuilder.InsertData(
-                schema: "dbo",
-                table: "AppUsers",
-                columns: new[] { "Id", "CreatedDate", "CreatedUserId", "DeletedDate", "DeletedUserId", "Email", "FirstName", "GsmNumber", "IsActive", "IsDeleted", "LastName", "PasswordHash", "PasswordSalt", "ProfileImageUrl", "RefreshToken", "UpdatedDate", "UpdatedUserId", "UserName", "UserTypeID" },
-                values: new object[] { -1, new DateTime(2023, 1, 29, 22, 28, 37, 48, DateTimeKind.Local).AddTicks(5769), 1, null, null, "sadmin@gmail.com", "System", "", true, false, "Admin", new byte[] { 173, 139, 33, 62, 205, 24, 164, 172, 101, 124, 36, 167, 5, 156, 187, 253, 62, 18, 24, 223, 132, 220, 165, 159, 184, 143, 187, 109, 252, 134, 171, 134, 235, 35, 22, 224, 53, 173, 71, 116, 120, 206, 111, 18, 17, 141, 100, 44, 154, 91, 177, 80, 63, 189, 172, 39, 211, 39, 43, 111, 105, 184, 205, 138 }, new byte[] { 185, 206, 53, 95, 206, 33, 155, 99, 202, 241, 188, 164, 188, 157, 125, 123, 44, 220, 113, 193, 143, 143, 119, 91, 100, 81, 1, 251, 46, 27, 67, 88, 119, 107, 254, 94, 176, 59, 222, 239, 208, 223, 91, 216, 125, 160, 121, 148, 22, 199, 33, 223, 215, 22, 194, 21, 30, 38, 106, 43, 2, 45, 135, 121, 246, 66, 67, 68, 101, 121, 240, 163, 100, 250, 251, 252, 146, 114, 29, 14, 176, 58, 140, 14, 134, 227, 54, 237, 145, 132, 103, 124, 71, 155, 226, 161, 225, 55, 18, 112, 222, 139, 228, 57, 229, 90, 77, 54, 133, 156, 135, 106, 189, 223, 138, 160, 99, 180, 50, 249, 97, 85, 60, 241, 207, 56, 7, 118 }, "", new Guid("4f4ba8a2-b7d8-469b-85a0-ec1e81303cee"), null, null, "sadmin", 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUsers_UserTypeID",
@@ -423,12 +344,6 @@ namespace DataAccess.Migrations
                 schema: "dbo",
                 table: "AppUserTypeAppOperationClaims",
                 column: "AppUserTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AppUserTypes_ResourceID",
-                schema: "dbo",
-                table: "AppUserTypes",
-                column: "ResourceID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PagePermissons_AppOperationClaimId",
@@ -453,18 +368,6 @@ namespace DataAccess.Migrations
                 schema: "dbo",
                 table: "Pages",
                 column: "PageTypeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ResourceDetails_LanguageID",
-                schema: "dbo",
-                table: "ResourceDetails",
-                column: "LanguageID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ResourceDetails_ResourceID",
-                schema: "dbo",
-                table: "ResourceDetails",
-                column: "ResourceID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -478,11 +381,11 @@ namespace DataAccess.Migrations
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "PagePermissons",
+                name: "Languages",
                 schema: "dbo");
 
             migrationBuilder.DropTable(
-                name: "ResourceDetails",
+                name: "PagePermissons",
                 schema: "dbo");
 
             migrationBuilder.DropTable(
@@ -495,14 +398,6 @@ namespace DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Pages",
-                schema: "dbo");
-
-            migrationBuilder.DropTable(
-                name: "Languages",
-                schema: "dbo");
-
-            migrationBuilder.DropTable(
-                name: "Resources",
                 schema: "dbo");
 
             migrationBuilder.DropTable(

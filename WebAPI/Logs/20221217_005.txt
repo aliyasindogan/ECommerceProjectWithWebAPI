@@ -1,4 +1,0 @@
-2022-12-17 01:09:18.637 [Information] {"MethodName":"GetListAsync","User":"System Admin","Parameters":[]}
-2022-12-17 01:09:42.349 [Information] {"MethodName":"GetListAsync","User":"System Admin","Parameters":[]}
-2022-12-17 01:09:59.146 [Information] {"MethodName":"GetListAsync","User":"System Admin","Parameters":[]}
-2022-12-17 01:13:35.353 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}

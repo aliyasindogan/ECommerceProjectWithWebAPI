@@ -52,7 +52,7 @@ namespace WebAPI
 
             #endregion Localization
 
-            services.AddDbContext<ECommerceDbContext>(opts => opts.UseSqlServer("Data Source =(LocalDB)\\MSSQLLocalDB; Initial Catalog = ECommerceDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
+            services.AddDbContext<ECommerceDbContext>(opts => opts.UseSqlServer("Data Source =.; Initial Catalog = ECommerceDb; Integrated Security = True", options => options.MigrationsAssembly("DataAccess").MigrationsHistoryTable(HistoryRepository.DefaultTableName, "dbo")));
 
             services.AddControllers()
                 .AddDataAnnotationsLocalization(options =>

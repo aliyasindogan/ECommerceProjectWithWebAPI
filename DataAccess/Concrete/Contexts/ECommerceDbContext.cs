@@ -17,7 +17,7 @@ namespace DataAccess.Concrete.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string connString = "Data Source =(LocalDB)\\MSSQLLocalDB; Initial Catalog = ECommerceDb; Integrated Security = True";
+            string connString = "Data Source =.; Initial Catalog = ECommerceDb; Integrated Security = True";
 
             optionsBuilder.UseSqlServer(connString);
         }
@@ -37,8 +37,6 @@ namespace DataAccess.Concrete.Contexts
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PageType> PageTypes { get; set; }
         public virtual DbSet<PagePermisson> PagePermissons { get; set; }
-        public virtual DbSet<Resource> Resources { get; set; }
-        public virtual DbSet<ResourceDetail> ResourceDetails { get; set; }
         public virtual DbSet<Language> Laguages { get; set; }
     }
 }

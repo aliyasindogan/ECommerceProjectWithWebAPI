@@ -45,15 +45,6 @@ namespace Entities.Mappings
             CreateMap<PageDto, PageDetailDto>().ReverseMap();
             #endregion
 
-            #region Resource
-            CreateMap<Resource, ResourceDto>().ReverseMap();
-            CreateMap<Resource, ResourceAddDto>().ReverseMap();
-            CreateMap<Resource, ResourceUpdateDto>().ReverseMap();
-            CreateMap<ResourceDto, ResourceUpdateDto>().ReverseMap();
-            CreateMap<ResourceDto, ResourceDeleteDto>().ReverseMap();
-            CreateMap<ResourceDto, ResourceDetailDto>().ReverseMap();
-            #endregion
-
             #region Language
             CreateMap<Language, LanguageDto>().ReverseMap();
             CreateMap<LanguageDto, LanguageDetailDto>().ReverseMap();

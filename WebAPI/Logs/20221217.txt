@@ -1,8 +1,0 @@
-2022-12-17 00:16:00.843 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:19:34.176 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:22:28.464 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:22:41.002 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:25:16.607 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:27:11.270 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:29:43.809 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}
-2022-12-17 00:32:37.630 [Information] {"MethodName":"GetListDetailAsync","User":"System Admin","Parameters":[]}

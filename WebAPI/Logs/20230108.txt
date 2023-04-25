@@ -1,4 +1,0 @@
-2023-01-08 02:07:19.428 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"AppUserTypeName":"Admin"},"Type":"AppUserTypeAddDto"}]}
-2023-01-08 02:07:35.858 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"AppUserTypeName":"Admin"},"Type":"AppUserTypeAddDto"}]}
-2023-01-08 02:08:02.854 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"AppUserTypeName":"Admin"},"Type":"AppUserTypeAddDto"}]}
-2023-01-08 02:08:23.325 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"AppUserTypeName":"Admin"},"Type":"AppUserTypeAddDto"}]}
