@@ -40,60 +40,45 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
 
             builder.Property(x => x.MetaDescription)
            .HasColumnName("MetaDescription")
-           .HasMaxLength(160); 
+           .HasMaxLength(160);
             #endregion
 
             builder.HasData(
-                #region Sistem Ayarları
-                new Page() { Id = 1, PageName = "Sistem Ayarları", DisplayOrder = 3, PageTypeID = 1, PageURL = "#", ParentID = null, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-                new Page() { Id = 2, PageName = "Kullanıcılar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/List", ParentID = 1, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 3, PageName = "Kullanıcılar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/Add", ParentID = 2, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 4, PageName = "Kullanıcılar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/Update", ParentID = 2, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 5, PageName = "Kullanıcılar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/Delete", ParentID = 2, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 6, PageName = "Kullanıcılar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/Detail", ParentID = 2, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-
-                new Page() { Id = 7, PageName = "Kullanıcı Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUserType/List", ParentID = 1, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 8, PageName = "Kullanıcı Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUserType/Add", ParentID = 7, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 9, PageName = "Kullanıcı Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUserType/Update", ParentID = 7, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 10, PageName = "Kullanıcı Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUserType/Delete", ParentID = 7, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 11, PageName = "Kullanıcı Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUserType/Detail", ParentID = 7, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-                new Page() { Id = 12, PageName = "Sayfalar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Page/List", ParentID = 1, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 13, PageName = "Sayfalar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Page/Add", ParentID = 12, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 14, PageName = "Sayfalar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Page/Update", ParentID = 12, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 15, PageName = "Sayfalar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Page/Delete", ParentID = 12, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 16, PageName = "Sayfalar", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Page/Detail", ParentID = 12, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-                new Page() { Id = 17, PageName = "Sayfa Yetkileri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/PagePermisson/List", ParentID = 1, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-            #endregion
-             
-                #region Ürünler
-                new Page() { Id = 18, PageName = "Ürün", DisplayOrder = 1, PageTypeID = 1, PageURL = "#", ParentID = null, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-                new Page() { Id = 19, PageName = "Ürünler", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Product/List", ParentID = 18, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 20, PageName = "Ürünler", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Product/Add", ParentID = 19, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 21, PageName = "Ürünler", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Product/Update", ParentID = 19, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 22, PageName = "Ürünler", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Product/Delete", ParentID = 19, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 23, PageName = "Ürünler", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Product/Detail", ParentID = 19, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-
-                new Page() { Id = 24, PageName = "Ürün Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/ProductType/List", ParentID = 18, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 25, PageName = "Ürün Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/ProductType/Add", ParentID = 24, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 26, PageName = "Ürün Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/ProductType/Update", ParentID = 24, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 27, PageName = "Ürün Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/ProductType/Delete", ParentID = 24, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 28, PageName = "Ürün Tipleri", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/ProductType/Detail", ParentID = 24, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-
-            #endregion
-                
-                #region Genel Sayfalar
-                new Page() { Id = 29, PageName = "Genel Sayfalar", DisplayOrder = 2, PageTypeID = 1, PageURL = "#", ParentID = null, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 31, PageName = "Hakkımızda", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Contact/List", ParentID = 29, IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 32, PageName = "Hakkımızda", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Contact/Add", ParentID = 30, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 33, PageName = "Hakkımızda", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Contact/Update", ParentID = 30, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 34, PageName = "Hakkımızda", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Contact/Delete", ParentID = 30, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
-                new Page() { Id = 35, PageName = "Hakkımızda", DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/Contact/Detail", ParentID = 30, IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" }
+            #region PageLanguage
+                new PageLanguage() { Id = 1, LanguageID = 1, PageID = 1, PageName = "Sistem Ayarları", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 2, LanguageID = 1, PageID = 2, PageName = "Kullanıcılar", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 3, LanguageID = 1, PageID = 3, PageName = "Kullanıcılar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 4, LanguageID = 1, PageID = 4, PageName = "Kullanıcılar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 5, LanguageID = 1, PageID = 5, PageName = "Kullanıcılar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 6, LanguageID = 1, PageID = 6, PageName = "Kullanıcılar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 7, LanguageID = 1, PageID = 7, PageName = "Kullanıcı Tipleri", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 8, LanguageID = 1, PageID = 8, PageName = "Kullanıcı Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 9, LanguageID = 1, PageID = 9, PageName = "Kullanıcı Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 10, LanguageID = 1, PageID = 10, PageName = "Kullanıcı Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 11, LanguageID = 1, PageID = 11, PageName = "Kullanıcı Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 12, LanguageID = 1, PageID = 12, PageName = "Sayfalar", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 13, LanguageID = 1, PageID = 13, PageName = "Sayfalar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 14, LanguageID = 1, PageID = 14, PageName = "Sayfalar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 15, LanguageID = 1, PageID = 15, PageName = "Sayfalar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 16, LanguageID = 1, PageID = 16, PageName = "Sayfalar", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 17, LanguageID = 1, PageID = 17, PageName = "Sayfa Yetkileri", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 18, LanguageID = 1, PageID = 18, PageName = "Ürün", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 19, LanguageID = 1, PageID = 19, PageName = "Ürünler", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 20, LanguageID = 1, PageID = 20, PageName = "Ürünler", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 21, LanguageID = 1, PageID = 21, PageName = "Ürünler", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 22, LanguageID = 1, PageID = 22, PageName = "Ürünler", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 23, LanguageID = 1, PageID = 23, PageName = "Ürünler", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 24, LanguageID = 1, PageID = 24, PageName = "Ürün Tipleri", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 25, LanguageID = 1, PageID = 25, PageName = "Ürün Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 26, LanguageID = 1, PageID = 26, PageName = "Ürün Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 27, LanguageID = 1, PageID = 27, PageName = "Ürün Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 28, LanguageID = 1, PageID = 28, PageName = "Ürün Tipleri", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 29, LanguageID = 1, PageID = 29, PageName = "Genel Sayfalar", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 31, LanguageID = 1, PageID = 31, PageName = "Hakkımızda", IsActive = true, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 32, LanguageID = 1, PageID = 32, PageName = "Hakkımızda", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 33, LanguageID = 1, PageID = 33, PageName = "Hakkımızda", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 34, LanguageID = 1, PageID = 34, PageName = "Hakkımızda", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" },
+                new PageLanguage() { Id = 35, LanguageID = 1, PageID = 35, PageName = "Hakkımızda", IsActive = false, PageSeoURL = "", MetaDescription = "", MetaKeywords = "", MetaTitle = "" }
 
                 #endregion
             );

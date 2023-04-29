@@ -37,6 +37,7 @@ namespace DataAccess.Concrete.Contexts
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<PageType> PageTypes { get; set; }
         public virtual DbSet<PagePermisson> PagePermissons { get; set; }
+        public virtual DbSet<PageLanguage> PageLaguages { get; set; }
         public virtual DbSet<Language> Laguages { get; set; }
     }
 }

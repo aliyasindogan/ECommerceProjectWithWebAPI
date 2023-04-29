@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Dtos.PagePageLanguages;
 using Entities.Dtos.Pages;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -50,9 +51,13 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> Add([FromBody] PageAddDto pageAddDto)
+        public async Task<IActionResult> Add([FromBody] PagePageLanguageUpdateDto pageAddDto)
         {
-            var result = await _pageService.AddAsync(pageAddDto);
+            var result = await _pageService.AddAsync(new PageAddDto { DisplayOrder = pageAddDto.DisplayOrder, PageTypeID = pageAddDto.PageTypeID, PageURL = pageAddDto.PageURL, ParentID = pageAddDto.ParentID });
+            int pageID = result.Data.Id;
+            //pageLanguage eklenecek
+
+
             if (result.Success)
                 return Ok(result);
             return BadRequest();

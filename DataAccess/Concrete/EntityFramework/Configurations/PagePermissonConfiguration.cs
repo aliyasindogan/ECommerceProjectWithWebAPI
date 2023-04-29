@@ -24,9 +24,19 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
              .HasColumnName("OperationClaimID")
              .IsRequired();
 
-            //builder.HasData(
-            //    new PagePermisson() { Id = 1, PageID = 2, UserTypeID=AppUserTypes., OperationClaimID=1 }
-            //);
+            //UserTypeID = 2 Admin
+            builder.HasData(
+                new PagePermisson() { Id = 1, PageID = 2, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 3, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 4, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 5, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 6, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 7, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 8, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 9, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 10, UserTypeID = 2, OperationClaimID = 1 },
+                new PagePermisson() { Id = 1, PageID = 11, UserTypeID = 2, OperationClaimID = 1 }
+            );
         }
     }
 }

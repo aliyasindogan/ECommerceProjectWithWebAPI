@@ -35,7 +35,6 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             builder.HasData(
             #region Sistem Ayarları
                 new Page() { Id = 1, DisplayOrder = 3, PageTypeID = 1, PageURL = "#", ParentID = null, IsActive = true },
-
                 new Page() { Id = 2, DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/List", ParentID = 1, IsActive = true },
                 new Page() { Id = 3, DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/Add", ParentID = 2, IsActive = false },
                 new Page() { Id = 4, DisplayOrder = 1, PageTypeID = 1, PageURL = "/Admin/AppUser/Update", ParentID = 2, IsActive = false },

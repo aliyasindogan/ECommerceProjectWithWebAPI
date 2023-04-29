@@ -18,16 +18,17 @@ namespace DataAccess.Concrete.EntityFramework
             {
                 var result = from page in context.Pages
                              join pageType in context.PageTypes on page.PageTypeID equals pageType.Id
+                             join pageLanguage in context.PageLaguages on page.Id equals pageLanguage.PageID
                              where page.IsActive==true
                              select new PageDto
                              {
                                  Id = page.Id,
                                  DisplayOrder = page.DisplayOrder,
-                                 MetaDescription = page.MetaDescription,
-                                 MetaKeywords = page.MetaKeywords,
-                                 MetaTitle = page.MetaTitle,
-                                 PageName = page.PageName,
-                                 PageSeoURL = page.PageSeoURL,
+                                 //MetaDescription = page.MetaDescription,
+                                 //MetaKeywords = page.MetaKeywords,
+                                 //MetaTitle = page.MetaTitle,
+                                 //PageName = page.PageName,
+                                 //PageSeoURL = page.PageSeoURL,
                                  PageTypeID = page.PageTypeID,
                                  PageTypeName = pageType.PageTypeName,
                                  PageURL = page.PageURL,
