@@ -75,12 +75,22 @@ namespace Business.Concrete
         [CacheRemoveAspect("IAppUserTypeService.GetListAsync")]
         [ValidationAspect(typeof(AppUserTypeAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
+        [SecuredOperationAspect()]
         public async Task<ApiDataResponse<AppUserTypeDto>> AddAsync(AppUserTypeAddDto userTypeAddDto)
         {
-            var userType = _mapper.Map<AppUserType>(userTypeAddDto);
-            var userTypeAdd = await _appUserTypeDal.AddAsync(userType);
-            var userTypeDto = _mapper.Map<AppUserTypeDto>(userTypeAdd);
-            return new SuccessApiDataResponse<AppUserTypeDto>(userTypeDto, message: _localizationService[ResultCodes.HTTP_OK]);
+            //Aynı UserTypeName var mı kontrolü yapılıyor
+            var getUserExist = await _appUserTypeDal.GetAsync(x => x.UserTypeName == userTypeAddDto.UserTypeName);
+            if (!Equals(getUserExist, null))
+                return new ErrorApiDataResponse<AppUserTypeDto>(null, message: _localizationService[ResultCodes.HTTP_Conflict], resultCodes: ResultCodes.HTTP_Conflict);
+            else
+            {
+                {
+                    var userType = _mapper.Map<AppUserType>(userTypeAddDto);
+                    var userTypeAdd = await _appUserTypeDal.AddAsync(userType);
+                    var userTypeDto = _mapper.Map<AppUserTypeDto>(userTypeAdd);
+                    return new SuccessApiDataResponse<AppUserTypeDto>(userTypeDto, message: _localizationService[ResultCodes.HTTP_OK]);
+                }
+            }
         }
 
         [TransactionScopeAspect]

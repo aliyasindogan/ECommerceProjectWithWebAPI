@@ -85,16 +85,24 @@ namespace Business.Concrete
         [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
         [ValidationAspect(typeof(AppUserAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
+        [SecuredOperationAspect()]
         public async Task<ApiDataResponse<AppUserDto>> AddAsync(AppUserAddDto userAddDto)
         {
-            byte[] passwordHash, passwordSalt;
-            var user = _mapper.Map<AppUser>(userAddDto);
-            Sha512Helper.CreatePasswordHash(userAddDto.Password, out passwordHash, out passwordSalt);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-            var userAdd = await _appUserDal.AddAsync(user);
-            var userDto = _mapper.Map<AppUserDto>(userAdd);
-            return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
+            //Aynı username ve email adresi var mı kontrolü yapılıyor
+            var getUserExist = await _appUserDal.GetAsync(x => x.UserName == userAddDto.UserName || x.Email == userAddDto.Email);
+            if (!Equals(getUserExist, null))
+                return new ErrorApiDataResponse<AppUserDto>(null, message: _localizationService[ResultCodes.HTTP_Conflict], resultCodes: ResultCodes.HTTP_Conflict);
+            else
+            {
+                byte[] passwordHash, passwordSalt;
+                var user = _mapper.Map<AppUser>(userAddDto);
+                Sha512Helper.CreatePasswordHash(userAddDto.Password, out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+                var userAdd = await _appUserDal.AddAsync(user);
+                var userDto = _mapper.Map<AppUserDto>(userAdd);
+                return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
+            }
         }
         [TransactionScopeAspect]
         [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
