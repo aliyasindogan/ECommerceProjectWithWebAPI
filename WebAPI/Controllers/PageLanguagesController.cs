@@ -1,6 +1,5 @@
 ﻿using Business.Abstract;
-using Entities.Dtos.PagePageLanguages;
-using Entities.Dtos.Pages;
+using Entities.Dtos.PageLanguages;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -8,20 +7,20 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PagesController : ControllerBase
+    public class PageLanguagesController : ControllerBase
     {
-        private readonly IPageService _pageService;
+        private readonly IPageLanguageService _pageLanguageService;
 
-        public PagesController(IPageService pageService)
+        public PageLanguagesController(IPageLanguageService pageLanguageService)
         {
-            _pageService = pageService;
+            _pageLanguageService = pageLanguageService;
         }
 
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetList()
         {
-            var result = await _pageService.GetListAsync();
+            var result = await _pageLanguageService.GetListAsync();
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -32,16 +31,7 @@ namespace WebAPI.Controllers
         [Route("[action]")]
         public async Task<IActionResult> GetListDetail()
         {
-            var result = await _pageService.GetListDetailAsync();
-            if (result.Success)
-                return Ok(result);
-            return BadRequest(result);
-        }
-        [HttpGet]
-        [Route("[action]")]
-        public async Task<IActionResult> GetListAdminPanelLeftMenu()
-        {
-            var result = await _pageService.GetListAdminPanelLeftMenuAsync();
+            var result = await _pageLanguageService.GetListDetailAsync();
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -51,7 +41,7 @@ namespace WebAPI.Controllers
         [Route("[action]/{id:int}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await _pageService.GetByIdAsync(id);
+            var result = await _pageLanguageService.GetByIdAsync(id);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -59,9 +49,9 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> Add([FromBody] PageAddDto pageAddDto)
+        public async Task<IActionResult> Add([FromBody] PageLanguageAddDto pageLanguageAddDto)
         {
-            var result = await _pageService.AddAsync(pageAddDto);
+            var result = await _pageLanguageService.AddAsync(pageLanguageAddDto);
             if (result.Success)
                 return Ok(result);
             return BadRequest();
@@ -69,9 +59,9 @@ namespace WebAPI.Controllers
 
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> Update([FromBody] PageUpdateDto pageUpdateDto)
+        public async Task<IActionResult> Update([FromBody] PageLanguageUpdateDto pageLanguageUpdateDto)
         {
-            var result = await _pageService.UpdateAsync(pageUpdateDto);
+            var result = await _pageLanguageService.UpdateAsync(pageLanguageUpdateDto);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
@@ -81,7 +71,7 @@ namespace WebAPI.Controllers
         [Route("[action]/{id:int}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _pageService.DeleteAsync(id);
+            var result = await _pageLanguageService.DeleteAsync(id);
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);

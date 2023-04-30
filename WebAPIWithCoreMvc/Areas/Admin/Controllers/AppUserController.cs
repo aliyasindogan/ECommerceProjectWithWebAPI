@@ -1,20 +1,17 @@
 ﻿using AutoMapper;
-using Core.Entities.Concrete;
-using Core.Entities.Enums;
 using Core.Utilities.Messages;
+using Entities.Abstract.Enums;
 using Entities.Dtos.AppUsers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using WebAPIWithCoreMvc.ApiServices;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Helpers;
 
@@ -43,7 +40,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         {
             var result = await _appUserApiService.GetListDetailAsync();
             List<int> ids = new List<int>();
-            ids.Add((int)AppUserTypes.SystemAdmin);//SystemAdmin
+            ids.Add((int)EnumAppUserTypes.SystemAdmin);//SystemAdmin
             var users = result.Data.Where(x => ids.Contains(x.Id) == false);
             return View(users.ToList());
         }

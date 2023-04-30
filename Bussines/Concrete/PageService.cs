@@ -39,20 +39,20 @@ namespace Business.Concrete
 
         [CacheAspect(10)]
         [SecuredOperationAspect("Page.List")]
-        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListAsync()
+        public async Task<ApiDataResponse<List<PageDto>>> GetListAsync()
         {
             var response = await _pageDal.GetListAsync();
-            var pageDtos = _mapper.Map<List<PagePageLanguageDto>>(response);
-            return new SuccessApiDataResponse<List<PagePageLanguageDto>>(data: pageDtos, message: _localizationService[ResultCodes.HTTP_OK], resultCount: pageDtos.Count);
+            var pageDtos = _mapper.Map<List<PageDto>>(response);
+            return new SuccessApiDataResponse<List<PageDto>>(data: pageDtos, message: _localizationService[ResultCodes.HTTP_OK], resultCount: pageDtos.Count);
 
         }
         [CacheAspect(10)]
         [SecuredOperationAspect("Page.List")]
-        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListDetailAsync()
+        public async Task<ApiDataResponse<List<PageDto>>> GetListDetailAsync()
         {
             var response = await _pageDal.GetListDetailAsync();
-            var pageDtos = _mapper.Map<List<PagePageLanguageDto>>(response);
-            return new SuccessApiDataResponse<List<PagePageLanguageDto>>(pageDtos, message: _localizationService[ResultCodes.HTTP_OK], resultCount: pageDtos.Count);
+            var pageDtos = _mapper.Map<List<PageDto>>(response);
+            return new SuccessApiDataResponse<List<PageDto>>(pageDtos, message: _localizationService[ResultCodes.HTTP_OK], resultCount: pageDtos.Count);
         }
         public async Task<ApiDataResponse<Page>> GetAsync(Expression<Func<Page, bool>> filter)
         {
@@ -62,29 +62,29 @@ namespace Business.Concrete
         }
         [CacheAspect(10)]
         [SecuredOperationAspect("Page.List")]
-        public async Task<ApiDataResponse<PagePageLanguageDto>> GetByIdAsync(int id)
+        public async Task<ApiDataResponse<PageDto>> GetByIdAsync(int id)
         {
             var page = await _pageDal.GetAsync(x => x.Id == id);
-            var pageDto = _mapper.Map<PagePageLanguageDto>(page);
-            return new SuccessApiDataResponse<PagePageLanguageDto>(data: pageDto, pageDto == null ? _localizationService[ResultCodes.ERROR_UserNotFound] : _localizationService[ResultCodes.HTTP_OK]);
+            var pageDto = _mapper.Map<PageDto>(page);
+            return new SuccessApiDataResponse<PageDto>(data: pageDto, pageDto == null ? _localizationService[ResultCodes.ERROR_UserNotFound] : _localizationService[ResultCodes.HTTP_OK]);
         }
 
 
         [TransactionScopeAspect]
         [CacheRemoveAspect("IPageService.GetListAsync")]
-        [ValidationAspect(typeof(PagePageLanguageAddDtoValidator))]
+        [ValidationAspect(typeof(PageAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
-        public async Task<ApiDataResponse<PagePageLanguageDto>> AddAsync(PageAddDto pageAddDto)
+        public async Task<ApiDataResponse<PageDto>> AddAsync(PageAddDto pageAddDto)
         {
             var page = _mapper.Map<Page>(pageAddDto);
             var pageAdd = await _pageDal.AddAsync(page);
-            var pageDto = _mapper.Map<PagePageLanguageDto>(pageAdd);
-            return new SuccessApiDataResponse<PagePageLanguageDto>(pageDto, message: _localizationService[ResultCodes.HTTP_OK]);
+            var pageDto = _mapper.Map<PageDto>(pageAdd);
+            return new SuccessApiDataResponse<PageDto>(pageDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
 
         [TransactionScopeAspect]
         [CacheRemoveAspect("IPageService.GetListAsync")]
-        [ValidationAspect(typeof(PagePageLanguageUpdateDtoValidator))]
+        [ValidationAspect(typeof(PageUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<PageUpdateDto>> UpdateAsync(PageUpdateDto pageUpdateDto)
         {
@@ -112,4 +112,5 @@ namespace Business.Concrete
         }
     }
 }
+
 

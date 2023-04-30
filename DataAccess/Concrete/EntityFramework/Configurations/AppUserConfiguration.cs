@@ -1,5 +1,5 @@
-﻿using Core.Entities.Enums;
-using Core.Utilities.Security.Hash.Sha512;
+﻿using Core.Utilities.Security.Hash.Sha512;
+using Entities.Abstract.Enums;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -76,7 +76,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
                 PasswordSalt = passwordSalt,
                 GsmNumber = String.Empty,
                 ProfileImageUrl = String.Empty,
-                UserTypeID = (int)AppUserTypes.SystemAdmin,
+                UserTypeID = (int)EnumAppUserTypes.SystemAdmin,
                 RefreshToken = Guid.NewGuid(),
             });
         }

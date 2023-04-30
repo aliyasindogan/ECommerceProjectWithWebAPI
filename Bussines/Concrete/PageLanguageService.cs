@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Business.Abstract;
-using Business.Constants;
 using Business.Validations.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Logging;
@@ -8,21 +7,12 @@ using Core.Aspects.Autofac.SecuredOperation;
 using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Logging.Serilog.Loggers;
-using Core.Entities.Dtos;
-using Core.Entities.Enums;
 using Core.Utilities.Localization;
 using Core.Utilities.Messages;
 using Core.Utilities.Responses;
-using Core.Utilities.Security.Hash.Sha512;
-using Core.Utilities.Security.Token;
 using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
-using Entities.Dtos.AppUsers;
-using Entities.Dtos.AppUserTypes;
 using Entities.Dtos.PageLanguages;
-using Entities.Dtos.Pages;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -30,14 +20,14 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class PageLangugeService : IPageLanguageService
+    public class PageLanguageService : IPageLanguageService
     {
         #region DI
 
         private readonly IPageLanguageDal _pageLanguageDal;
         private IMapper _mapper;
         private readonly ILocalizationService _localizationService;
-        public PageLangugeService(IPageLanguageDal pageLanguageDal, IMapper mapper, ILocalizationService localizationService)
+        public PageLanguageService(IPageLanguageDal pageLanguageDal, IMapper mapper, ILocalizationService localizationService)
         {
             _pageLanguageDal = pageLanguageDal;
             _mapper = mapper;
@@ -83,6 +73,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IPageLanguageService.GetListAsync")]
         [ValidationAspect(typeof(PageAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
+        [SecuredOperationAspect()]
         public async Task<ApiDataResponse<PageLanguageDto>> AddAsync(PageLanguageAddDto pageLanguageAddDto)
         {
             var pageLanguage = _mapper.Map<PageLanguage>(pageLanguageAddDto);
@@ -95,6 +86,7 @@ namespace Business.Concrete
         [CacheRemoveAspect("IPageLanguageService.GetListAsync")]
         [ValidationAspect(typeof(PageUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]
+        [SecuredOperationAspect()]
         public async Task<ApiDataResponse<PageLanguageUpdateDto>> UpdateAsync(PageLanguageUpdateDto pageLanguageUpdateDto)
         {
             var getPageLanguage = await _pageLanguageDal.GetAsync(x => x.Id == pageLanguageUpdateDto.Id);
@@ -107,6 +99,7 @@ namespace Business.Concrete
         }
         [CacheRemoveAspect("IPageLanguageService.GetListAsync")]
         [LogAspect(typeof(FileLogger))]
+        [SecuredOperationAspect()]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {
             return new SuccessApiDataResponse<bool>(await _pageLanguageDal.DeleteAsync(id), _localizationService[ResultCodes.HTTP_OK]);

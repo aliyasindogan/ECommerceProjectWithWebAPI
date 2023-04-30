@@ -23,14 +23,14 @@ namespace WebAPIWithCoreMvc.ApiServices
             _httpClientService = httpClientService;
         }
 
-        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListAsync()
+        public async Task<ApiDataResponse<List<PageDto>>> GetListAsync()
         {
-            return await _httpClientService.GetListAsync<PagePageLanguageDto>($"{Constants.Pages}/{Constants.GetList}");
+            return await _httpClientService.GetListAsync<PageDto>($"{Constants.Pages}/{Constants.GetList}");
         }
 
-        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListDetailAsync()
+        public async Task<ApiDataResponse<List<PageDto>>> GetListDetailAsync()
         {
-            return await _httpClientService.GetListAsync<PagePageLanguageDto>($"{Constants.Pages}/{Constants.GetListDetail}");
+            return await _httpClientService.GetListAsync<PageDto>($"{Constants.Pages}/{Constants.GetListDetail}");
         }
 
         public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListAdminPanelLeftMenuAsync()
@@ -38,19 +38,19 @@ namespace WebAPIWithCoreMvc.ApiServices
             return await _httpClientService.GetListAsync<PagePageLanguageDto>($"{Constants.Pages}/{"GetListAdminPanelLeftMenu"}");
         }
 
-        public async Task<ApiDataResponse<PagePageLanguageDto>> AddAsync(PageAddDto userAddDto)
+        public async Task<ApiDataResponse<PageDto>> AddAsync(PageAddDto userAddDto)
         {
-            return await _httpClientService.PostAsync($"{Constants.Pages}/{Constants.Add}", userAddDto, new PagePageLanguageDto());
+            return await _httpClientService.PostAsync($"{Constants.Pages}/{Constants.Add}", userAddDto, new PageDto());
         }
 
-        public async Task<ApiDataResponse<PagePageLanguageDto>> GetByIdAsync(int id)
+        public async Task<ApiDataResponse<PageDto>> GetByIdAsync(int id)
         {
-            return await _httpClientService.GetAsync<PagePageLanguageDto>($"{Constants.Pages}/{Constants.GetById}/", id);
+            return await _httpClientService.GetAsync<PageDto>($"{Constants.Pages}/{Constants.GetById}/", id);
         }
 
-        public async Task<ApiDataResponse<PageUpdateDto>> UpdateAsync(PageUpdateDto appUserUpdateDto)
+        public async Task<ApiDataResponse<PageUpdateDto>> UpdateAsync(PageUpdateDto pageUpdateDto)
         {
-            return await _httpClientService.PutAsync($"{Constants.Pages}/{Constants.Update}", appUserUpdateDto);
+            return await _httpClientService.PutAsync($"{Constants.Pages}/{Constants.Update}", pageUpdateDto);
         }
 
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)

@@ -38,7 +38,7 @@ namespace Entities.Mappings
             #endregion
 
             #region Page
-            CreateMap<Page, PagePageLanguageDto>().ReverseMap();
+            CreateMap<Page, PageDto>().ReverseMap();
             CreateMap<Page, PageAddDto>().ReverseMap();
             CreateMap<Page, PageUpdateDto>().ReverseMap();
             CreateMap<PagePageLanguageDto, PageUpdateDto>().ReverseMap();
