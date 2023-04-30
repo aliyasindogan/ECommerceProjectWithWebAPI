@@ -4,8 +4,9 @@ using Entities.Concrete;
 using Entities.Dtos.AppUsers;
 using Entities.Dtos.AppUserTypes;
 using Entities.Dtos.Languages;
+using Entities.Dtos.PageLanguages;
+using Entities.Dtos.PagePageLanguages;
 using Entities.Dtos.Pages;
-using Entities.Dtos.Resources;
 
 namespace Entities.Mappings
 {
@@ -37,12 +38,21 @@ namespace Entities.Mappings
             #endregion
 
             #region Page
-            CreateMap<Page, PageDto>().ReverseMap();
+            CreateMap<Page, PagePageLanguageDto>().ReverseMap();
             CreateMap<Page, PageAddDto>().ReverseMap();
             CreateMap<Page, PageUpdateDto>().ReverseMap();
-            CreateMap<PageDto, PageUpdateDto>().ReverseMap();
-            CreateMap<PageDto, PageDeleteDto>().ReverseMap();
-            CreateMap<PageDto, PageDetailDto>().ReverseMap();
+            CreateMap<PagePageLanguageDto, PageUpdateDto>().ReverseMap();
+            CreateMap<PagePageLanguageDto, PageDeleteDto>().ReverseMap();
+            CreateMap<PagePageLanguageDto, PageDetailDto>().ReverseMap();
+            #endregion
+
+            #region PageLanguage
+            CreateMap<PageLanguage, PageLanguageDto>().ReverseMap();
+            CreateMap<PageLanguage, PageLanguageAddDto>().ReverseMap();
+            CreateMap<PageLanguage, PageLanguageUpdateDto>().ReverseMap();
+            CreateMap<PageLanguageDto, PageLanguageUpdateDto>().ReverseMap();
+            CreateMap<PageLanguageDto, PageLanguageDeleteDto>().ReverseMap();
+            CreateMap<PageLanguageDto, PageLanguageDetailDto>().ReverseMap();
             #endregion
 
             #region Language

@@ -2,6 +2,7 @@
 using Core.Utilities.Responses;
 using Entities.Dtos.AppUsers;
 using Entities.Dtos.AppUserTypes;
+using Entities.Dtos.PagePageLanguages;
 using Entities.Dtos.Pages;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,23 +23,29 @@ namespace WebAPIWithCoreMvc.ApiServices
             _httpClientService = httpClientService;
         }
 
-        public async Task<ApiDataResponse<List<PageDto>>> GetListAsync()
+        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListAsync()
         {
-            return await _httpClientService.GetListAsync<PageDto>($"{Constants.Pages}/{Constants.GetList}");
+            return await _httpClientService.GetListAsync<PagePageLanguageDto>($"{Constants.Pages}/{Constants.GetList}");
         }
 
-        public async Task<ApiDataResponse<List<PageDto>>> GetListDetailAsync()
+        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListDetailAsync()
         {
-            return await _httpClientService.GetListAsync<PageDto>($"{Constants.Pages}/{Constants.GetListDetail}");
-        }
-        public async Task<ApiDataResponse<PageDto>> AddAsync(PageAddDto userAddDto)
-        {
-            return await _httpClientService.PostAsync($"{Constants.Pages}/{Constants.Add}", userAddDto, new PageDto());
+            return await _httpClientService.GetListAsync<PagePageLanguageDto>($"{Constants.Pages}/{Constants.GetListDetail}");
         }
 
-        public async Task<ApiDataResponse<PageDto>> GetByIdAsync(int id)
+        public async Task<ApiDataResponse<List<PagePageLanguageDto>>> GetListAdminPanelLeftMenuAsync()
         {
-            return await _httpClientService.GetAsync<PageDto>($"{Constants.Pages}/{Constants.GetById}/", id);
+            return await _httpClientService.GetListAsync<PagePageLanguageDto>($"{Constants.Pages}/{"GetListAdminPanelLeftMenu"}");
+        }
+
+        public async Task<ApiDataResponse<PagePageLanguageDto>> AddAsync(PageAddDto userAddDto)
+        {
+            return await _httpClientService.PostAsync($"{Constants.Pages}/{Constants.Add}", userAddDto, new PagePageLanguageDto());
+        }
+
+        public async Task<ApiDataResponse<PagePageLanguageDto>> GetByIdAsync(int id)
+        {
+            return await _httpClientService.GetAsync<PagePageLanguageDto>($"{Constants.Pages}/{Constants.GetById}/", id);
         }
 
         public async Task<ApiDataResponse<PageUpdateDto>> UpdateAsync(PageUpdateDto appUserUpdateDto)
@@ -50,5 +57,7 @@ namespace WebAPIWithCoreMvc.ApiServices
         {
             return await _httpClientService.DeleteAsync($"{Constants.Pages}/{Constants.Delete}/", id);
         }
+
+    
     }
 }

@@ -37,7 +37,15 @@ namespace WebAPI.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
-
+        [HttpGet]
+        [Route("[action]")]
+        public async Task<IActionResult> GetListAdminPanelLeftMenu()
+        {
+            var result = await _pageService.GetListAdminPanelLeftMenuAsync();
+            if (result.Success)
+                return Ok(result);
+            return BadRequest(result);
+        }
 
         [HttpGet]
         [Route("[action]/{id:int}")]

@@ -40,7 +40,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         {
             GetLanguages();
 
-            string _language = loginDto.LanguageId == (int)Languages.Turkish ? Constants.LangTR : Constants.LangEN;
+            string _language = loginDto.LanguageId == (int)EnumLanguages.Turkish ? Constants.LangTR : Constants.LangEN;
 
             Response.Cookies.Append(
                 CookieRequestCultureProvider.DefaultCookieName,

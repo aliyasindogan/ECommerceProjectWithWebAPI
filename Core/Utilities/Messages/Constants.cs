@@ -18,7 +18,7 @@
         public const string GetById = "GetById";
         public const string GetList = "GetList";
         public const string GetListDetail = "GetListDetail";
-
+        
         public const string AppUser = "AppUser";
         public const string AppUsers = "AppUsers";
         public const string AppUserType = "AppUserType";

@@ -16,5 +16,9 @@ namespace Entities.Dtos.PagePageLanguages
         public int? ParentID { get; set; }
         public int PageTypeID { get; set; }
         public int DisplayOrder { get; set; }
+        public string LanguageName { get; set; }
+        public string PageTypeName { get; set; }
+        public bool IsActive { get; set; }
+
     }
 }

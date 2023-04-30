@@ -7,8 +7,8 @@ namespace Business.Validations.FluentValidation
     {
         public PageAddDtoValidator()
         {
-            RuleFor(x => x.PageName).NotEmpty().
-                WithErrorCode("VALIDATION_PageNameFieldCannotBeEmpty");
+            //RuleFor(x => x.PageName).NotEmpty().
+            //    WithErrorCode("VALIDATION_PageNameFieldCannotBeEmpty");
 
             RuleFor(x => x.PageURL).NotEmpty().
                WithErrorCode("VALIDATION_PageURLFieldCannotBeEmpty");

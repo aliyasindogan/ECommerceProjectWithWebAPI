@@ -1,6 +1,6 @@
 ﻿namespace Entities.Abstract.Enums
 {
-    public enum Genders
+    public enum EnumGenders
     {
         /// <summary>
         /// Kadın

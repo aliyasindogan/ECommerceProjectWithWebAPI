@@ -16,7 +16,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             LeftMenuViewModel viewModel = new LeftMenuViewModel();
-            var result = await _pageApiService.GetListDetailAsync();
+            var result = await _pageApiService.GetListAdminPanelLeftMenuAsync();
             viewModel.MainPage = result.Data.Where(x => x.ParentID == null ).ToList();
             viewModel.ParentPage = result.Data.Where(x => x.ParentID != null ).ToList();
             return View(viewModel);

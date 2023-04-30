@@ -1,14 +1,15 @@
-﻿using Entities.Dtos.Pages;
+﻿using Entities.Dtos.PagePageLanguages;
+using Entities.Dtos.Pages;
 using FluentValidation;
 
 namespace Business.Validations.FluentValidation
 {
-    public class PageUpdateDtoValidator : AbstractValidator<PageUpdateDto>
+    public class PagePageLanguageAddDtoValidator : AbstractValidator<PagePageLanguageAddDto>
     {
-        public PageUpdateDtoValidator()
+        public PagePageLanguageAddDtoValidator()
         {
-            //RuleFor(x => x.PageName).NotEmpty().
-            //    WithErrorCode("VALIDATION_PageNameFieldCannotBeEmpty");
+            RuleFor(x => x.PageName).NotEmpty().
+                WithErrorCode("VALIDATION_PageNameFieldCannotBeEmpty");
 
             RuleFor(x => x.PageURL).NotEmpty().
                WithErrorCode("VALIDATION_PageURLFieldCannotBeEmpty");
