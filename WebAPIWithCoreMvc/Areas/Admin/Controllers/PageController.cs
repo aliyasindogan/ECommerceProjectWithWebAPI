@@ -15,17 +15,19 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
     public class PageController : Controller
     {
         private readonly IPageApiService _pageApiService;
+        private readonly IPageLanguageApiService _pageLanguageApiService;
         private readonly IMapper _mapper;
-        public PageController(IPageApiService pageApiService, IMapper mapper)
+        public PageController(IPageApiService pageApiService, IMapper mapper, IPageLanguageApiService pageLanguageApiService)
         {
             _pageApiService = pageApiService;
             _mapper = mapper;
+            _pageLanguageApiService = pageLanguageApiService;
         }
 
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var result = await _pageApiService.GetListAsync();
+            var result = await _pageLanguageApiService.GetListAsync();
             if (result == null)
                 return View();
             return View(result.Data.ToList());

@@ -96,11 +96,18 @@
         PAGETITLE_AppUserUpdate = 8002,
         PAGETITLE_AppUserDelete = 8003,
         PAGETITLE_AppUserDetail = 8004,
+
         PAGETITLE_AppUserTypeList = 8005,
         PAGETITLE_AppUserTypeAdd = 8006,
         PAGETITLE_AppUserTypeUpdate = 8007,
         PAGETITLE_AppUserTypeDelete = 8008,
         PAGETITLE_AppUserTypeDetail = 8009,
+
+        PAGETITLE_PageList=8010,
+        PAGETITLE_PageAdd = 8011,
+        PAGETITLE_PageUpdate = 8012,
+        PAGETITLE_PageDelete = 8013,
+        PAGETITLE_PageDetail = 8014,
         #endregion
     }
 }

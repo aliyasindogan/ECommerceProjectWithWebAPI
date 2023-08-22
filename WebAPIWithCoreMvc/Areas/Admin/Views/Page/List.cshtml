@@ -1,5 +1,97 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Core.Utilities.Messages
+@using Entities.Dtos.PageLanguages
+@model IEnumerable<PageLanguageDto>
+@inject Core.Utilities.Localization.ILocalizationService _localizationService
 @{
+    ViewData["Title"] = "List";
 }
+@*
+    Page liste sayfası detayları düenlenecek.
+    22.08.2023
+*@
+<div class="col-12">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_PageList]</h3>
+            <div class="card-tools">
+                <form asp-action="Add" asp-controller="AppUser" method="get">
+                    <button type="submit" class="btn btn-default btn-xs float-right">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageSeoURL)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MetaTitle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MetaKeywords)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MetaDescription)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LanguageID)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PageID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PageName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PageSeoURL)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MetaTitle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MetaKeywords)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MetaDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LanguageID)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
