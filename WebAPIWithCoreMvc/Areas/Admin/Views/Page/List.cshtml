@@ -1,6 +1,5 @@
 ﻿@using Core.Utilities.Messages
-@using Entities.Dtos.PageLanguages
-@model IEnumerable<PageLanguageDto>
+@model IEnumerable<PageViewModel>
 @inject Core.Utilities.Localization.ILocalizationService _localizationService
 @{
     ViewData["Title"] = "List";
@@ -26,29 +25,32 @@
             <table class="table table-hover text-nowrap">
                 <thead>
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Id)
-                        </th>
+                        
                         <th>
                             @Html.DisplayNameFor(model => model.PageID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageLanguageID)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.PageName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PageSeoURL)
+                            @Html.DisplayNameFor(model => model.ParentPageName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.MetaTitle)
+                            @Html.DisplayNameFor(model => model.PageURL)
+                        </th>
+                      
+                        <th>
+                            @Html.DisplayNameFor(model => model.PageTypeName)
+                        </th>
+                       
+                        <th>
+                            @Html.DisplayNameFor(model => model.LanguageName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.MetaKeywords)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.MetaDescription)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LanguageID)
+                            @Html.DisplayNameFor(model => model.IsActive)
                         </th>
                         <th></th>
                     </tr>
@@ -57,29 +59,30 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
+                            
                             <td>
                                 @Html.DisplayFor(modelItem => item.PageID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PageLanguageID)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PageName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.PageSeoURL)
+                                @Html.DisplayFor(modelItem => item.ParentPageName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MetaTitle)
+                                @Html.DisplayFor(modelItem => item.PageURL)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MetaKeywords)
+                                @Html.DisplayFor(modelItem => item.PageTypeName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.MetaDescription)
+                                @Html.DisplayFor(modelItem => item.LanguageName)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.LanguageID)
+                             <td>
+                                @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

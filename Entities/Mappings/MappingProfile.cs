@@ -7,6 +7,7 @@ using Entities.Dtos.Languages;
 using Entities.Dtos.PageLanguages;
 using Entities.Dtos.PagePageLanguages;
 using Entities.Dtos.Pages;
+using Entities.Dtos.PageTypes;
 
 namespace Entities.Mappings
 {
@@ -55,6 +56,10 @@ namespace Entities.Mappings
             CreateMap<PageLanguageDto, PageLanguageDetailDto>().ReverseMap();
             #endregion
 
+            #region PageType
+
+            CreateMap<PageType, PageTypeDto>().ReverseMap();
+            #endregion
             #region Language
             CreateMap<Language, LanguageDto>().ReverseMap();
             CreateMap<LanguageDto, LanguageDetailDto>().ReverseMap();
