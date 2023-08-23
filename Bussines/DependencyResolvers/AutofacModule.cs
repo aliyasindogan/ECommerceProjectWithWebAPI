@@ -22,15 +22,22 @@ namespace Business.DependencyResolvers
         {
             builder.RegisterType<EfAppUserDal>().As<IAppUserDal>();
             builder.RegisterType<AppUserService>().As<IAppUserService>();
+
             builder.RegisterType<AppUserTypeService>().As<IAppUserTypeService>();
             builder.RegisterType<EfAppUserTypeDal>().As<IAppUserTypeDal>();
+
             builder.RegisterType<EfPageDal>().As<IPageDal>();
             builder.RegisterType<PageService>().As<IPageService>();
+
+            builder.RegisterType<EfPageTypeDal>().As<IPageTypeDal>();
             builder.RegisterType<PageTypeService>().As<IPageTypeService>();
+
             builder.RegisterType<EfLanguageDal>().As<ILanguageDal>();
             builder.RegisterType<LanguageService>().As<ILanguageService>();
+
             builder.RegisterType<EfPageLanguageDal>().As<IPageLanguageDal>();
             builder.RegisterType<PageLanguageService>().As<IPageLanguageService>();
+
             builder.RegisterType<JwtTokenService>().As<ITokenService>();
             builder.RegisterType<AuthService>().As<IAuthService>();
             builder.RegisterType<MemoryCacheService>().As<ICacheService>();

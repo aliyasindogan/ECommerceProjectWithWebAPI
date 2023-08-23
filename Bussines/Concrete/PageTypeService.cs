@@ -28,7 +28,7 @@ namespace Business.Concrete
 
         #endregion DI
 
-        [CacheAspect(10)]
+        //[CacheAspect(10)]
         [SecuredOperationAspect("PageType.List")]
         public async Task<ApiDataResponse<List<PageTypeDto>>> GetListAsync()
         {

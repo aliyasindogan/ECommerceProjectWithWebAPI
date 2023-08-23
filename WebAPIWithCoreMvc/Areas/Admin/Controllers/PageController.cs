@@ -33,6 +33,9 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
+            /*
+            Todo:pageTypeResponse boş geliyor kontrol edilecek. 23.08.2023
+             */
             var pageResponse = await _pageApiService.GetListAsync();
             var pageLanguageResponse = await _pageLanguageApiService.GetListAsync();
             var pageTypeResponse = await _pageTypeApiService.GetListAsync();

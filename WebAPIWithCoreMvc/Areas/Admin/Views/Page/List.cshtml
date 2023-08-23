@@ -2,7 +2,7 @@
 @model IEnumerable<PageViewModel>
 @inject Core.Utilities.Localization.ILocalizationService _localizationService
 @{
-    ViewData["Title"] = "List";
+    ViewData["Title"] = "Sayfa Listesi";
 }
 @*
     Page liste sayfası detayları düenlenecek.
@@ -11,9 +11,9 @@
 <div class="col-12">
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">@_localizationService[ResultCodes.PAGETITLE_PageList]</h3>
+            <h3 class="card-title">Sayfa Liste</h3>
             <div class="card-tools">
-                <form asp-action="Add" asp-controller="AppUser" method="get">
+                <form asp-action="Add" asp-controller="Page" method="get">
                     <button type="submit" class="btn btn-default btn-xs float-right">
                         <i class="fas fa-plus"></i>
                     </button>
@@ -25,32 +25,32 @@
             <table class="table table-hover text-nowrap">
                 <thead>
                     <tr>
-                        
+
                         <th>
-                            @Html.DisplayNameFor(model => model.PageID)
+                            #
+                        </th>
+                        @* <th>
+                        @Html.DisplayNameFor(model => model.PageLanguageID)
+                        </th>*@
+                        <th>
+                           Sayfa Adı
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PageLanguageID)
+                            Ana Sayfa Adı
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PageName)
+                           Sayfa URL
+                        </th>
+
+                        <th>
+                           Sayfa Tipi Adı
+                        </th>
+
+                        <th>
+                            Dil
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ParentPageName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.PageURL)
-                        </th>
-                      
-                        <th>
-                            @Html.DisplayNameFor(model => model.PageTypeName)
-                        </th>
-                       
-                        <th>
-                            @Html.DisplayNameFor(model => model.LanguageName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.IsActive)
+                            Aktif mi?
                         </th>
                         <th></th>
                     </tr>
@@ -59,13 +59,13 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                            
+
                             <td>
                                 @Html.DisplayFor(modelItem => item.PageID)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PageLanguageID)
-                            </td>
+                            @* <td>
+                        @Html.DisplayFor(modelItem => item.PageLanguageID)
+                        </td>*@
                             <td>
                                 @Html.DisplayFor(modelItem => item.PageName)
                             </td>
@@ -81,13 +81,13 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.LanguageName)
                             </td>
-                             <td>
+                            <td>
                                 @Html.DisplayFor(modelItem => item.IsActive)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                <a class="btn btn-secondary btn-xs" asp-action="Update" asp-route-id="@item.PageID">@_localizationService[ResultCodes.BUTTON_Update]</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Detail" asp-route-id="@item.PageID">@_localizationService[ResultCodes.BUTTON_Detail]</a>
+                                <a class="btn btn-secondary btn-xs" asp-action="Delete" asp-route-id="@item.PageID">@_localizationService[ResultCodes.BUTTON_Delete]</a>
                             </td>
                         </tr>
                     }

@@ -1,13 +1,127 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿@using Core.Utilities.Localization
+@using Core.Utilities.Messages
+@model WebAPIWithCoreMvc.Models.PageViewModel
+@inject ILocalizationService _localizationService
 
-    30.04.2023
-    *****************************************************
-    1-admin default kullanıcı eklenecek ve yeni migration alınacak
-    2-Page ve pageLanguage add,update,delete,detail ve List sayfaları düzenlenecek
-
-
-
-*@
 @{
+    ViewData["Title"] = "Add";
 }
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-secondary">
+                    <div class="card-header">
+                        <h3 class="card-title">Sayfa Ekle</h3>
+                    </div>
+                    <form asp-action="Add" method="post">
+                        <div class="card-body">
+                            @if (ViewBag.Errors != null)
+                            {
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="alert alert-danger alert-dismissible">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            <h5><i class="icon fas fa-ban"></i> @_localizationService[ResultCodes.ERROR_Error]</h5>
+                                            <ul>
+                                                @foreach (var item in ViewBag.Errors)
+                                                {
+                                                    <li>@item</li>
+                                                }
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="PageURL" class="control-label"></label>
+                                        <input asp-for="PageURL" class="form-control" />
+                                        <span asp-validation-for="PageURL" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ParentID" class="control-label"></label>
+                                        <input asp-for="ParentID" class="form-control" />
+                                        <span asp-validation-for="ParentID" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="PageTypeID" class="control-label"></label>
+                                        <input asp-for="PageTypeID" class="form-control" />
+                                        <span asp-validation-for="PageTypeID" class="text-danger"></span>
+                                    </div>  <div class="form-group">
+                                        <label asp-for="PageTypeName" class="control-label"></label>
+                                        <input asp-for="PageTypeName" class="form-control" />
+                                        <span asp-validation-for="PageTypeName" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                    <div class="form-group">
+                                        <label asp-for="DisplayOrder" class="control-label"></label>
+                                        <input asp-for="DisplayOrder" class="form-control" />
+                                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="PageLanguageID" class="control-label"></label>
+                                        <input asp-for="PageLanguageID" class="form-control" />
+                                        <span asp-validation-for="PageLanguageID" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="PageName" class="control-label"></label>
+                                        <input asp-for="PageName" class="form-control" />
+                                        <span asp-validation-for="PageName" class="text-danger"></span>
+                                    </div>
+                                     <div class="form-group">
+                                        <label asp-for="PageSeoURL" class="control-label"></label>
+                                        <input asp-for="PageSeoURL" class="form-control" />
+                                        <span asp-validation-for="PageSeoURL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+
+                                   
+                                    <div class="form-group">
+                                        <label asp-for="MetaTitle" class="control-label"></label>
+                                        <input asp-for="MetaTitle" class="form-control" />
+                                        <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                                    </div> <div class="form-group">
+                                        <label asp-for="MetaKeywords" class="control-label"></label>
+                                        <input asp-for="MetaKeywords" class="form-control" />
+                                        <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="MetaDescription" class="control-label"></label>
+                                        <input asp-for="MetaDescription" class="form-control" />
+                                        <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="LanguageID" class="control-label"></label>
+                                        <input asp-for="LanguageID" class="form-control" />
+                                        <span asp-validation-for="LanguageID" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <div class="card-footer">
+                            <button type="submit" value="Create" class="btn btn-primary">@_localizationService[ResultCodes.BUTTON_Save]</button>
+                            <a asp-action="List" class="btn btn-info">@_localizationService[ResultCodes.BUTTON_AppUserList]</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

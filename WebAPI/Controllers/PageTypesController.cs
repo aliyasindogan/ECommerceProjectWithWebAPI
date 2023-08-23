@@ -1,7 +1,4 @@
 ﻿using Business.Abstract;
-using Entities.Dtos.AppUsers;
-using Entities.Dtos.AppUserTypes;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -11,18 +8,18 @@ namespace WebAPI.Controllers
     [ApiController]
     public class PageTypesController : ControllerBase
     {
-        private readonly IAppUserTypeService _appUserTypeService;
+        private readonly IPageTypeService _pageTypeService;
 
-        public PageTypesController(IAppUserTypeService userTypeService)
+        public PageTypesController(IPageTypeService pageTypeService)
         {
-            _appUserTypeService = userTypeService;
+            _pageTypeService = pageTypeService;
         }
 
         [HttpGet]
         [Route("[action]")]
         public async Task<IActionResult> GetList()
         {
-            var result = await _appUserTypeService.GetListAsync();
+            var result = await _pageTypeService.GetListAsync();
             if (result.Success)
                 return Ok(result);
             return BadRequest(result);
