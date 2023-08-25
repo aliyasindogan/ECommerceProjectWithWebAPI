@@ -3,9 +3,11 @@ using Core.Utilities.Messages;
 using Entities.Dtos.Pages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAPIWithCoreMvc.ApiServices;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Helpers;
 using WebAPIWithCoreMvc.Models;
@@ -33,9 +35,6 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            /*
-            Todo:pageTypeResponse boş geliyor kontrol edilecek. 23.08.2023
-             */
             var pageResponse = await _pageApiService.GetListAsync();
             var pageLanguageResponse = await _pageLanguageApiService.GetListAsync();
             var pageTypeResponse = await _pageTypeApiService.GetListAsync();
@@ -78,6 +77,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Add()
         {
+            await DropDownListFill();
             return View();
         }
 
@@ -144,6 +144,28 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             var pageDto = await _pageApiService.GetByIdAsync(id);
             var pageDetailDto = _mapper.Map<PageDetailDto>(pageDto.Data);
             return View(pageDetailDto);
+        }
+
+
+        private async Task DropDownListFill()
+        {
+            #region Languages
+            var languages = await _languageApiService.GetListAsync();
+            ViewBag.Languages = new SelectList(languages.Data.Where(x => x.Id > 0).ToList(), "Id", "LanguageName");
+            #endregion
+
+            #region ParentPages
+            var pages = await _pageApiService.GetListAsync();
+            var pageIds = pages.Data.Where(x => x.ParentID == null).Select(x => x.Id);
+            var pageLanguages = await _pageLanguageApiService.GetListAsync();
+            var parentPages = pageLanguages.Data.Where(x => pageIds.Contains(x.PageID)).Select(x => new { Id = x.Id, PageName = x.PageName });
+            ViewBag.ParentPages = new SelectList(parentPages.Where(x => x.Id > 0).ToList(), "Id", "PageName");
+            #endregion
+
+            #region PageTypes
+            var pageTypes = await _pageTypeApiService.GetListAsync();
+            ViewBag.PageTypes = new SelectList(pageTypes.Data.Where(x => x.Id > 0).ToList(), "Id", "PageTypeName");
+            #endregion
         }
     }
 }

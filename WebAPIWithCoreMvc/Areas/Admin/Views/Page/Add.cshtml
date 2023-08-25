@@ -34,90 +34,106 @@
                                     </div>
                                 </div>
                             }
-
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label asp-for="PageURL" class="control-label"></label>
-                                        <input asp-for="PageURL" class="form-control" />
-                                        <span asp-validation-for="PageURL" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="ParentID" class="control-label"></label>
-                                        <input asp-for="ParentID" class="form-control" />
-                                        <span asp-validation-for="ParentID" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="PageTypeID" class="control-label"></label>
-                                        <input asp-for="PageTypeID" class="form-control" />
-                                        <span asp-validation-for="PageTypeID" class="text-danger"></span>
-                                    </div>  <div class="form-group">
-                                        <label asp-for="PageTypeName" class="control-label"></label>
-                                        <input asp-for="PageTypeName" class="form-control" />
-                                        <span asp-validation-for="PageTypeName" class="text-danger"></span>
+                                        <label>Dil</label>
+                                        <select asp-for="LanguageID" class="form-control" asp-items="@ViewBag.Languages" id="LanguageID">
+                                            <option value="">@_localizationService[ResultCodes.LABEL_Choose]</option>
+                                        </select>
+                                        <span asp-validation-for="LanguageID" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
+                                    <div class="form-group">
 
-                                    <div class="form-group">
-                                        <label asp-for="DisplayOrder" class="control-label"></label>
-                                        <input asp-for="DisplayOrder" class="form-control" />
-                                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="PageLanguageID" class="control-label"></label>
-                                        <input asp-for="PageLanguageID" class="form-control" />
-                                        <span asp-validation-for="PageLanguageID" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="PageName" class="control-label"></label>
+                                        <label>Sayfa Adı</label>
                                         <input asp-for="PageName" class="form-control" />
                                         <span asp-validation-for="PageName" class="text-danger"></span>
                                     </div>
-                                     <div class="form-group">
-                                        <label asp-for="PageSeoURL" class="control-label"></label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="PageURL" class="control-label">Sayfa URL</label>
+                                        <input asp-for="PageURL" class="form-control" />
+                                        <span asp-validation-for="PageURL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label asp-for="PageSeoURL" class="control-label">Sayfa SEO URL</label>
                                         <input asp-for="PageSeoURL" class="form-control" />
                                         <span asp-validation-for="PageSeoURL" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-
-                                   
                                     <div class="form-group">
-                                        <label asp-for="MetaTitle" class="control-label"></label>
-                                        <input asp-for="MetaTitle" class="form-control" />
-                                        <span asp-validation-for="MetaTitle" class="text-danger"></span>
-                                    </div> <div class="form-group">
-                                        <label asp-for="MetaKeywords" class="control-label"></label>
-                                        <input asp-for="MetaKeywords" class="form-control" />
-                                        <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                                        <label asp-for="ParentID" class="control-label">Alt Kategori</label>
+                                        <select asp-for="ParentID" class="form-control" asp-items="@ViewBag.ParentPages" id="ParentID">
+                                            <option value="">@_localizationService[ResultCodes.LABEL_Choose]</option>
+                                        </select>
+                                        <span asp-validation-for="ParentID" class="text-danger"></span>
                                     </div>
+                                </div>
+                                <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label asp-for="MetaDescription" class="control-label"></label>
-                                        <input asp-for="MetaDescription" class="form-control" />
-                                        <span asp-validation-for="MetaDescription" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <label asp-for="LanguageID" class="control-label"></label>
-                                        <input asp-for="LanguageID" class="form-control" />
-                                        <span asp-validation-for="LanguageID" class="text-danger"></span>
+                                        <label asp-for="PageTypeID" class="control-label">Sayfa Tipi</label>
+                                        <select asp-for="PageTypeID" class="form-control" asp-items="@ViewBag.PageTypes" id="PageTypeID">
+                                            <option value="">@_localizationService[ResultCodes.LABEL_Choose]</option>
+                                        </select>
+                                        <span asp-validation-for="PageTypeID" class="text-danger"></span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                               
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="DisplayOrder" class="control-label">Sıra No</label>
+                                        <input asp-for="DisplayOrder" class="form-control" value="1"/>
+                                        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="MetaTitle" class="control-label">Meta Title (SEO) </label>
+                                        <input asp-for="MetaTitle" class="form-control" />
+                                        <span asp-validation-for="MetaTitle" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                               
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="MetaKeywords" class="control-label">Meta Keywords (SEO)</label>
+                                        <input asp-for="MetaKeywords" class="form-control" />
+                                        <span asp-validation-for="MetaKeywords" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label asp-for="MetaDescription" class="control-label"> Meta Description (SEO)</label>
+                                        <input asp-for="MetaDescription" class="form-control" />
+                                        <span asp-validation-for="MetaDescription" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1">
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                                            <input class="form-check-input" asp-for="IsActive" /> Aktif Mi?
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                      
                         <div class="card-footer">
                             <button type="submit" value="Create" class="btn btn-primary">@_localizationService[ResultCodes.BUTTON_Save]</button>
-                            <a asp-action="List" class="btn btn-info">@_localizationService[ResultCodes.BUTTON_AppUserList]</a>
+                            <a asp-action="List" class="btn btn-info">Sayfa Listesi</a>
                         </div>
                     </form>
                 </div>
