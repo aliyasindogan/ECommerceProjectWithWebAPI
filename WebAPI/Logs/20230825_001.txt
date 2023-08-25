@@ -1,0 +1,1 @@
+2023-08-25 17:09:50.233 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"pageAddDto","Value":{"PageID":39,"PageName":"Test","PageSeoURL":"Sayfa SEO URL","MetaTitle":"Meta Title (SEO)","MetaKeywords":"Meta Keywords (SEO)","MetaDescription":" Meta Keywords (SEO) Meta Description (SEO)","LanguageID":1},"Type":"PageLanguageAddDto"}]}

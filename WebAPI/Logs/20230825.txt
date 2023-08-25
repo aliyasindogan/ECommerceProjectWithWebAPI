@@ -1,0 +1,5 @@
+2023-08-25 16:56:31.677 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"pageAddDto","Value":{"PageURL":"/Admin/Test/List","ParentID":1,"PageTypeID":1,"DisplayOrder":1},"Type":"PageAddDto"}]}
+2023-08-25 17:00:54.329 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"pageAddDto","Value":{"PageURL":"/Admin/Test/List","ParentID":1,"PageTypeID":1,"DisplayOrder":1},"Type":"PageAddDto"}]}
+2023-08-25 17:05:46.984 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"pageAddDto","Value":{"PageURL":"/Admin/Test/List","ParentID":1,"PageTypeID":1,"DisplayOrder":1},"Type":"PageAddDto"}]}
+2023-08-25 17:06:11.004 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"pageAddDto","Value":{"PageURL":"/Admin/Test/List","ParentID":1,"PageTypeID":1,"DisplayOrder":1},"Type":"PageAddDto"}]}
+2023-08-25 17:09:47.347 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"pageAddDto","Value":{"PageURL":"/Admin/Test/List","ParentID":1,"PageTypeID":1,"DisplayOrder":1},"Type":"PageAddDto"}]}

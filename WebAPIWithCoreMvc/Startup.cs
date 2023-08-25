@@ -19,6 +19,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 using AutoMapper;
 using Entities.Mappings;
+using WebAPIWithCoreMvc.Mappings;
 
 namespace WebAPIWithCoreMvc
 {
@@ -93,7 +94,7 @@ namespace WebAPIWithCoreMvc
 
             var mapperConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new MappingProfile());
+                mc.AddProfile(new MappingMvcProfile());
             });
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);

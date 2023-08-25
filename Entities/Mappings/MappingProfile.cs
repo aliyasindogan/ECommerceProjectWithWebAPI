@@ -39,7 +39,7 @@ namespace Entities.Mappings
             #endregion
 
             #region Page
-            CreateMap<Page, PageDto>().ReverseMap();
+            CreateMap<Page, Dtos.Pages.PageDto>().ReverseMap();
             CreateMap<Page, PageAddDto>().ReverseMap();
             CreateMap<Page, PageUpdateDto>().ReverseMap();
             CreateMap<PagePageLanguageDto, PageUpdateDto>().ReverseMap();
@@ -48,12 +48,12 @@ namespace Entities.Mappings
             #endregion
 
             #region PageLanguage
-            CreateMap<PageLanguage, PageLanguageDto>().ReverseMap();
+            CreateMap<PageLanguage, Dtos.PageLanguages.PageLanguageDto>().ReverseMap();
             CreateMap<PageLanguage, PageLanguageAddDto>().ReverseMap();
             CreateMap<PageLanguage, PageLanguageUpdateDto>().ReverseMap();
-            CreateMap<PageLanguageDto, PageLanguageUpdateDto>().ReverseMap();
-            CreateMap<PageLanguageDto, PageLanguageDeleteDto>().ReverseMap();
-            CreateMap<PageLanguageDto, PageLanguageDetailDto>().ReverseMap();
+            CreateMap<Dtos.PageLanguages.PageLanguageDto, PageLanguageUpdateDto>().ReverseMap();
+            CreateMap<Dtos.PageLanguages.PageLanguageDto, PageLanguageDeleteDto>().ReverseMap();
+            CreateMap<Dtos.PageLanguages.PageLanguageDto, PageLanguageDetailDto>().ReverseMap();
             #endregion
 
             #region PageType

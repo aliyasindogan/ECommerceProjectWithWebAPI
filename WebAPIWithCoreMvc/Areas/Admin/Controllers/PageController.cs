@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Core.Utilities.Messages;
+using Entities.Dtos.PageLanguages;
 using Entities.Dtos.Pages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -82,14 +83,21 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(PageAddDto appUserTypeAddDto)
+        public async Task<IActionResult> Add(PageAddViewModel pageAddViewModel)
         {
-            var result = await _pageApiService.AddAsync(appUserTypeAddDto);
-            if (!result.Success)
+            var mapperPageAdd = _mapper.Map<PageAddDto>(pageAddViewModel);
+            var mapperPageLanguageAdd = _mapper.Map<PageLanguageAddDto>(pageAddViewModel);
+
+            var resultPage = await _pageApiService.AddAsync(mapperPageAdd);
+            mapperPageLanguageAdd.PageID = resultPage.Data.Id;
+            var resultPageLanguage = await _pageLanguageApiService.AddAsync(mapperPageLanguageAdd);
+
+            if (!resultPageLanguage.Success)
             {
-                var errorList = HelperMethods.ErrorList(result);
+                var errorList = HelperMethods.ErrorList(resultPageLanguage);
                 ViewBag.Errors = errorList;
-                return View(appUserTypeAddDto);
+                await DropDownListFill();
+                return View(pageAddViewModel);
             }
             return RedirectToAction(Constants.List);
         }

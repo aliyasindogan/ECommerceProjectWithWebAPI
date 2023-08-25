@@ -39,7 +39,7 @@ namespace DataAccess.Concrete.EntityFramework
         //        return await result.ToListAsync();
         //    }
         //}
-        public Task<List<PageLanguageDto>> GetListDetailAsync()
+        public Task<List<Entities.Dtos.PageLanguages.PageLanguageDto>> GetListDetailAsync()
         {
             throw new System.NotImplementedException();
         }

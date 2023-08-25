@@ -17,23 +17,23 @@ namespace WebAPIWithCoreMvc.ApiServices
             _httpClientService = httpClientService;
         }
 
-        public async Task<ApiDataResponse<List<PageLanguageDto>>> GetListAsync()
+        public async Task<ApiDataResponse<List<Entities.Dtos.PageLanguages.PageLanguageDto>>> GetListAsync()
         {
             return await _httpClientService.GetListAsync<PageLanguageDto>($"{Constants.PageLanguages}/{Constants.GetList}");
         }
 
-        public async Task<ApiDataResponse<List<PageLanguageDto>>> GetListDetailAsync()
+        public async Task<ApiDataResponse<List<Entities.Dtos.PageLanguages.PageLanguageDto>>> GetListDetailAsync()
         {
-            return await _httpClientService.GetListAsync<PageLanguageDto>($"{Constants.PageLanguages}/{Constants.GetListDetail}");
+            return await _httpClientService.GetListAsync<Entities.Dtos.PageLanguages.PageLanguageDto>($"{Constants.PageLanguages}/{Constants.GetListDetail}");
         }
 
         public async Task<ApiDataResponse<PageLanguageDto>> AddAsync(PageLanguageAddDto pageLanguageAddDto)
         {
-            throw new System.NotImplementedException();
+            return await _httpClientService.PostAsync($"{Constants.PageLanguages}/{Constants.Add}", pageLanguageAddDto, new PageLanguageDto());
         }
-        public async Task<ApiDataResponse<PageLanguageDto>> GetByIdAsync(int id)
+        public async Task<ApiDataResponse<Entities.Dtos.PageLanguages.PageLanguageDto>> GetByIdAsync(int id)
         {
-            return await _httpClientService.GetAsync<PageLanguageDto>($"{Constants.PageLanguages}/{Constants.GetById}/", id);
+            return await _httpClientService.GetAsync<Entities.Dtos.PageLanguages.PageLanguageDto>($"{Constants.PageLanguages}/{Constants.GetById}/", id);
         }
 
         public async Task<ApiDataResponse<PageLanguageUpdateDto>> UpdateAsync(PageLanguageUpdateDto pageLanguageUpdateDto)
