@@ -94,7 +94,7 @@ namespace WebAPIWithCoreMvc
 
             var mapperConfig = new MapperConfiguration(mc =>
             {
-                mc.AddProfile(new MappingMvcProfile());
+                mc.AddProfile(new MappingProfile());
             });
             var mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);

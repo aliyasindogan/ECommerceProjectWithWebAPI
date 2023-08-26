@@ -40,7 +40,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
             var pageLanguageResponse = await _pageLanguageApiService.GetListAsync();
             var pageTypeResponse = await _pageTypeApiService.GetListAsync();
             var languageResponse = await _languageApiService.GetListAsync();
-            List<PageViewModel> pageViewModel = new List<PageViewModel>();
+            List<PageListViewModel> pageViewModel = new List<PageListViewModel>();
             foreach (var page in pageResponse.Data)
             {
                 var pageLanguageList = pageLanguageResponse.Data.Where(x => x.PageID == page.Id).ToList();
@@ -48,8 +48,8 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
                 {
                     string languageName = languageResponse.Data.FirstOrDefault(x => x.Id == pageLanguage.LanguageID)?.LanguageName;
                     string pageTypeName = pageTypeResponse.Data.FirstOrDefault(x => x.Id == page.PageTypeID)?.PageTypeName;
-                    string parentPageName = pageLanguageResponse.Data.FirstOrDefault(x => x.PageID == page.ParentID)?.PageName;
-                    pageViewModel.Add(new PageViewModel
+                    string parentPageName = pageLanguageResponse.Data.FirstOrDefault(x => x.PageID == page.ParentPageID)?.PageName;
+                    pageViewModel.Add(new PageListViewModel
                     {
 
                         LanguageID = pageLanguage.Id,
@@ -66,7 +66,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
                         PageTypeID = page.PageTypeID,
                         PageTypeName = pageTypeName,
                         PageURL = page.PageURL,
-                        ParentID = page.ParentID,
+                        ParentPageID = page.ParentPageID,
                         ParentPageName = parentPageName,
                     });
                 }
@@ -164,7 +164,7 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
 
             #region ParentPages
             var pages = await _pageApiService.GetListAsync();
-            var pageIds = pages.Data.Where(x => x.ParentID == null).Select(x => x.Id);
+            var pageIds = pages.Data.Where(x => x.ParentPageID == null).Select(x => x.Id);
             var pageLanguages = await _pageLanguageApiService.GetListAsync();
             var parentPages = pageLanguages.Data.Where(x => pageIds.Contains(x.PageID)).Select(x => new { Id = x.Id, PageName = x.PageName });
             ViewBag.ParentPages = new SelectList(parentPages.Where(x => x.Id > 0).ToList(), "Id", "PageName");

@@ -13,7 +13,7 @@ namespace Entities.Dtos.PagePageLanguages
         public string MetaDescription { get; set; }
         public int LanguageID { get; set; }
         public string PageURL { get; set; }
-        public int? ParentID { get; set; }
+        public int? ParentPageID { get; set; }
         public int PageTypeID { get; set; }
         public int DisplayOrder { get; set; }
         public string LanguageName { get; set; }

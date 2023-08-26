@@ -17,8 +17,8 @@ namespace WebAPIWithCoreMvc.Areas.Admin.ViewComponents
         {
             LeftMenuViewModel viewModel = new LeftMenuViewModel();
             var result = await _pageApiService.GetListAdminPanelLeftMenuAsync();
-            viewModel.MainPage = result.Data.Where(x => x.ParentID == null ).ToList();
-            viewModel.ParentPage = result.Data.Where(x => x.ParentID != null ).ToList();
+            viewModel.MainPage = result.Data.Where(x => x.ParentPageID == null ).ToList();
+            viewModel.ParentPage = result.Data.Where(x => x.ParentPageID != null ).ToList();
             return View(viewModel);
         }
 

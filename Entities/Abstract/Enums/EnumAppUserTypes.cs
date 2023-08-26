@@ -2,7 +2,7 @@
 {
     public enum EnumAppUserTypes
     {
-        SystemAdmin = -1,
-        Admin = -2
+        SystemAdmin = 1,
+        Admin = 2
     }
 }

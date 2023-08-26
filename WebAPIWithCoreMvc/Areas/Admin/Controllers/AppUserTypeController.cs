@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Helpers;
+using WebAPIWithCoreMvc.Models;
 
 namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
 {
@@ -27,13 +28,15 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var result = await _appUserTypeApiService.GetListAsync();
-            if (result == null)
+            var resultAppUserTypes = await _appUserTypeApiService.GetListAsync();
+            var appUserTypeListViewModel = _mapper.Map<List<AppUserTypeListViewModel>>(resultAppUserTypes.Data);
+
+            if (appUserTypeListViewModel == null)
                 return View();
             List<int> ids = new List<int>();
             ids.Add((int)EnumAppUserTypes.SystemAdmin);//SystemAdmin
-            var userTypes = result.Data.Where(x => ids.Contains(x.Id) == false);
-            return View(userTypes.ToList());
+            var userTypes = appUserTypeListViewModel.Where(x => ids.Contains(x.Id) == false).ToList();
+            return View(userTypes);
         }
 
 
@@ -44,14 +47,15 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AppUserTypeAddDto appUserTypeAddDto)
+        public async Task<IActionResult> Add(AppUserTypeAddViewModel appUserTypeAddViewModel)
         {
+            var appUserTypeAddDto = _mapper.Map<AppUserTypeAddDto>(appUserTypeAddViewModel);
             var result = await _appUserTypeApiService.AddAsync(appUserTypeAddDto);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
                 ViewBag.Errors = errorList;
-                return View(appUserTypeAddDto);
+                return View(appUserTypeAddViewModel);
             }
             return RedirectToAction(Constants.List);
         }
@@ -61,19 +65,20 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         public async Task<IActionResult> Update(int id)
         {
             var appUserTypeDto = await _appUserTypeApiService.GetByIdAsync(id);
-            var appUserTypeUpdateDto = _mapper.Map<AppUserTypeUpdateDto>(appUserTypeDto.Data);
-            return View(appUserTypeUpdateDto);
+            var appUserTypeUpdateViewModel = _mapper.Map<AppUserTypeUpdateViewModel>(appUserTypeDto.Data);
+            return View(appUserTypeUpdateViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(AppUserTypeUpdateDto appUserTypeUpdateDto)
+        public async Task<IActionResult> Update(AppUserTypeUpdateViewModel appUserTypeUpdateViewModel)
         {
+            var appUserTypeUpdateDto = _mapper.Map<AppUserTypeUpdateDto>(appUserTypeUpdateViewModel);
             var result = await _appUserTypeApiService.UpdateAsync(appUserTypeUpdateDto);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
                 ViewBag.Errors = errorList;
-                return View(appUserTypeUpdateDto);
+                return View(appUserTypeUpdateViewModel);
 
             }
             return RedirectToAction(Constants.List);
@@ -83,19 +88,19 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var appUserTypeDto = await _appUserTypeApiService.GetByIdAsync(id);
-            var appUserTypeDeleteDto = _mapper.Map<AppUserTypeDeleteDto>(appUserTypeDto.Data);
-            return View(appUserTypeDeleteDto);
+            var appUserTypeDeleteViewModel = _mapper.Map<AppUserTypeDeleteViewModel>(appUserTypeDto.Data);
+            return View(appUserTypeDeleteViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(AppUserTypeDeleteDto appUserTypeDeleteDto)
+        public async Task<IActionResult> Delete(AppUserTypeDeleteViewModel appUserTypeDeleteViewModel)
         {
-            var result = await _appUserTypeApiService.DeleteAsync(appUserTypeDeleteDto.Id);
+            var result = await _appUserTypeApiService.DeleteAsync(appUserTypeDeleteViewModel.Id);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
                 ViewBag.Errors = errorList;
-                return View(appUserTypeDeleteDto);
+                return View(appUserTypeDeleteViewModel);
 
             }
             return RedirectToAction(Constants.List);
@@ -105,8 +110,8 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var appUserTypeDto = await _appUserTypeApiService.GetByIdAsync(id);
-            var appUserTypeDetailDto = _mapper.Map<AppUserTypeDetailDto>(appUserTypeDto.Data);
-            return View(appUserTypeDetailDto);
+            var appUserTypeDetailViewModel = _mapper.Map<AppUserTypeDetailViewModel>(appUserTypeDto.Data);
+            return View(appUserTypeDetailViewModel);
         }
     }
 }

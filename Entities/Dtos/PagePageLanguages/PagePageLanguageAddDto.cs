@@ -6,7 +6,7 @@ namespace Entities.Dtos.PagePageLanguages
     {
         public int PageID { get; set; }
         public string PageURL { get; set; }
-        public int? ParentID { get; set; }
+        public int? ParentPageID { get; set; }
         public int PageTypeID { get; set; }
         public int DisplayOrder { get; set; }
         public string PageName { get; set; }

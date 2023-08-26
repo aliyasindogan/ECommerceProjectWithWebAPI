@@ -70,11 +70,11 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label asp-for="ParentID" class="control-label">Alt Kategori</label>
-                                        <select asp-for="ParentID" class="form-control" asp-items="@ViewBag.ParentPages" id="ParentID">
+                                        <label asp-for="ParentPageID" class="control-label">Alt Kategori</label>
+                                        <select asp-for="ParentPageID" class="form-control" asp-items="@ViewBag.ParentPages" id="ParentPageID">
                                             <option value="">@_localizationService[ResultCodes.LABEL_Choose]</option>
                                         </select>
-                                        <span asp-validation-for="ParentID" class="text-danger"></span>
+                                        <span asp-validation-for="ParentPageID" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">

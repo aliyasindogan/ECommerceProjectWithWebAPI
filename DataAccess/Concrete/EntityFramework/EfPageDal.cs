@@ -34,7 +34,7 @@ namespace DataAccess.Concrete.EntityFramework
                                   PageTypeID = page.PageTypeID,
                                   PageTypeName = pageType.PageTypeName,
                                   PageURL = page.PageURL,
-                                  ParentID = page.ParentID,
+                                  ParentPageID = page.ParentPageID,
                                   IsActive = page.IsActive,
                                   LanguageName = "Türkçe",
                                   LanguageID = (int)EnumLanguages.Turkish,// Admin Panel sadece türkçe dil olcağı için statik olarak türkçe verildi.

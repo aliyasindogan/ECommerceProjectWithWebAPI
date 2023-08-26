@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPIWithCoreMvc.ApiServices.Interfaces;
 using WebAPIWithCoreMvc.Helpers;
+using WebAPIWithCoreMvc.Models;
 
 namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
 {
@@ -38,11 +39,12 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> List()
         {
-            var result = await _appUserApiService.GetListDetailAsync();
+            var resultAppUser = await _appUserApiService.GetListDetailAsync();
+            var appUserListViewModel = _mapper.Map<List<AppUserListViewModel>>(resultAppUser.Data);
             List<int> ids = new List<int>();
             ids.Add((int)EnumAppUserTypes.SystemAdmin);//SystemAdmin
-            var users = result.Data.Where(x => ids.Contains(x.Id) == false);
-            return View(users.ToList());
+            var users = appUserListViewModel.Where(x => ids.Contains(x.Id) == false).ToList();
+            return View(users);
         }
 
 
@@ -56,24 +58,25 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         private async Task DropDownListFill()
         {
             var appUserTypes = await _appUserTypeApiService.GetListAsync();
-            ViewBag.AppUserTypes = new SelectList(appUserTypes.Data.Where(x => x.Id > 0).ToList(), "Id", "UserTypeName");
+            ViewBag.AppUserTypes = new SelectList(appUserTypes.Data.ToList(), "Id", "UserTypeName");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(AppUserAddDto appUserAddDto, IFormFile file)
+        public async Task<IActionResult> Add(AppUserAddViewModel appUserAddViewModel, IFormFile file)
         {
             HelperMethods helperMethods = new HelperMethods(_webHostEnvironment);
             string filePath = await helperMethods.FileUpload(file);
             var profileImageUrl = await _uploadImageApiService.UploadImageAsync(new FileInfo(filePath));
-            appUserAddDto.ProfileImageUrl = profileImageUrl.Data.FullPath;
-            appUserAddDto.RefreshToken = Guid.NewGuid();
-            var result = await _appUserApiService.AddAsync(appUserAddDto);
+            appUserAddViewModel.ProfileImageUrl = profileImageUrl.Data.FullPath;
+            appUserAddViewModel.RefreshToken = Guid.NewGuid();
+            var appUserDto= _mapper.Map<AppUserAddDto>(appUserAddViewModel);
+            var result = await _appUserApiService.AddAsync(appUserDto);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
                 ViewBag.Errors = errorList;
                 await DropDownListFill();
-                return View(appUserAddDto);
+                return View(appUserAddViewModel);
             }
             return RedirectToAction(Constants.List);
         }
@@ -84,31 +87,32 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         {
             await DropDownListFill();
             var appUserDto = await _appUserApiService.GetByIdAsync(id);
-            var appUserUpdateDto = _mapper.Map<AppUserUpdateDto>(appUserDto.Data);
-            return View(appUserUpdateDto);
+            var appUserUpdateViewModel = _mapper.Map<AppUserUpdateViewModel>(appUserDto.Data);
+            return View(appUserUpdateViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(AppUserUpdateDto appUserUpdateDto, IFormFile file)
+        public async Task<IActionResult> Update(AppUserUpdateViewModel appUserUpdateViewModel, IFormFile file)
         {
             if (file != null)
             {
                 HelperMethods helpers = new HelperMethods(_webHostEnvironment);
                 string filePath = await helpers.FileUpload(file);
                 var profileImageUrl = await _uploadImageApiService.UploadImageAsync(new FileInfo(filePath));
-                appUserUpdateDto.ProfileImageUrl = profileImageUrl.Data.FullPath;
+                appUserUpdateViewModel.ProfileImageUrl = profileImageUrl.Data.FullPath;
             }
             else
             {
-                var appUserDto = await _appUserApiService.GetByIdAsync(appUserUpdateDto.Id);
-                appUserUpdateDto.ProfileImageUrl = appUserDto.Data.ProfileImageUrl;
+                var appUserDto = await _appUserApiService.GetByIdAsync(appUserUpdateViewModel.Id);
+                appUserUpdateViewModel.ProfileImageUrl = appUserDto.Data.ProfileImageUrl;
             }
+            var appUserUpdateDto = _mapper.Map<AppUserUpdateDto>(appUserUpdateViewModel);
             var result = await _appUserApiService.UpdateAsync(appUserUpdateDto);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
                 ViewBag.Errors = errorList;
-                return View(appUserUpdateDto);
+                return View(appUserUpdateViewModel);
 
             }
             return RedirectToAction(Constants.List);
@@ -118,19 +122,19 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var appUserDto = await _appUserApiService.GetByIdAsync(id);
-            var appUserDeleteDto = _mapper.Map<AppUserDeleteDto>(appUserDto.Data);
-            return View(appUserDeleteDto);
+            var appUserDeleteViewModel = _mapper.Map<AppUserDeleteViewModel>(appUserDto.Data);
+            return View(appUserDeleteViewModel);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Delete(AppUserDeleteDto appUserDeleteDto)
+        public async Task<IActionResult> Delete(AppUserDeleteViewModel appUserDeleteViewModel)
         {
-            var result = await _appUserApiService.DeleteAsync(appUserDeleteDto.Id);
+            var result = await _appUserApiService.DeleteAsync(appUserDeleteViewModel.Id);
             if (!result.Success)
             {
                 var errorList = HelperMethods.ErrorList(result);
                 ViewBag.Errors = errorList;
-                return View(appUserDeleteDto);
+                return View(appUserDeleteViewModel);
 
             }
             return RedirectToAction(Constants.List);
@@ -140,8 +144,8 @@ namespace WebAPIWithCoreMvc.Areas.Admin.Controllers
         public async Task<IActionResult> Detail(int id)
         {
             var appUserDto = await _appUserApiService.GetByIdAsync(id);
-            var appUserDetailDto = _mapper.Map<AppUserDetailDto>(appUserDto.Data);
-            return View(appUserDetailDto);
+            var appUserDetailViewModel = _mapper.Map<AppUserDetailViewModel>(appUserDto.Data);
+            return View(appUserDetailViewModel);
         }
     }
 }

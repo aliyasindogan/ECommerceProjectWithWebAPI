@@ -39,21 +39,30 @@ namespace Core.DataAccess.EntityFramework
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {
-            var createDate = entity.GetType().GetProperty("CreatedDate");
-            if (!Equals(createDate, null))
+            try
             {
-                var dateValue = entity.GetType().GetProperty("CreatedDate").GetValue(entity);
-                entity.GetType().GetProperty("CreatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                var createDate = entity.GetType().GetProperty("CreatedDate");
                 if (!Equals(createDate, null))
                 {
-                    if (Convert.ToDateTime(dateValue) == DateTime.MinValue)
-                        entity.GetType().GetProperty("CreatedDate").SetValue(entity, DateTime.Now);
-                } 
+                    var dateValue = entity.GetType().GetProperty("CreatedDate").GetValue(entity);
+                    entity.GetType().GetProperty("CreatedUserId").SetValue(entity, Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value));
+                    if (!Equals(createDate, null))
+                    {
+                        if (Convert.ToDateTime(dateValue) == DateTime.MinValue)
+                            entity.GetType().GetProperty("CreatedDate").SetValue(entity, DateTime.Now);
+                    }
+                }
+                using (TContext context = new TContext())
+                {
+                    await context.Set<TEntity>().AddAsync(entity);
+                    await context.SaveChangesAsync();
+                    return entity;
+                }
             }
-            using (TContext context = new TContext())
+            catch (Exception ex)
             {
-                await context.Set<TEntity>().AddAsync(entity);
-                await context.SaveChangesAsync();
+
+                string exx = ex.Message;
                 return entity;
             }
         }

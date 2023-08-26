@@ -11,7 +11,7 @@ namespace Entities.Concrete
             PageLanguages = new HashSet<PageLanguage>();
         }
         public string PageURL { get; set; }
-        public int? ParentID { get; set; }
+        public int? ParentPageID { get; set; }
         public int PageTypeID { get; set; }
         public int DisplayOrder { get; set; }
     

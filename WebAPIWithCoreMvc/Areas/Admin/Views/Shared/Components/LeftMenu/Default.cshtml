@@ -27,14 +27,14 @@
                                 <p>
                                     @mainPageItem.PageName
                                 </p>
-                                @if (Model.ParentPage.Any(x => x.ParentID == mainPageItem.Id))
+                                @if (Model.ParentPage.Any(x => x.ParentPageID == mainPageItem.Id))
                                 {
                                     <i class="fas fa-angle-left right"></i>
                                 }
                             </a>
                             @foreach (var subCategoryItem in Model.ParentPage)
                             {
-                                @if (subCategoryItem.ParentID == mainPageItem.Id)
+                                @if (subCategoryItem.ParentPageID == mainPageItem.Id)
                                 {
                                     <ul class="nav nav-treeview" style="display: none;">
                                         <li class="nav-item">

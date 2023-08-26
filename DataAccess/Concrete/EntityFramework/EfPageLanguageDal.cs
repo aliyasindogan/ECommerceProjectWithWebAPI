@@ -33,7 +33,7 @@ namespace DataAccess.Concrete.EntityFramework
         //                         PageTypeID = page.PageTypeID,
         //                         PageTypeName = pageType.PageTypeName,
         //                         PageURL = page.PageURL,
-        //                         ParentID = page.ParentID,
+        //                         ParentPageID = page.ParentPageID,
         //                         IsActive = page.IsActive,
         //                     };
         //        return await result.ToListAsync();

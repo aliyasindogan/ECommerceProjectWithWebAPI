@@ -25,12 +25,8 @@ namespace Core.Aspects.Autofac.SecuredOperation
             {
                 var userId = Convert.ToInt32(_httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                 var roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
-
-
                 if (_attributeRoles != null)
                 {
-
-
                     if (userId != Constants.SystemAdminID)
                     {
                         if (roleClaims.Count <= 0)

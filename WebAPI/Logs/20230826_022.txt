@@ -1,0 +1,25 @@
+2023-08-26 16:04:22.604 [Error] Core.Utilities.Responses.ErrorApiResponse StackTrace:   at Core.Aspects.Autofac.SecuredOperation.SecuredOperationAspect.OnBefore(IInvocation invocation) in D:\ALIYASINDOGAN\003_GITHUB_PROJECT\repos\ECommerceProjectWithWebAPI\Core\Aspects\Autofac\SecuredOperation\SecuredOperationAspect.cs:line 37
+   at Core.Utilities.Interceptors.MethodInterception.Intercept(IInvocation invocation) in D:\ALIYASINDOGAN\003_GITHUB_PROJECT\repos\ECommerceProjectWithWebAPI\Core\Utilities\Interceptors\MethodInterception.cs:line 40
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Core.Aspects.Autofac.Caching.CacheAspect.Intercept(IInvocation invocation) in D:\ALIYASINDOGAN\003_GITHUB_PROJECT\repos\ECommerceProjectWithWebAPI\Core\Aspects\Autofac\Caching\CacheAspect.cs:line 29
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.IPageServiceProxy.GetListAdminPanelLeftMenuAsync()
+   at WebAPI.Controllers.PagesController.GetListAdminPanelLeftMenu() in D:\ALIYASINDOGAN\003_GITHUB_PROJECT\repos\ECommerceProjectWithWebAPI\WebAPI\Controllers\PagesController.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Core.Extensions.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\ALIYASINDOGAN\003_GITHUB_PROJECT\repos\ECommerceProjectWithWebAPI\Core\Extensions\ExceptionMiddleware.cs:line 28 Message:Bu kullanıcıya rol eklenmemiş!
+2023-08-26 16:09:05.263 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"UserTypeName":"Editor"},"Type":"AppUserTypeAddDto"}]}
+2023-08-26 16:10:21.532 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"UserTypeName":"Yazar"},"Type":"AppUserTypeAddDto"}]}
+2023-08-26 16:11:41.489 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"UserTypeName":"Yazar"},"Type":"AppUserTypeAddDto"}]}
+2023-08-26 16:12:20.696 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"UserTypeName":"Editor"},"Type":"AppUserTypeAddDto"}]}
+2023-08-26 16:17:15.803 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddDto","Value":{"UserName":"adminjkljl","FirstName":"Mustafa","LastName":"CEYLAN2","Password":"11111","Email":"admin22@gmail.com","ProfileImageUrl":"http://localhost:63545/Upload/f5f6fdd7-e741-4659-9758-ace026d78f14.png","GsmNumber":"53587736325","UserTypeID":2,"RefreshToken":"dc057967-ba2f-42be-a82c-0224244b409c"},"Type":"AppUserAddDto"}]}

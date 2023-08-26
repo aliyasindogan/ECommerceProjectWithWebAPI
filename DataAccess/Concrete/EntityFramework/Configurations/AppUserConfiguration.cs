@@ -65,7 +65,7 @@ namespace DataAccess.Concrete.EntityFramework.Configurations
             Sha512Helper.CreatePasswordHash("12345", out passwordHash, out passwordSalt);
             builder.HasData(new AppUser
             {
-                Id = -1,
+                Id = 1,
                 FirstName = "System",
                 LastName = "Admin",
                 CreatedDate = DateTime.Now,

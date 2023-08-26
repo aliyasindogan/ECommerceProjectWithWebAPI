@@ -1,5 +1,4 @@
-﻿using Entities.Abstract.Enums;
-using Entities.Concrete;
+﻿using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -9,6 +8,7 @@ namespace DataAccess.Concrete.Contexts
     {
         public ECommerceDbContext(DbContextOptions<ECommerceDbContext> options) : base(options)
         {
+            //this.Database.SetCommandTimeout(999999);
         }
 
         public ECommerceDbContext()

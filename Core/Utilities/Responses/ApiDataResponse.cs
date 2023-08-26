@@ -1,7 +1,4 @@
 ﻿using Core.Utilities.Messages;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Core.Utilities.Responses
 {

@@ -1,10 +1,10 @@
 ﻿namespace WebAPIWithCoreMvc.Models
 {
-    public class PageViewModel
+    public class PageListViewModel
     {
         public int PageID { get; set; }
         public string PageURL { get; set; }
-        public int? ParentID { get; set; }
+        public int? ParentPageID { get; set; }
         public string ParentPageName { get; set; }
         public int PageTypeID { get; set; }
         public string PageTypeName { get; set; }
