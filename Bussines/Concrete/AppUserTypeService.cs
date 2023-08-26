@@ -62,7 +62,7 @@ namespace Business.Concrete
         }
 
 
-        [TransactionScopeAspect]
+        //[TransactionScopeAspect]
         [CacheRemoveAspect("IAppUserTypeService.GetListAsync")]
         [ValidationAspect(typeof(AppUserTypeAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
@@ -84,7 +84,7 @@ namespace Business.Concrete
             }
         }
 
-        [TransactionScopeAspect]
+        //[TransactionScopeAspect]
         [CacheRemoveAspect("IAppUserTypeService.GetListAsync")]
         [ValidationAspect(typeof(AppUserTypeUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]

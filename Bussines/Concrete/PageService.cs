@@ -70,8 +70,8 @@ namespace Business.Concrete
         }
 
 
-        [TransactionScopeAspect]
-        [CacheRemoveAspect("IPageService.GetListAsync")]
+        //[TransactionScopeAspect]
+        [CacheRemoveAspect("IPageService.GetListAsync,IPageService.GetListAdminPanelLeftMenuAsync")]
         [ValidationAspect(typeof(PageAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<PageDto>> AddAsync(PageAddDto pageAddDto)
@@ -82,8 +82,8 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<PageDto>(pageDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
 
-        [TransactionScopeAspect]
-        [CacheRemoveAspect("IPageService.GetListAsync")]
+        //[TransactionScopeAspect]
+        [CacheRemoveAspect("IPageService.GetListAsync,IPageService.GetListAdminPanelLeftMenuAsync")]
         [ValidationAspect(typeof(PageUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<PageUpdateDto>> UpdateAsync(PageUpdateDto pageUpdateDto)
@@ -96,7 +96,7 @@ namespace Business.Concrete
             var pageUpdataMap = _mapper.Map<PageUpdateDto>(resultUpdate);
             return new SuccessApiDataResponse<PageUpdateDto>(pageUpdataMap, _localizationService[ResultCodes.HTTP_OK]);
         }
-        [CacheRemoveAspect("IPageService.GetListAsync")]
+        [CacheRemoveAspect("IPageService.GetListAsync,IPageService.GetListAdminPanelLeftMenuAsync")]
         [LogAspect(typeof(FileLogger))]
         public async Task<ApiDataResponse<bool>> DeleteAsync(int id)
         {

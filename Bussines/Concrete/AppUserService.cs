@@ -78,7 +78,7 @@ namespace Business.Concrete
         }
 
 
-        [TransactionScopeAspect]
+        //[TransactionScopeAspect]
         [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
         [ValidationAspect(typeof(AppUserAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
@@ -101,7 +101,7 @@ namespace Business.Concrete
                 return new SuccessApiDataResponse<AppUserDto>(userDto, message: _localizationService[ResultCodes.HTTP_OK]);
             }
         }
-        [TransactionScopeAspect]
+        //[TransactionScopeAspect]
         [CacheRemoveAspect("IAppUserService.GetListAsync,IAppUserService.GetListDetailAsync")]
         [ValidationAspect(typeof(AppUserUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]

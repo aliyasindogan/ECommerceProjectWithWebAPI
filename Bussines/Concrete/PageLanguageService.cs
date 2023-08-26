@@ -69,7 +69,7 @@ namespace Business.Concrete
         }
 
 
-        [TransactionScopeAspect]
+        //[TransactionScopeAspect]
         [CacheRemoveAspect("IPageLanguageService.GetListAsync")]
         [ValidationAspect(typeof(PageAddDtoValidator))]
         [LogAspect(typeof(FileLogger))]
@@ -82,7 +82,7 @@ namespace Business.Concrete
             return new SuccessApiDataResponse<PageLanguageDto>(pageLanguageDto, message: _localizationService[ResultCodes.HTTP_OK]);
         }
 
-        [TransactionScopeAspect]
+        //[TransactionScopeAspect]
         [CacheRemoveAspect("IPageLanguageService.GetListAsync")]
         [ValidationAspect(typeof(PageUpdateDtoValidator))]
         [LogAspect(typeof(FileLogger))]

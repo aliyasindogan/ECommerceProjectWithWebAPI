@@ -19,3 +19,4 @@
    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at Core.Extensions.ExceptionMiddleware.InvokeAsync(HttpContext httpContext) in D:\ALIYASINDOGAN\003_GITHUB_PROJECT\repos\ECommerceProjectWithWebAPI\Core\Extensions\ExceptionMiddleware.cs:line 28 Message:The transaction has aborted.
+2023-08-26 23:44:41.320 [Information] {"MethodName":"AddAsync","User":"System Admin","Parameters":[{"Name":"userAddTypeDto","Value":{"UserTypeName":"Yazar"},"Type":"AppUserTypeAddDto"}]}

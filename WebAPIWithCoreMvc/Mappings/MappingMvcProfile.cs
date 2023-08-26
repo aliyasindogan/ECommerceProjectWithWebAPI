@@ -24,7 +24,6 @@ namespace WebAPIWithCoreMvc.Mappings
             CreateMap<AppUserListViewModel, AppUserDto>().ReverseMap();
             #endregion
 
-
             #region AppUserType
             CreateMap<AppUserTypeAddViewModel, AppUserTypeAddDto>().ReverseMap();
             CreateMap<AppUserTypeDeleteViewModel, AppUserTypeDeleteDto>().ReverseMap();

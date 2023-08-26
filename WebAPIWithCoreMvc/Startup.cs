@@ -91,13 +91,13 @@ namespace WebAPIWithCoreMvc
             #endregion Cookie
 
             #region AutoMapper
-
-            var mapperConfig = new MapperConfiguration(mc =>
-            {
-                mc.AddProfile(new MappingProfile());
-            });
-            var mapper = mapperConfig.CreateMapper();
-            services.AddSingleton(mapper);
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            //var mapperConfig = new MapperConfiguration(mc =>
+            //{
+            //    mc.AddProfile(new MappingProfile());
+            //});
+            //var mapper = mapperConfig.CreateMapper();
+            //services.AddSingleton(mapper);
 
             #endregion AutoMapper
         }
